@@ -25,7 +25,10 @@
 //              (files go in the assets folder; the filename must match EXACTLY, including .JPG vs .jpg.
 //              Photos are cropped to a 4:3 frame. The 4th part picks the part that shows: top, bottom,
 //              left, right, center, or a position like "50% 20%" (left-right, then up-down). Leave it
-//              empty for center.)
+//              empty for center.
+//              EASIEST WAY: open the site with ?draft on the end of the address, click a card, drag the
+//              photo inside its frame until it looks right, press "copy line", and paste that line over
+//              the photo line here.)
 //    link:     Button label | https://...      (leave the URL empty to show a "link needed" placeholder)
 //    paper:    Title | small note | filename.pdf or https://... | what you still need to send
 //              (a PDF in the assets folder, or a web link, opens in the built-in reader)
@@ -47,7 +50,7 @@ resume:
 github:
 
 // the photo at the bottom of the page
-photo: me.JPG | Fig. 3 | a photo of you | center
+photo: me.jpg | Fig. 3 | a photo of you | 50% 13%
 
 Fig. 1. Akari Imai, anterior view. Japanese, raised in Singapore, and educated at Phillips Academy Andover. Now a first-year at Duke University studying biomedical and mechanical engineering, and technical project manager at Stele. Fig. 2. Cellular detail, ×400. Fig. 3. The specimen, photographed.
 
@@ -126,7 +129,7 @@ paper: Electromyographic Evaluation of Automated Penetration Detection in Spinal
 link: Gravity compensation paper (YNU repository) | https://ynu.repo.nii.ac.jp/records/2001367
 // add the IEEE Xplore link here once the ISIE proceedings are online:
 link: IEEE Xplore |
-photo: isie-talk.jpeg | IEEE ISIE 2026, Nagoya | you presenting at ISIE in Nagoya | top
+photo: isie-talk.jpeg | IEEE ISIE 2026, Nagoya | you presenting at ISIE in Nagoya | 50% 21%
 photo: drill-setup.jpg | Haptic drill and sEMG setup | the drill / sEMG setup in the lab
 
 
@@ -141,9 +144,9 @@ The kitchen taught me to stay calm and precise under pressure. Cooking is also h
 
 fact: Le Cordon Bleu Malaysia | Basic Cuisine certificate · honorable mention
 link: Blog: Under Pressure, Lessons from Culinary School | https://dukegapyear.duke.edu/2026/03/22/under-pressure-lessons-from-culinary-school/
-photo: dish-1.jpeg | Le Cordon Bleu Malaysia | your best plated dish | 50% 60%
-photo: dish-2.jpeg | Plated | another dish, or something you baked | 50% 60%
-photo: chef-whites.jpeg | Kuala Lumpur | you in chef whites | bottom
+photo: dish-1.jpeg | Le Cordon Bleu Malaysia | your best plated dish | 50% 32%
+photo: dish-2.jpeg | Plated | another dish, or something you baked | 50% 46%
+photo: chef-whites.jpg | Kuala Lumpur | you in chef whites | 50% 0%
 
 
 # 7 · Manus
@@ -154,7 +157,7 @@ summary: Head of hardware for a competitive robotics program.
 At Phillips Academy Andover, I was co-president and head of hardware for the FRC and FTC robotics teams. I oversaw hardware design and fabrication, recruited seven girls to the team, and taught more than 20 beginners CAD and machining. My team has won the Think Award, Judges Award, and Quality Award at various regional competitions in the United States.
 
 fact: Andover Robotics (FRC/FTC) | Co-president, head of hardware · 2022–25
-photo: robot.jpg | Andover Robotics | the robot, or you machining | 50% 60%
+photo: robot.jpg | Andover Robotics | the robot, or you machining | 50% 0%
 photo: cad.png | CAD | a CAD screenshot
 
 
@@ -198,7 +201,7 @@ At Andover, I ran an independent toxicology study, exposing 4T1 mouse mammary ca
 
 fact: Phillips Academy Andover | Independent research · Dec 2024–May 2025
 paper: Assessment of Cycloxaprid Toxicity: Oxidative Stress and Cell Death Mechanisms in 4T1 Epithelial Mouse Mammary Cells | independent research manuscript · March 2025 | Akari_Imai_Bio600_IP_Manuscript.pdf |
-photo: gel.JPG | DNA laddering | your DNA laddering gel
+photo: gel.JPG | DNA laddering | your DNA laddering gel | 50% 34%
 photo: cells.jpg | 4T1 cells | cells under the microscope
 
 
