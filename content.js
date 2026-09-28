@@ -239,7 +239,7 @@ link: Blog: Under Pressure (culinary school) | https://dukegapyear.duke.edu/2026
 link: Blog: A Place I Thought I Knew (Japan) | https://dukegapyear.duke.edu/2026/08/13/a-place-i-thought-i-knew/
 photo: gobi.JPG | Mongolia | the Gobi, or you on horseback
 photo: mongolia2.jpg | Pickup basketball, Mongolia | you with the kids from the pickup game
-photo: mongolia3.jpg | Tapi the goat | you and Tapi | 50% 30%
+photo: mongolia3.jpg | Tapi the goat | you and Tapi | 50% 60%
 photo: cambodia.JPG | Cambodia | the floating village or Angkor Wat
 
 
