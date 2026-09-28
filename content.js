@@ -66,9 +66,9 @@ Fig. 1. Akari Imai, anterior view. Japanese, raised in Singapore, and educated a
 # 1 · Cerebrum
 label: the brain · quantitative models
 subtitle: Quantitative models, from markets to molecules
-summary: A quantitative stock model built at 16, and a machine-learning screen for pesticide toxicity.
+summary: A quantitative stock model for a Singapore investment firm, and a machine-learning screen for pesticide toxicity.
 
-At 16, I interned at Effissimo Capital Management, an investment firm in Singapore, where I built and tested a quantitative model that used company valuation metrics to predict Japanese stock prices. The strategy yielded 23.2% in annual gains in testing.
+I interned at Effissimo Capital Management, an investment firm in Singapore, where I built and tested a quantitative model that used company valuation metrics to predict Japanese stock prices. The strategy yielded 23.2% in annual gains in testing.
 
 Later, in an independent project, I turned to machine learning for a health question: I retrained a published random-forest model to predict how strongly 33 common pesticides bind the human androgen receptor.
 
@@ -86,7 +86,7 @@ Stele is building a lifelong record of the human body: an app that brings data f
 
 As technical project manager, I run the engineering team’s operating cadence: standups, a weekly progress, plan, and problems report, and a live view of every project’s owner, status, and next deadline. I also onboard new engineers and track the team’s key technical milestones.
 
-! Shameless plug: the waitlist is open. If you want to be first in line when the app launches, the button below is for you.
+! Shameless plug: the waitlist is open. If you want to be first in line when the product launches, the button below is for you.
 
 fact: Stele Inc. | Technical project manager · Jul 2026–present
 // when preorders open, change this line to something like:  link: Preorder Stele Fusion | https://...
@@ -148,7 +148,7 @@ link: Gravity compensation paper (YNU repository) | https://ynu.repo.nii.ac.jp/r
 // add the IEEE Xplore link here once the ISIE proceedings are online:
 link: IEEE Xplore |
 photo: isie-talk.jpeg | IEEE ISIE 2026, Nagoya | you presenting at ISIE in Nagoya | 50% 21%
-photo: drill-setup.jpg | Haptic drill and sEMG setup | the drill / sEMG setup in the lab
+photo: drill-setup.jpg | Haptic drill setup | the drill setup in the lab
 
 
 # 6 · Ventriculus
