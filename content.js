@@ -46,9 +46,9 @@ hint: hover to examine, click to dissect ↓
 
 // password screen: visitors must type this every time they open the site (a refresh in the same tab
 // doesn't ask again). Leave it empty to turn the gate off.
-// A link with ?key=THEPASSWORD on the end (e.g. https://akari1024.github.io/?key=1234) skips the prompt.
+// A link with ?key=THEPASSWORD on the end (e.g. https://akari1024.github.io/?key=0000) skips the prompt.
 // This is a soft gate only: anyone who reads the site's files can find the password.
-password: 1234
+password: 0000
 
 // contact details
 email: akari.imai@duke.edu
