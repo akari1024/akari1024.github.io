@@ -9,7 +9,8 @@
 //  - Lines starting with // are notes to yourself and are ignored.
 //  - The number in each "# 1 · Cerebrum" heading decides which body part the section
 //    belongs to (1 brain, 2 ears, 3 tongue, 4 heart, 5 spine, 6 stomach, 7 hands,
-//    8 legs, 9 cells, 10 feet). You can rename "Cerebrum" to anything; keep the number.
+//    8 legs, 9 cells, 10 feet, 11 the book in her hand). You can rename "Cerebrum" to
+//    anything; keep the number.
 //  - Wrap a word in *asterisks* to italicize it.
 //  - Only rule: don't type a backtick ` anywhere in the text.
 //  - Photos, papers, and links that are missing are hidden on the live site. To see the
@@ -20,8 +21,11 @@
 //    subtitle: the line under the big name on the card
 //    summary:  the one-line pink summary at the top of the card
 //    fact:     Left side | Right side          (one per line, shown in the table at the bottom)
-//    photo:    filename.jpg | Caption | what you still need to send   (files go in the assets folder;
-//              the filename must match EXACTLY, including .JPG vs .jpg)
+//    photo:    filename.jpg | Caption | what you still need to send | which part shows
+//              (files go in the assets folder; the filename must match EXACTLY, including .JPG vs .jpg.
+//              Photos are cropped to a 4:3 frame. The 4th part picks the part that shows: top, bottom,
+//              left, right, center, or a position like "50% 20%" (left-right, then up-down). Leave it
+//              empty for center.)
 //    link:     Button label | https://...      (leave the URL empty to show a "link needed" placeholder)
 //    paper:    Title | small note | filename.pdf or https://... | what you still need to send
 //              (a PDF in the assets folder, or a web link, opens in the built-in reader)
@@ -43,7 +47,7 @@ resume:
 github:
 
 // the photo at the bottom of the page
-photo: me.JPG | Fig. 3 | a photo of you
+photo: me.JPG | Fig. 3 | a photo of you | top
 
 Fig. 1. Akari Imai, anterior view. Japanese, raised in Singapore, and educated at Phillips Academy Andover. Now a first-year at Duke University studying biomedical and mechanical engineering, and technical project manager at Stele. Fig. 2. Cellular detail, ×400. Fig. 3. The specimen, photographed.
 
@@ -122,7 +126,7 @@ paper: Electromyographic Evaluation of Automated Penetration Detection in Spinal
 link: Gravity compensation paper (YNU repository) | https://ynu.repo.nii.ac.jp/records/2001367
 // add the IEEE Xplore link here once the ISIE proceedings are online:
 link: IEEE Xplore |
-photo: isie-talk.jpeg | IEEE ISIE 2026, Nagoya | you presenting at ISIE in Nagoya
+photo: isie-talk.jpeg | IEEE ISIE 2026, Nagoya | you presenting at ISIE in Nagoya | top
 photo: drill-setup.jpg | Haptic drill and sEMG setup | the drill / sEMG setup in the lab
 
 
@@ -139,25 +143,34 @@ fact: Le Cordon Bleu Malaysia | Basic Cuisine certificate · honorable mention
 link: Blog: Under Pressure, Lessons from Culinary School | https://dukegapyear.duke.edu/2026/03/22/under-pressure-lessons-from-culinary-school/
 photo: dish-1.jpeg | Le Cordon Bleu Malaysia | your best plated dish
 photo: dish-2.jpeg | Plated | another dish, or something you baked
-photo: chef-whites.jpeg | Kuala Lumpur | you in chef whites
+photo: chef-whites.jpeg | Kuala Lumpur | you in chef whites | top
 
 
 # 7 · Manus
 label: the hands · building
 subtitle: Building things
-summary: Head of hardware for a competitive robotics program, and author of an 80-page book on wrist rehabilitation.
-
-My interest in surgery started with my own hand. After an operation to repair a torn ligament in my little finger, my surgeon walked me through the photos, and I wanted to understand both the clinical and the engineering side of recovery. That became an independent writing project: an 80-page book on wrist anatomy, common injuries, physical therapy, wearable health technology, and how electrical impedance tomography could support rehabilitation at home, written so that younger students can follow it. I hold a conditional acceptance to Duke-NUS Medical School for the MD.
+summary: Head of hardware for a competitive robotics program.
 
 At Phillips Academy Andover, I was co-president and head of hardware for the FRC and FTC robotics teams. I oversaw hardware design and fabrication, recruited seven girls to the team, and taught more than 20 beginners CAD and machining. My team has won the Think Award, Design Award, and Quality Award at various regional competitions in the United States.
 
 fact: Andover Robotics (FRC/FTC) | Co-president, head of hardware · 2022–25
+photo: robot.jpg | Andover Robotics | the robot, or you machining
+photo: cad.png | CAD | a CAD screenshot
+
+
+# 11 · Liber
+label: the book · wrist rehabilitation
+subtitle: An 80-page book on wrist rehabilitation
+summary: Author of an 80-page book on wrist rehabilitation and electrical impedance tomography.
+
+My interest in surgery started with my own hand. After an operation to repair a torn ligament in my little finger, my surgeon walked me through the photos, and I wanted to understand both the clinical and the engineering side of recovery.
+
+That became an independent writing project: an 80-page book on wrist anatomy, common injuries, physical therapy, wearable health technology, and how electrical impedance tomography could support rehabilitation at home, written so that younger students can follow it. I hold a conditional acceptance to Duke-NUS Medical School for the MD.
+
 fact: Independent writing project | Electrical Impedance Tomography in Wrist Rehabilitation · 80+ pages
 // this opens the Google Doc in the built-in reader. It only works for visitors once the doc's
 // sharing is set to "Anyone with the link can view".
 paper: Electrical Impedance Tomography in Wrist Rehabilitation | 80-page book · independent project | https://docs.google.com/document/d/1_YkNgDY76VPKcRwH2CprpCdm2fl4S6g_1rPrfamrwPk/preview |
-photo: robot.jpg | Andover Robotics | the robot, or you machining
-photo: cad.png | CAD | a CAD screenshot
 photo: xray.jpg | The finger | optional: the finger X-ray
 
 

@@ -72,7 +72,9 @@
   .mouth { stroke: var(--ink); stroke-width: 1.6; fill: none; stroke-linecap: round; }
   .bud { fill: var(--bud); stroke: var(--ink); stroke-width: 1.2; }
   .eeg { fill: none; stroke: var(--bud); stroke-width: 1.4; opacity: 0; transform-box: fill-box; transform-origin: center; }
-  .rod { stroke: #9AA1A9; stroke-width: 2.6; stroke-linecap: round; }
+  .book { transform-box: fill-box; transform-origin: center; }
+  .book-glow { opacity: 0; transition: opacity .2s; }
+  .zone { fill: transparent; cursor: pointer; }
   .bandaid rect { fill: #F6D2B0; stroke: var(--ink); stroke-width: 1; }
   .bandaid circle { fill: #D9A67E; }
   .knee { fill: none; stroke: var(--ink-2); stroke-width: 1; stroke-dasharray: 2 3; }
@@ -88,9 +90,10 @@
   .leader { stroke: var(--ink-2); stroke-width: 2.2; fill: none; stroke-dasharray: .1 6; stroke-linecap: round; transition: stroke .2s; }
   .pin { fill: var(--accent); stroke: var(--ink); stroke-width: 1; }
   .hit { fill: transparent; }
-  .lbl:hover .latin { fill: var(--accent); }
-  .lbl:hover .badge { fill: var(--accent); }
-  .lbl:hover .leader { stroke: var(--accent); }
+  .lbl:hover .latin, .lbl.on .latin { fill: var(--accent); }
+  .lbl:hover .badge, .lbl.on .badge { fill: var(--accent); }
+  .lbl:hover .leader, .lbl.on .leader { stroke: var(--accent); }
+  .inset-grp.on .ilatin { fill: var(--accent); }
   @keyframes fadein { to { opacity: 1; } }
 
   /* hover states */
@@ -126,7 +129,9 @@
   .gear { opacity: 0; transition: opacity .25s; transform-box: fill-box; transform-origin: center; }
   .st-manus .handring, .st-manus .gear { opacity: 1; }
   .st-manus .gear { animation: spin 3s linear infinite; }
-  .st-manus .rod { stroke: var(--accent); }
+  .st-liber .book { animation: bookbob .9s ease-in-out infinite alternate; }
+  .st-liber .book-glow { opacity: 1; }
+  @keyframes bookbob { from { transform: translateY(0) rotate(0); } to { transform: translateY(-7px) rotate(-8deg); } }
   @keyframes spin { to { transform: rotate(360deg); } }
   .ball { opacity: 0; transition: opacity .2s; }
   .st-crura .ball { opacity: 1; animation: bounce .7s cubic-bezier(.5,0,.5,1) infinite alternate; }
@@ -161,7 +166,7 @@
   .pola { background: #fff; padding: 8px 8px 30px; box-shadow: 0 6px 16px -8px rgba(40, 20, 30, .35); position: relative; transform: rotate(var(--r, -2deg)); }
   .pola::before { content: ""; position: absolute; top: -10px; left: 50%; width: 58px; height: 20px; margin-left: -29px; background: var(--accent-2); opacity: .85; transform: rotate(-4deg); }
   .pola .ph { aspect-ratio: 4 / 3; background: #F4F0EE; display: grid; place-items: center; overflow: hidden; }
-  .pola .ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .pola .ph img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
   .pola .ph.empty { border: 1.5px dashed #CDBDC0; padding: 10px; text-align: center; font-family: 'DM Mono', monospace; font-size: 11px; color: #9C8A8E; line-height: 1.4; }
   .pola .cap { position: absolute; left: 0; right: 0; bottom: 6px; text-align: center; font-style: italic; font-size: 14px; color: #4B3A3E; }
   .fig3 .pola { --r: 3deg; }
@@ -171,12 +176,14 @@
   .veil { position: fixed; inset: 0; background: rgba(30, 20, 30, .22); opacity: 0; pointer-events: none; transition: opacity .3s; z-index: 20; }
   .veil.open { opacity: 1; pointer-events: auto; }
   aside.card {
-    position: fixed; top: 0; right: 0; bottom: 0; width: min(560px, 100vw);
-    background: var(--paper); border-left: 1.5px solid var(--ink);
-    padding: 32px 34px 28px; transform: translateX(102%); transition: transform .45s cubic-bezier(.2,.8,.2,1);
+    position: fixed; left: 50%; top: 50%; width: min(680px, calc(100vw - 24px)); max-height: min(88vh, 940px);
+    background: var(--paper); border: 1.5px solid var(--ink); border-radius: 20px;
+    box-shadow: 0 30px 60px -30px rgba(60, 20, 30, .45);
+    padding: 30px 34px 26px; transform: translate(-50%, -46%) scale(.97); opacity: 0; pointer-events: none;
+    transition: transform .35s cubic-bezier(.2,.8,.2,1), opacity .25s;
     z-index: 30; overflow-y: auto;
   }
-  aside.card.open { transform: translateX(0); }
+  aside.card.open { transform: translate(-50%, -50%) scale(1); opacity: 1; pointer-events: auto; }
   .card .tag { font-size: 12px; letter-spacing: .14em; color: var(--accent); display: flex; align-items: center; gap: 8px; }
   .card .tag i { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--accent-2); border: 1.4px solid var(--ink); color: var(--ink); font-style: normal; }
   .card h3 { margin: 8px 0 0; font-size: 44px; font-style: italic; font-weight: 500; line-height: 1; font-variation-settings: "SOFT" 100, "WONK" 1; }
@@ -186,7 +193,7 @@
   .card .summary span { display: block; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .14em; color: var(--ink-2); }
   .card .summary b { font-weight: 500; font-style: italic; font-size: 19px; color: var(--accent); line-height: 1.35; }
   .card p { margin: 0 0 12px; }
-  .photos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px 18px; margin: 22px 4px 8px; }
+  .photos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px 18px; margin: 22px 4px 8px; align-items: start; }
   .photos:empty { display: none; }
   .photos .pola:nth-child(2n) { --r: 2.5deg; }
   .links { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 4px; }
@@ -224,6 +231,33 @@
   .viewer iframe { flex: 1; border: 0; width: 100%; background: #fff; }
   .viewer .x { font: inherit; font-size: 26px; background: none; border: none; color: var(--ink); cursor: pointer; }
 
+  /* recruiter view */
+  .meta .pill { display: inline-block; margin-top: 8px; font-size: 12px; padding: 3px 12px; font-family: 'DM Mono', monospace; }
+  #recruiter { display: none; padding: 6px 0 4px; }
+  body.rvmode #recruiter { display: block; }
+  body.rvmode .stage, body.rvmode .mobile-list, body.rvmode .explain { display: none; }
+  .rv-contact { font-size: 16px; text-align: center; padding: 14px 0 8px; border-bottom: 1.5px dotted var(--rule); }
+  .rv-contact a { color: var(--ink); text-decoration: none; border-bottom: 1.5px solid var(--accent-2); }
+  .rv-contact a:hover { color: var(--accent); border-color: var(--accent); }
+  .rv-group { font-family: 'DM Mono', monospace; font-weight: 500; font-size: 12px; letter-spacing: .16em; color: var(--accent); margin: 30px 0 4px; padding-bottom: 6px; border-bottom: 1.5px solid var(--rule); }
+  .rv { display: grid; grid-template-columns: 230px 1fr; gap: 6px 30px; padding: 18px 0; border-bottom: 1.5px dotted var(--rule); }
+  .rv:last-child { border-bottom: none; }
+  .rv-head h3 { margin: 0; font-size: 22px; font-weight: 500; line-height: 1.2; }
+  .rv-latin { display: block; font-family: 'DM Mono', monospace; font-size: 12px; color: var(--ink-2); margin-top: 5px; }
+  .rv-sum { margin: 0 0 8px; font-style: italic; color: var(--ink-2); }
+  .rv-body p { margin: 0 0 10px; font-size: 16px; line-height: 1.6; }
+  .rv-body dl { margin: 4px 0 8px; }
+  .rv-body dl div { display: grid; grid-template-columns: 1fr 1.6fr; gap: 12px; padding: 4px 0; font-size: 14px; border-bottom: 1px dotted var(--rule); }
+  .rv-body dt { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ink-2); padding-top: 3px; }
+  .rv-body dd { margin: 0; }
+  .rv-body .links { margin: 6px 0 0; }
+  @media print {
+    body::before, .stage, .hint, .mobile-list, .explain, #rv-toggle, .veil, .card, .viewer { display: none !important; }
+    #recruiter { display: block !important; }
+    .plate { border: none; outline: none; margin: 0; padding: 0; max-width: none; }
+    body { background: #fff; }
+  }
+
   .mobile-list { display: none; }
   @media (prefers-reduced-motion: reduce) { *, *::before { animation: none !important; transition: none !important; } .lbl { opacity: 1; } }
   @media (max-width: 760px) {
@@ -240,6 +274,9 @@
     .explain { grid-template-columns: 1fr; gap: 22px; }
     .fig3 { max-width: 200px; margin: 0 auto; }
     .photos { grid-template-columns: 1fr 1fr; gap: 16px 12px; }
+    aside.card { width: calc(100vw - 16px); max-height: 92vh; padding: 24px 18px 20px; border-radius: 16px; }
+    .card h3 { font-size: 34px; }
+    .rv { grid-template-columns: 1fr; gap: 4px; }
   }
 </style>
 </head>
@@ -252,7 +289,7 @@
       <div class="kicker" id="p-kicker"></div>
       <h1 id="p-title"></h1>
     </div>
-    <div class="meta mono" id="p-meta"></div>
+    <div class="meta mono"><div id="p-meta"></div><button id="rv-toggle" class="pill">recruiter view</button></div>
   </header>
 
   <div class="stage">
@@ -289,9 +326,19 @@
         <g class="oface" style="pointer-events:none"><circle cx="177" cy="244" r="1.2"/><circle cx="183" cy="246" r="1.2"/><path d="M178.5 250 q1.5 1.4 3 0"/></g>
         <circle class="knee" cx="117" cy="470" r="8" />
         <g class="bandaid" transform="translate(183,470) rotate(-18)"><rect x="-11" y="-4.5" width="22" height="9" rx="4.5"/><rect x="-4" y="-4.5" width="8" height="9" fill="#EFC39E"/><circle cx="-1.5" cy="-1.5" r=".8"/><circle cx="1.5" cy="1.5" r=".8"/><circle cx="1.5" cy="-1.5" r=".8"/><circle cx="-1.5" cy="1.5" r=".8"/></g>
-        <line class="rod" x1="70" y1="344" x2="68" y2="362" />
         <circle class="handring" cx="72" cy="352" r="27" />
         <g class="gear" transform="translate(28,314)"><path d="M0 -11 L3 -11 L4 -7 L8 -5 L11 -8 L13 -6 L10 -2 L11 2 L14 3 L13 6 L9 6 L7 9 L9 12 L6 14 L3 10 L-1 11 L-2 14 L-5 13 L-5 9 L-9 7 L-12 9 L-14 6 L-10 3 L-11 -1 L-14 -2 L-13 -5 L-9 -5 L-7 -9 L-9 -12 L-6 -14 L-3 -10 Z" fill="var(--stomach)" stroke="var(--ink)" stroke-width="1.2"/><circle r="3.5" fill="var(--body)" stroke="var(--ink)" stroke-width="1.2"/></g>
+        <g transform="translate(233,342) rotate(-16)">
+          <g class="book">
+            <path class="book-glow" d="M-20 -16 l-3 -3 M17 -15 l3 -3 M0 -20 v-5" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+            <rect x="-12" y="-9" width="26" height="20" rx="2" fill="#FFFDF8" stroke="var(--ink)" stroke-width="1.2"/>
+            <rect x="-14" y="-11" width="25" height="20" rx="2" fill="var(--accent)" stroke="var(--ink)" stroke-width="1.2"/>
+            <rect x="-14" y="-11" width="4" height="20" rx="1" fill="var(--ink)" opacity=".3"/>
+            <line x1="-6" y1="-5" x2="6" y2="-5" stroke="#FFF1F2" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="-6" y1="-1" x2="3" y2="-1" stroke="#FFF1F2" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M-2 5 c-2.5 -2 -3.5 -4.5 -1.2 -5.5 c1 -.4 1.8 .3 1.8 .9 c0 -.6 .8 -1.3 1.8 -.9 c2.3 1 1.3 3.5 -1.2 5.5 z" fill="#FFF1F2"/>
+          </g>
+        </g>
         <g class="ball" transform="translate(238,588)"><circle r="13" fill="#E8913F" stroke="var(--ink)" stroke-width="1.3"/><path d="M-13 0 H13 M0 -13 V13 M-9 -9 Q-3 0 -9 9 M9 -9 Q3 0 9 9" fill="none" stroke="var(--ink)" stroke-width="1"/></g>
 
         <path class="hair" d="M108 74 C104 96 110 110 118 116 C114 100 116 86 120 76 Z M192 74 C196 96 190 110 182 116 C186 100 184 86 180 76 Z" />
@@ -328,6 +375,7 @@
         <g class="bubble b1" transform="translate(200,98)"><text>hello</text></g>
         <g class="bubble b2" transform="translate(204,118)"><text>こんにちは</text></g>
         <g class="bubble b3" transform="translate(200,138)"><text>你好</text></g>
+        <g id="zones"></g>
       </g>
 
       <g id="leaders"></g>
@@ -351,6 +399,7 @@
   </div>
 
   <ul class="mobile-list" id="mlist"></ul>
+  <section id="recruiter"></section>
 
   <section class="explain">
     <div>
@@ -405,7 +454,8 @@ const LAYOUT = {
   7: { id: 'manus', side: 'L', y: 420, ax: 421, ay: 412 },
   8: { id: 'crura', side: 'R', y: 528, ax: 533, ay: 530 },
   9: { id: 'cellulae', inset: true },
-  10: { id: 'pedes', side: 'L', y: 640, ax: 468, ay: 662 }
+  10: { id: 'pedes', side: 'L', y: 640, ax: 468, ay: 662 },
+  11: { id: 'liber', side: 'R', y: 430, ax: 588, ay: 398 }
 };
 
 // ---------- read content.js ----------
@@ -449,7 +499,7 @@ sections.forEach(sec => {
     sum: one(sec, 'summary'),
     body: sec.paras,
     facts: (sec.keys.fact || []).map(f => split(f, 2)),
-    photos: (sec.keys.photo || []).map(p => { const [file, cap, need] = split(p, 3); return { file, cap, need }; }),
+    photos: (sec.keys.photo || []).map(p => { const [file, cap, need, focus] = split(p, 4); return { file, cap, need, focus }; }),
     links: (sec.keys.link || []).map(l => { const [label, href] = split(l, 2); return { label, href }; }),
     docs: (sec.keys.paper || []).map(d => { const [title, note, file, need] = split(d, 4); return { title, note, file, need, src: /^https?:/.test(file) ? file : '' }; })
   });
@@ -470,9 +520,9 @@ const row = (k, html, needText) => {
   else if (DRAFT) corr.push(`<li><span>${k}</span><span class="need">${needText}</span></li>`);
 };
 row('email', email && `<a href="mailto:${escHtml(email)}">${escHtml(email)}</a>`, 'your email');
-row('linkedin', li && `<a href="${escHtml(li)}" target="_blank" rel="noopener">${escHtml(li.replace(/^https?:\/\/(www\.)?/, ''))}</a>`, 'your LinkedIn URL');
+row('linkedin', li && `<a href="${escHtml(li)}" target="_blank" rel="noopener">linkedin.com</a>`, 'your LinkedIn URL');
 row('résumé', res && `<a href="${/^https?:/.test(res) ? escHtml(res) : ASSETS + escHtml(res)}" target="_blank" rel="noopener">download (pdf)</a>`, 'your résumé PDF');
-row('github', gh && `<a href="${escHtml(gh)}" target="_blank" rel="noopener">${escHtml(gh.replace(/^https?:\/\/(www\.)?/, ''))}</a>`, 'optional');
+row('github', gh && `<a href="${escHtml(gh)}" target="_blank" rel="noopener">github.com</a>`, 'optional');
 document.getElementById('p-corr').innerHTML = corr.join('');
 
 // ---------- body outline (left half, mirrored) ----------
@@ -525,6 +575,7 @@ S.forEach((s, i) => {
   const tx = left ? 290 : 710, bx = left ? 309 : 691, lx = left ? 324 : 676;
   const g = document.createElementNS(NS, 'g');
   g.setAttribute('class', 'lbl');
+  g.setAttribute('data-id', s.id);
   g.style.animationDelay = (.2 + i * .1) + 's';
   g.innerHTML = `
     <path class="leader" d="M${lx} ${s.y - 9} L${s.ax} ${s.ay}" />
@@ -539,14 +590,45 @@ S.forEach((s, i) => {
   g.addEventListener('click', () => open(i));
   leaders.appendChild(g);
 });
-function state(id) { svg.setAttribute('class', id ? 'st-' + id : ''); }
+function state(id) {
+  svg.setAttribute('class', id ? 'st-' + id : '');
+  document.querySelectorAll('.lbl').forEach(g => g.classList.toggle('on', g.getAttribute('data-id') === id));
+  document.getElementById('inset').classList.toggle('on', id === 'cellulae');
+}
+
+// ---------- hover / click zones on the drawing itself (figure coordinates) ----------
+const ZONES = [
+  ['cerebrum', '<circle cx="150" cy="38" r="52"/>'],
+  ['vert', '<rect x="137" y="100" width="26" height="254" rx="13"/>'],
+  ['crura', '<rect x="102" y="372" width="96" height="196"/>'],
+  ['pedes', '<rect x="98" y="568" width="104" height="46"/>'],
+  ['cor', '<circle cx="172" cy="192" r="18"/>'],
+  ['ventriculus', '<circle cx="173" cy="253" r="22"/>'],
+  ['auris', '<circle cx="111" cy="74" r="15"/><circle cx="189" cy="74" r="15"/>'],
+  ['lingua', '<ellipse cx="150" cy="92" rx="18" ry="12"/>'],
+  ['manus', '<circle cx="70" cy="352" r="27"/>'],
+  ['liber', '<circle cx="233" cy="342" r="31"/>']
+];
+const zonesEl = document.getElementById('zones');
+ZONES.forEach(([id, shapes]) => {
+  const i = S.findIndex(s => s.id === id);
+  if (i < 0) return;
+  const g = document.createElementNS(NS, 'g');
+  g.setAttribute('class', 'zone');
+  g.innerHTML = shapes;
+  g.addEventListener('mouseenter', () => state(id));
+  g.addEventListener('mouseleave', () => state(null));
+  g.addEventListener('click', () => open(i));
+  zonesEl.appendChild(g);
+});
 
 // ---------- card ----------
 const card = document.getElementById('card'), veil = document.getElementById('veil');
 let cur = 0;
 const esc = s => String(s).replace(/"/g, '&quot;');
 function polaroid(p) {
-  return `<div class="pola"><div class="ph"><img src="${ASSETS}${escHtml(p.file)}" alt="${esc(p.cap)}" data-need="${esc(escHtml(p.need || 'a photo'))}"></div><div class="cap">${escHtml(p.cap)}</div></div>`;
+  const focus = /^[a-z0-9% .-]{1,40}$/i.test(p.focus || '') ? ` style="object-position:${p.focus}"` : '';
+  return `<div class="pola"><div class="ph"><img src="${ASSETS}${escHtml(p.file)}" alt="${esc(p.cap)}" data-need="${esc(escHtml(p.need || 'a photo'))}"${focus}></div><div class="cap">${escHtml(p.cap)}</div></div>`;
 }
 function photoMissing(img) {
   if (!DRAFT) { const pola = img.closest('.pola'); if (pola) pola.remove(); return; }
@@ -611,14 +693,50 @@ veil.onclick = close;
 document.getElementById('prev').onclick = () => open(cur - 1);
 document.getElementById('next').onclick = () => open(cur + 1);
 
-const organMap = { brain: 'cerebrum', hair: 'cerebrum', bud: 'auris', heart: 'cor', vert: 'vert', stomach: 'ventriculus', rod: 'manus', bandaid: 'crura', knee: 'crura' };
-document.getElementById('figure').addEventListener('click', e => {
-  let el = e.target;
-  while (el && el.id !== 'figure') {
-    for (const k in organMap) if (el.classList && el.classList.contains(k)) { const i = S.findIndex(s => s.id === organMap[k]); if (i >= 0) return open(i); }
-    el = el.parentNode;
-  }
-});
+// ---------- recruiter view ----------
+const GROUPS = [['Work', [2]], ['Research and writing', [5, 1, 9, 11]], ['Leadership and teaching', [7, 4]], ['Beyond the lab', [3, 6, 8, 10]]];
+const byN = n => S.find(s => s.n === n);
+function renderRecruiter() {
+  const contact = [];
+  if (email) contact.push(`<a href="mailto:${escHtml(email)}">${escHtml(email)}</a>`);
+  if (li) contact.push(`<a href="${escHtml(li)}" target="_blank" rel="noopener">LinkedIn</a>`);
+  if (res) contact.push(`<a href="${/^https?:/.test(res) ? escHtml(res) : ASSETS + escHtml(res)}" target="_blank" rel="noopener">Résumé (PDF)</a>`);
+  if (gh) contact.push(`<a href="${escHtml(gh)}" target="_blank" rel="noopener">GitHub</a>`);
+  let html = `<div class="rv-contact">${contact.join(' &nbsp;·&nbsp; ')}</div>`;
+  const used = new Set();
+  const groups = GROUPS.map(([t, ns]) => [t, ns.map(byN).filter(Boolean)]);
+  groups.forEach(([, items]) => items.forEach(s => used.add(s.n)));
+  const rest = S.filter(s => !used.has(s.n));
+  if (rest.length) groups.push(['More', rest]);
+  groups.forEach(([title, items]) => {
+    if (!items.length) return;
+    html += `<h2 class="rv-group">${escHtml(title)}</h2>`;
+    items.forEach(s => {
+      const docs = s.docs.map((d, k) => (d.src || (d.file && !d.missing)) ? `<button class="pill rv-doc" data-n="${s.n}" data-k="${k}">${escHtml(d.title)}</button>` : '').join('');
+      const links = s.links.map(l => l.href ? `<a class="pill" href="${escHtml(l.href)}" target="_blank" rel="noopener">${escHtml(l.label)} ↗</a>` : '').join('');
+      html += `<article class="rv"><div class="rv-head"><h3>${escHtml(s.sub || s.latin)}</h3><span class="rv-latin">${s.n} · ${escHtml(s.latin)}</span></div><div class="rv-body">` +
+        (s.sum ? `<p class="rv-sum">${escHtml(s.sum)}</p>` : '') +
+        s.body.map(p => `<p>${fmt(p)}</p>`).join('') +
+        (s.facts.length ? `<dl>${s.facts.map(([k, v]) => `<div><dt>${escHtml(k)}</dt><dd>${fmt(v)}</dd></div>`).join('')}</dl>` : '') +
+        ((docs || links) ? `<div class="links">${docs}${links}</div>` : '') +
+        `</div></article>`;
+    });
+  });
+  const rv = document.getElementById('recruiter');
+  rv.innerHTML = html;
+  rv.querySelectorAll('.rv-doc').forEach(b => b.onclick = () => { const s = byN(+b.dataset.n); const d = s.docs[+b.dataset.k]; view({ ...d, src: d.src || ASSETS + d.file }); });
+}
+const kickerEl = document.getElementById('p-kicker'), kickerText = kickerEl.textContent;
+function setRV(on) {
+  document.body.classList.toggle('rvmode', on);
+  document.getElementById('rv-toggle').textContent = on ? 'back to the plate' : 'recruiter view';
+  kickerEl.textContent = on ? 'a summary of' : kickerText;
+  if (on) { close(); renderRecruiter(); }
+  history.replaceState(null, '', on ? '#recruiter' : location.pathname + location.search);
+}
+document.getElementById('rv-toggle').onclick = () => setRV(!document.body.classList.contains('rvmode'));
+if (location.hash === '#recruiter') setRV(true);
+addEventListener('hashchange', () => setRV(location.hash === '#recruiter'));
 
 // ---------- document viewer ----------
 const viewer = document.getElementById('viewer');
@@ -640,7 +758,7 @@ document.addEventListener('keydown', e => {
 });
 
 const fig3 = one(pageSec, 'photo');
-if (fig3) { const [file, cap, need] = split(fig3, 3); const el = document.getElementById('fig3'); el.innerHTML = polaroid({ file, cap, need }); wirePhotos(el); }
+if (fig3) { const [file, cap, need, focus] = split(fig3, 4); const el = document.getElementById('fig3'); el.innerHTML = polaroid({ file, cap, need, focus }); wirePhotos(el); }
 
 function fit() { svg.setAttribute('viewBox', innerWidth <= 760 ? '320 30 360 690' : '0 0 1000 720'); }
 addEventListener('resize', fit); fit();
