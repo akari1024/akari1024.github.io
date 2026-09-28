@@ -93,7 +93,8 @@ fact: Stele Inc. | Technical project manager · Jul 2026–present
 link: Join the waitlist | https://www.stele.health/#waitlist
 link: Stele website | https://www.stele.health/
 photo: stele-work.jpg | Stele | you at work or with the team
-photo: stele-earbuds.jpg | Arc and Halo | Arc/Halo image, only if the founders say it’s public
+photo: stele-earbuds.jpg | Stele Fusion | the Stele Fusion earbuds
+photo: stele-site.png | stele.health | a screenshot of the Stele website
 
 
 # 3 · Lingua
