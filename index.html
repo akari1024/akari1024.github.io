@@ -264,7 +264,7 @@
   /* password gate */
   .gate { position: fixed; inset: 0; z-index: 80; background: var(--paper); display: grid; place-items: center; padding: 20px; }
   .gate[hidden] { display: none; }
-  body.gated { overflow: hidden; }
+  body.gated, body.modal-open { overflow: hidden; }
   .gate-box { width: min(420px, 100%); border: 1.5px solid var(--ink); border-radius: 20px; background: var(--body); padding: 30px 32px 26px; text-align: center; }
   .gate-box .tag { font-size: 12px; letter-spacing: .14em; color: var(--accent); }
   .gate-box h2 { margin: 8px 0 4px; font-size: 40px; font-style: italic; font-weight: 500; line-height: 1; font-variation-settings: "SOFT" 100, "WONK" 1; }
@@ -813,9 +813,12 @@ function open(i) {
   document.getElementById('c-facts').innerHTML = s.facts.map(([k, v]) => `<div><dt>${escHtml(k)}</dt><dd>${fmt(v)}</dd></div>`).join('');
   card.scrollTop = 0;
   card.classList.add('open'); veil.classList.add('open');
+  lockScroll();
   state(s.id);
 }
-function close() { card.classList.remove('open'); veil.classList.remove('open'); state(null); }
+// freeze the page behind while a card or the reader is open
+function lockScroll() { document.body.classList.toggle('modal-open', card.classList.contains('open') || viewer.classList.contains('open')); }
+function close() { card.classList.remove('open'); veil.classList.remove('open'); lockScroll(); state(null); }
 document.getElementById('close').onclick = close;
 veil.onclick = close;
 document.getElementById('prev').onclick = () => open(cur - 1);
@@ -881,8 +884,9 @@ function view(d) {
   document.getElementById('v-open').href = d.src;
   document.getElementById('v-body').innerHTML = `<iframe src="${escHtml(d.src)}#view=FitH" title="${esc(d.title)}"></iframe>`;
   viewer.classList.add('open');
+  lockScroll();
 }
-function unview() { viewer.classList.remove('open'); document.getElementById('v-body').innerHTML = ''; }
+function unview() { viewer.classList.remove('open'); document.getElementById('v-body').innerHTML = ''; lockScroll(); }
 document.getElementById('v-close').onclick = unview;
 viewer.onclick = e => { if (e.target === viewer) unview(); };
 document.addEventListener('keydown', e => {
