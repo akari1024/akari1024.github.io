@@ -44,8 +44,8 @@ title: Akari Imai
 meta: Duke University, class of 2030 | BME + MechE | Durham, NC
 hint: hover to examine, click to dissect ↓
 
-// password screen: visitors must type this every time they open the site (a refresh in the same tab
-// doesn't ask again). Leave it empty to turn the gate off.
+// password screen: visitors must type this on every load of the site, refreshes included.
+// Leave it empty to turn the gate off.
 // A link with ?key=THEPASSWORD on the end (e.g. https://akari1024.github.io/?key=0000) skips the prompt.
 // This is a soft gate only: anyone who reads the site's files can find the password.
 password: 0000
