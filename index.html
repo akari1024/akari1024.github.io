@@ -550,10 +550,12 @@ const WORKS = sections.filter(s => /^work\s*[·.:\-–]/i.test(s.head)).map(sec 
   if (!PW) return;
   const KEY = 'akari-site-key';
   const urlKey = new URLSearchParams(location.search).get('key');
+  // remembered only for the current tab (sessionStorage): every new visit asks again
   let stored = null;
-  try { stored = localStorage.getItem(KEY); } catch (e) {}
-  const unlock = () => { try { localStorage.setItem(KEY, PW); } catch (e) {} document.getElementById('gate').hidden = true; document.body.classList.remove('gated'); };
-  if (urlKey === PW || stored === PW) { if (urlKey === PW) { try { localStorage.setItem(KEY, PW); } catch (e) {} } return; }
+  try { localStorage.removeItem(KEY); stored = sessionStorage.getItem(KEY); } catch (e) {}
+  const remember = () => { try { sessionStorage.setItem(KEY, PW); } catch (e) {} };
+  const unlock = () => { remember(); document.getElementById('gate').hidden = true; document.body.classList.remove('gated'); };
+  if (urlKey === PW || stored === PW) { if (urlKey === PW) remember(); return; }
   const el = document.getElementById('gate'), form = document.getElementById('gate-form'), input = document.getElementById('gate-pw'), err = document.getElementById('gate-err');
   document.getElementById('gate-title').textContent = one(pageSec, 'title', 'Akari Imai');
   el.hidden = false; document.body.classList.add('gated');
