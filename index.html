@@ -240,6 +240,7 @@
   body.rvmode .plate-no { visibility: hidden; }
   .rv-links { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; padding: 18px 0 8px; }
   .rv-pill { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; padding: 4px 12px; }
+  .rv-email.showing { text-transform: none; }
   .rv-tag { text-align: center; font-size: 17px; color: var(--ink-2); margin: 4px auto 6px; max-width: 640px; line-height: 1.5; }
   .rv-group { font-family: 'DM Mono', monospace; font-weight: 500; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-2); margin: 30px 0 2px; padding-bottom: 7px; border-bottom: 1.5px solid var(--rule); }
   .rv-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 11px 0; border-bottom: 1px dotted var(--rule); }
@@ -817,7 +818,7 @@ function open(i) {
   state(s.id);
 }
 // freeze the page behind while a card or the reader is open
-function lockScroll() { document.body.classList.toggle('modal-open', card.classList.contains('open') || viewer.classList.contains('open')); }
+function lockScroll() { document.body.classList.toggle('modal-open', card.classList.contains('open') || document.getElementById('viewer').classList.contains('open')); }
 function close() { card.classList.remove('open'); veil.classList.remove('open'); lockScroll(); state(null); }
 document.getElementById('close').onclick = close;
 veil.onclick = close;
@@ -828,7 +829,7 @@ document.getElementById('next').onclick = () => open(cur + 1);
 function renderRecruiter() {
   const pill = (label, href) => `<a class="pill rv-pill" href="${escHtml(href)}" target="_blank" rel="noopener">${escHtml(label)} ↗</a>`;
   const pills = [];
-  if (email) pills.push(`<a class="pill rv-pill" href="mailto:${escHtml(email)}">email ↗</a>`);
+  if (email) pills.push(`<button type="button" class="pill rv-pill rv-email" data-email="${escHtml(email)}">email</button>`);
   if (li) pills.push(pill('linkedin', li));
   if (res) pills.push(pill('résumé', /^https?:/.test(res) ? res : ASSETS + res));
   if (gh) pills.push(pill('github', gh));
@@ -863,6 +864,14 @@ function renderRecruiter() {
   const rv = document.getElementById('rv-view');
   rv.innerHTML = html;
   rv.querySelectorAll('.rv-doc').forEach(b => b.onclick = () => { const d = WORKS[+b.dataset.w].docs[+b.dataset.k]; if (d.src) view(d); });
+  // the email button copies the address (mailto: links do nothing when no mail app is set up)
+  rv.querySelectorAll('.rv-email').forEach(b => b.onclick = () => {
+    const addr = b.dataset.email;
+    const show = t => { b.textContent = t; b.classList.add('showing'); };
+    const done = () => { show('copied · ' + addr); setTimeout(() => { b.textContent = 'email'; b.classList.remove('showing'); }, 2500); };
+    if (navigator.clipboard) navigator.clipboard.writeText(addr).then(done, () => show(addr));
+    else show(addr);
+  });
   rv.querySelectorAll('.rv-pub').forEach(b => b.onclick = () => { const [title, , target] = split((rvSec.keys.publication || [])[+b.dataset.k], 3); view({ title, src: ASSETS + target }); });
 }
 const kickerEl = document.getElementById('p-kicker'), kickerText = kickerEl.textContent;

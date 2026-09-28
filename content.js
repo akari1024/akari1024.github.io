@@ -164,7 +164,7 @@ fact: Le Cordon Bleu Malaysia | Basic Cuisine certificate · honorable mention
 link: Blog: Under Pressure, Lessons from Culinary School | https://dukegapyear.duke.edu/2026/03/22/under-pressure-lessons-from-culinary-school/
 photo: dish-1.jpeg | Le Cordon Bleu Malaysia | your best plated dish | 50% 32%
 photo: dish-2.jpeg | Plated | another dish, or something you baked | 50% 46%
-photo: chef-whites.jpg | Kuala Lumpur | you in chef whites | 50% 0%
+photo: chef-whites.jpg | Favorite chef! | you in chef whites | 50% 0%
 
 
 # 7 · Manus
@@ -174,7 +174,7 @@ summary: Head of hardware for a competitive robotics program.
 
 I did FIRST robotics for four years across two schools, starting with FRC in ninth grade. At Phillips Academy Andover, I went from social media manager to head of hardware to co-president of the FRC and FTC teams.
 
-As head of hardware, I led mechanical design and fabrication and trained more than 20 beginners in CAD, machining, tool safety, and assembly. I also recruited seven girls to the team. As co-president, I ran meetings, delegated work across the board, and prepared the team for two regional competitions, where we won the Think, Judges, and Quality Awards. Along the way, I organized fundraisers that raised over $300 for educational opportunities for underprivileged students in Lawrence.
+As head of hardware, I led mechanical design and fabrication and trained more than 20 beginners in CAD, machining, tool safety, and assembly. I also recruited seven girls to the team. As co-president, I ran meetings, delegated work across the board, and prepared the team for two regional competitions, where we won the Think, Judges', and Quality Awards. Along the way, I organized fundraisers that raised over $300 for educational opportunities for underprivileged students in Lawrence.
 
 fact: Andover Robotics (FRC/FTC) | Co-president · head of hardware · 2022–25
 photo: robot.jpg | Andover Robotics | the robot, or you machining | 50% 0%
@@ -239,7 +239,7 @@ link: Blog: Under Pressure (culinary school) | https://dukegapyear.duke.edu/2026
 link: Blog: A Place I Thought I Knew (Japan) | https://dukegapyear.duke.edu/2026/08/13/a-place-i-thought-i-knew/
 photo: gobi.JPG | Mongolia | the Gobi, or you on horseback
 photo: mongolia2.jpg | Pickup basketball, Mongolia | you with the kids from the pickup game
-photo: mongolia3.jpg | Tapi the goat | you and Tapi
+photo: mongolia3.jpg | Tapi the goat | you and Tapi | 50% 30%
 photo: cambodia.JPG | Cambodia | the floating village or Angkor Wat
 
 
