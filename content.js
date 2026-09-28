@@ -39,7 +39,7 @@ window.CONTENT = String.raw`
 # PAGE
 kicker: the anatomy of
 title: Akari Imai
-meta: Duke University, class of 2030 | BME + MechE · pre-med | Durham, NC
+meta: Duke University, class of 2030 | BME + MechE | Durham, NC
 hint: hover to examine, click to dissect ↓
 
 // contact details
@@ -201,7 +201,7 @@ At Andover, I ran an independent toxicology study, exposing 4T1 mouse mammary ca
 
 fact: Phillips Academy Andover | Independent research · Dec 2024–May 2025
 paper: Assessment of Cycloxaprid Toxicity: Oxidative Stress and Cell Death Mechanisms in 4T1 Epithelial Mouse Mammary Cells | independent research manuscript · March 2025 | Akari_Imai_Bio600_IP_Manuscript.pdf |
-photo: gel.JPG | DNA laddering | your DNA laddering gel | 50% 34%
+photo: gel.JPG | DNA laddering | your DNA laddering gel | 50% 37%
 photo: cells.jpg | 4T1 cells | cells under the microscope
 
 
@@ -235,12 +235,12 @@ photo: cambodia.JPG | Cambodia | the floating village or Angkor Wat
 // ============================================================
 
 # RECRUITER
-tagline: BME + MechE @ Duke ’30, pre-med. Technical project manager @ Stele. First-author surgical robotics research, presented at IEEE ISIE 2026.
+tagline: BME + MechE @ Duke ’30. Technical project manager @ Stele. First-author surgical robotics research, presented at IEEE ISIE 2026.
 experience: Stele Inc. | Technical project manager | Jul 2026 – Present
 experience: Yokohama National University | Visiting researcher, surgical robotics | Jan – Jul 2026
 experience: Keio University | Research intern, haptic drill robots | Jun – Jul 2024
 experience: Effissimo Capital Management | Research intern, machine learning | Jun 2023
-education: Duke University | B.S. Biomedical Engineering + Mechanical Engineering, pre-med | 2026 – 2030
+education: Duke University | B.S. Biomedical Engineering + Mechanical Engineering | 2026 – 2030
 education: Phillips Academy Andover | | 2022 – 2025
 education: Le Cordon Bleu Malaysia | Basic Cuisine certificate, honorable mention | 2025
 publication: Electromyographic Evaluation of Automated Penetration Detection in Spinal Drilling | first author · IEEE ISIE 2026 | isie-2026.pdf
