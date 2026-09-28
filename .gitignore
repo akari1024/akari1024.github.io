@@ -3,3 +3,7 @@ drafts/
 assets/SEND-ME.md
 assets/IJHSR Pesticides Paper.pdf
 .claude/
+# dog photos not used on the site (the password screen uses IMG_9374.jpeg)
+assets/IMG_*.jpeg
+!assets/IMG_9374.jpeg
+assets/5319041b-*.jpeg

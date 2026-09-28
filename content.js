@@ -10,7 +10,7 @@
 //  - The number in each "# 1 · Cerebrum" heading decides which body part the section
 //    belongs to (1 brain, 2 ears, 3 tongue, 4 heart, 5 spine, 6 stomach, 7 hands,
 //    8 the book in her hand, 9 legs, 10 feet, 11 cells). You can rename "Cerebrum" to
-//    anything; keep the number.
+//    anything; keep the number. (The dog on the leash is decoration only.)
 //  - Wrap a word in *asterisks* to italicize it.
 //  - Start a paragraph with ! to turn it into a highlighted callout box (a short lead-in like
 //    "Shameless plug:" at the start of it gets picked out in pink).
@@ -30,7 +30,10 @@
 //              empty for center.
 //              EASIEST WAY: open the site with ?draft on the end of the address, click a card, drag the
 //              photo inside its frame until it looks right, press "copy line", and paste that line over
-//              the photo line here.)
+//              the photo line here.
+//              A 5th part can be a web address: clicking the photo then opens it in a new tab, e.g.
+//              photo: stele-site.png | stele.health | note | | https://www.stele.health/
+//              (the 4th part can be left empty like that; links are off while in ?draft mode).)
 //    link:     Button label | https://...      (leave the URL empty to show a "link needed" placeholder)
 //    paper:    Title | small note | filename.pdf or https://... | what you still need to send
 //              (a PDF in the assets folder, or a web link, opens in the built-in reader)
@@ -49,6 +52,9 @@ hint: hover to examine, click to dissect ↓
 // A link with ?key=THEPASSWORD on the end (e.g. https://akari1024.github.io/?key=0000) skips the prompt.
 // This is a soft gate only: anyone who reads the site's files can find the password.
 password: 0000
+// the password screen shows this photo in a round frame with "This site is guarded by NAME."
+// Put the dog's name after the | (with it empty, it says "a toy poodle").
+guard: IMG_9374.jpeg |
 
 // contact details
 email: akari.imai@duke.edu
@@ -94,7 +100,7 @@ link: Join the waitlist | https://www.stele.health/#waitlist
 link: Stele website | https://www.stele.health/
 photo: stele-work.jpg | Stele | you at work or with the team
 photo: stele-earbuds.jpg | Stele Fusion | the Stele Fusion earbuds
-photo: stele-site.png | stele.health | a screenshot of the Stele website
+photo: stele-site.png | stele.health | a screenshot of the Stele website | | https://www.stele.health/
 
 
 # 3 · Lingua
