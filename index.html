@@ -233,27 +233,29 @@
 
   /* recruiter view */
   .meta .pill { display: inline-block; margin-top: 8px; font-size: 12px; padding: 3px 12px; font-family: 'DM Mono', monospace; }
-  #recruiter { display: none; padding: 6px 0 4px; }
-  body.rvmode #recruiter { display: block; }
+  #rv-view { display: none; padding: 4px 0 10px; max-width: 880px; margin: 0 auto; }
+  body.rvmode #rv-view { display: block; }
   body.rvmode .stage, body.rvmode .mobile-list, body.rvmode .explain { display: none; }
-  .rv-contact { font-size: 16px; text-align: center; padding: 14px 0 8px; border-bottom: 1.5px dotted var(--rule); }
-  .rv-contact a { color: var(--ink); text-decoration: none; border-bottom: 1.5px solid var(--accent-2); }
-  .rv-contact a:hover { color: var(--accent); border-color: var(--accent); }
-  .rv-group { font-family: 'DM Mono', monospace; font-weight: 500; font-size: 12px; letter-spacing: .16em; color: var(--accent); margin: 30px 0 4px; padding-bottom: 6px; border-bottom: 1.5px solid var(--rule); }
-  .rv { display: grid; grid-template-columns: 230px 1fr; gap: 6px 30px; padding: 18px 0; border-bottom: 1.5px dotted var(--rule); }
-  .rv:last-child { border-bottom: none; }
-  .rv-head h3 { margin: 0; font-size: 22px; font-weight: 500; line-height: 1.2; }
-  .rv-latin { display: block; font-family: 'DM Mono', monospace; font-size: 12px; color: var(--ink-2); margin-top: 5px; }
-  .rv-sum { margin: 0 0 8px; font-style: italic; color: var(--ink-2); }
-  .rv-body p { margin: 0 0 10px; font-size: 16px; line-height: 1.6; }
-  .rv-body dl { margin: 4px 0 8px; }
-  .rv-body dl div { display: grid; grid-template-columns: 1fr 1.6fr; gap: 12px; padding: 4px 0; font-size: 14px; border-bottom: 1px dotted var(--rule); }
-  .rv-body dt { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ink-2); padding-top: 3px; }
-  .rv-body dd { margin: 0; }
-  .rv-body .links { margin: 6px 0 0; }
+  body.rvmode .plate-no { visibility: hidden; }
+  .rv-links { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; padding: 18px 0 8px; }
+  .rv-pill { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; padding: 4px 12px; }
+  .rv-tag { text-align: center; font-size: 17px; color: var(--ink-2); margin: 4px auto 6px; max-width: 640px; line-height: 1.5; }
+  .rv-group { font-family: 'DM Mono', monospace; font-weight: 500; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-2); margin: 30px 0 2px; padding-bottom: 7px; border-bottom: 1.5px solid var(--rule); }
+  .rv-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 11px 0; border-bottom: 1px dotted var(--rule); }
+  .rv-row b { font-weight: 500; font-size: 17px; display: block; line-height: 1.25; }
+  .rv-row span { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--ink-2); }
+  .rv-row .rv-date { flex: none; text-align: right; }
+  .rv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+  .rv-card { border: 1.5px solid var(--ink); border-radius: 14px; padding: 16px 18px 14px; background: var(--body); }
+  .rv-card.full { grid-column: 1 / -1; }
+  .rv-card h3 { margin: 0; font-size: 21px; font-weight: 500; line-height: 1.2; }
+  .rv-tags { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 4px 0 10px; }
+  .rv-card p { margin: 0 0 8px; font-size: 15px; line-height: 1.55; }
+  .rv-card .links { margin-top: 6px; }
+  .rv-other { font-size: 15px; margin: 10px 0 0; line-height: 1.7; }
   @media print {
     body::before, .stage, .hint, .mobile-list, .explain, #rv-toggle, .veil, .card, .viewer { display: none !important; }
-    #recruiter { display: block !important; }
+    #rv-view { display: block !important; }
     .plate { border: none; outline: none; margin: 0; padding: 0; max-width: none; }
     body { background: #fff; }
   }
@@ -276,7 +278,9 @@
     .photos { grid-template-columns: 1fr 1fr; gap: 16px 12px; }
     aside.card { width: calc(100vw - 16px); max-height: 92vh; padding: 24px 18px 20px; border-radius: 16px; }
     .card h3 { font-size: 34px; }
-    .rv { grid-template-columns: 1fr; gap: 4px; }
+    .rv-grid { grid-template-columns: 1fr; }
+    .rv-row { flex-direction: column; align-items: flex-start; gap: 2px; }
+    .rv-row .rv-date { text-align: left; }
   }
 </style>
 </head>
@@ -399,7 +403,7 @@
   </div>
 
   <ul class="mobile-list" id="mlist"></ul>
-  <section id="recruiter"></section>
+  <section id="rv-view"></section>
 
   <section class="explain">
     <div>
@@ -462,7 +466,7 @@ const LAYOUT = {
 const escHtml = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const fmt = s => escHtml(s).replace(/\*([^*]+)\*/g, '<i>$1</i>');
 const split = (s, n) => { const p = s.split('|').map(x => x.trim()); while (p.length < n) p.push(''); return p; };
-const KEYS = /^(label|subtitle|summary|fact|photo|link|paper|title|kicker|meta|hint|email|linkedin|resume|github):\s*(.*)$/i;
+const KEYS = /^(label|subtitle|summary|fact|photo|link|paper|title|kicker|meta|hint|email|linkedin|resume|github|tagline|experience|education|publication|other|tags|span):\s*(.*)$/i;
 function parseContent(raw) {
   const sections = [];
   let cur = null;
@@ -505,6 +509,17 @@ sections.forEach(sec => {
   });
 });
 S.sort((a, b) => a.n - b.n);
+
+// recruiter-view content: the "# RECRUITER" section and every "# WORK · Title" section
+const rvSec = sections.find(s => /^recruiter$/i.test(s.head)) || { keys: {}, paras: [] };
+const WORKS = sections.filter(s => /^work\s*[·.:\-–]/i.test(s.head)).map(sec => ({
+  title: sec.head.replace(/^work\s*[·.:\-–]\s*/i, '').trim(),
+  tags: one(sec, 'tags'),
+  span: one(sec, 'span', 'half').toLowerCase(),
+  body: sec.paras,
+  links: (sec.keys.link || []).map(l => { const [label, href] = split(l, 2); return { label, href }; }),
+  docs: (sec.keys.paper || []).map(d => { const [title, note, file] = split(d, 3); return { title, note, src: /^https?:/.test(file) ? file : (file ? ASSETS + file : '') }; })
+}));
 
 // ---------- page text ----------
 document.getElementById('p-kicker').textContent = one(pageSec, 'kicker');
@@ -694,37 +709,45 @@ document.getElementById('prev').onclick = () => open(cur - 1);
 document.getElementById('next').onclick = () => open(cur + 1);
 
 // ---------- recruiter view ----------
-const GROUPS = [['Work', [2]], ['Research and writing', [5, 1, 9, 11]], ['Leadership and teaching', [7, 4]], ['Beyond the lab', [3, 6, 8, 10]]];
-const byN = n => S.find(s => s.n === n);
 function renderRecruiter() {
-  const contact = [];
-  if (email) contact.push(`<a href="mailto:${escHtml(email)}">${escHtml(email)}</a>`);
-  if (li) contact.push(`<a href="${escHtml(li)}" target="_blank" rel="noopener">LinkedIn</a>`);
-  if (res) contact.push(`<a href="${/^https?:/.test(res) ? escHtml(res) : ASSETS + escHtml(res)}" target="_blank" rel="noopener">Résumé (PDF)</a>`);
-  if (gh) contact.push(`<a href="${escHtml(gh)}" target="_blank" rel="noopener">GitHub</a>`);
-  let html = `<div class="rv-contact">${contact.join(' &nbsp;·&nbsp; ')}</div>`;
-  const used = new Set();
-  const groups = GROUPS.map(([t, ns]) => [t, ns.map(byN).filter(Boolean)]);
-  groups.forEach(([, items]) => items.forEach(s => used.add(s.n)));
-  const rest = S.filter(s => !used.has(s.n));
-  if (rest.length) groups.push(['More', rest]);
-  groups.forEach(([title, items]) => {
-    if (!items.length) return;
-    html += `<h2 class="rv-group">${escHtml(title)}</h2>`;
-    items.forEach(s => {
-      const docs = s.docs.map((d, k) => (d.src || (d.file && !d.missing)) ? `<button class="pill rv-doc" data-n="${s.n}" data-k="${k}">${escHtml(d.title)}</button>` : '').join('');
-      const links = s.links.map(l => l.href ? `<a class="pill" href="${escHtml(l.href)}" target="_blank" rel="noopener">${escHtml(l.label)} ↗</a>` : '').join('');
-      html += `<article class="rv"><div class="rv-head"><h3>${escHtml(s.sub || s.latin)}</h3><span class="rv-latin">${s.n} · ${escHtml(s.latin)}</span></div><div class="rv-body">` +
-        (s.sum ? `<p class="rv-sum">${escHtml(s.sum)}</p>` : '') +
-        s.body.map(p => `<p>${fmt(p)}</p>`).join('') +
-        (s.facts.length ? `<dl>${s.facts.map(([k, v]) => `<div><dt>${escHtml(k)}</dt><dd>${fmt(v)}</dd></div>`).join('')}</dl>` : '') +
-        ((docs || links) ? `<div class="links">${docs}${links}</div>` : '') +
-        `</div></article>`;
-    });
-  });
-  const rv = document.getElementById('recruiter');
+  const pill = (label, href) => `<a class="pill rv-pill" href="${escHtml(href)}" target="_blank" rel="noopener">${escHtml(label)} ↗</a>`;
+  const pills = [];
+  if (email) pills.push(`<a class="pill rv-pill" href="mailto:${escHtml(email)}">email ↗</a>`);
+  if (li) pills.push(pill('linkedin', li));
+  if (res) pills.push(pill('résumé', /^https?:/.test(res) ? res : ASSETS + res));
+  if (gh) pills.push(pill('github', gh));
+  const rows = key => (rvSec.keys[key] || []).map(r => {
+    const [a, b, c] = split(r, 3);
+    return `<div class="rv-row"><div><b>${escHtml(a)}</b>${b ? `<span>${escHtml(b)}</span>` : ''}</div><span class="rv-date">${escHtml(c)}</span></div>`;
+  }).join('');
+  const tagline = one(rvSec, 'tagline');
+  let html = `<div class="rv-links">${pills.join('')}</div>` + (tagline ? `<p class="rv-tag">${fmt(tagline)}</p>` : '');
+  const exp = rows('experience');
+  if (exp) html += `<h2 class="rv-group">Experience</h2>${exp}`;
+  if (WORKS.length) {
+    html += `<h2 class="rv-group">Selected work</h2><div class="rv-grid">` + WORKS.map((w, i) => {
+      const docs = w.docs.filter(d => d.src).map(d => `<button class="pill rv-doc" data-w="${i}" data-k="${w.docs.indexOf(d)}">${escHtml(d.title)}</button>`).join('');
+      const links = w.links.filter(l => l.href).map(l => pill(l.label, l.href)).join('');
+      return `<article class="rv-card${w.span === 'full' ? ' full' : ''}"><h3>${escHtml(w.title)}</h3>` +
+        (w.tags ? `<div class="rv-tags">${escHtml(w.tags)}</div>` : '') +
+        w.body.map(p => `<p>${fmt(p)}</p>`).join('') +
+        ((docs || links) ? `<div class="links">${docs}${links}</div>` : '') + `</article>`;
+    }).join('') + `</div>`;
+  }
+  const pubs = (rvSec.keys.publication || []).map((p, k) => {
+    const [title, note, target] = split(p, 3);
+    const right = !target ? '' : /^https?:/.test(target) ? pill('read', target) : `<button class="pill rv-pill rv-pub" data-k="${k}">read</button>`;
+    return `<div class="rv-row"><div><b>${escHtml(title)}</b>${note ? `<span>${escHtml(note)}</span>` : ''}</div><span class="rv-date">${right}</span></div>`;
+  }).join('');
+  if (pubs) html += `<h2 class="rv-group">Publications and writing</h2>${pubs}`;
+  const edu = rows('education');
+  if (edu) html += `<h2 class="rv-group">Education</h2>${edu}`;
+  const other = one(rvSec, 'other');
+  if (other) html += `<h2 class="rv-group">Also</h2><p class="rv-other">${fmt(other)}</p>`;
+  const rv = document.getElementById('rv-view');
   rv.innerHTML = html;
-  rv.querySelectorAll('.rv-doc').forEach(b => b.onclick = () => { const s = byN(+b.dataset.n); const d = s.docs[+b.dataset.k]; view({ ...d, src: d.src || ASSETS + d.file }); });
+  rv.querySelectorAll('.rv-doc').forEach(b => b.onclick = () => { const d = WORKS[+b.dataset.w].docs[+b.dataset.k]; if (d.src) view(d); });
+  rv.querySelectorAll('.rv-pub').forEach(b => b.onclick = () => { const [title, , target] = split((rvSec.keys.publication || [])[+b.dataset.k], 3); view({ title, src: ASSETS + target }); });
 }
 const kickerEl = document.getElementById('p-kicker'), kickerText = kickerEl.textContent;
 function setRV(on) {
@@ -732,10 +755,10 @@ function setRV(on) {
   document.getElementById('rv-toggle').textContent = on ? 'back to the plate' : 'recruiter view';
   kickerEl.textContent = on ? 'a summary of' : kickerText;
   if (on) { close(); renderRecruiter(); }
-  history.replaceState(null, '', on ? '#recruiter' : location.pathname + location.search);
+  history.replaceState(null, '', on ? '#recruiter' : location.pathname);
 }
 document.getElementById('rv-toggle').onclick = () => setRV(!document.body.classList.contains('rvmode'));
-if (location.hash === '#recruiter') setRV(true);
+if (location.hash === '#recruiter' || /[?&]recruiter\b/.test(location.search)) setRV(true);
 addEventListener('hashchange', () => setRV(location.hash === '#recruiter'));
 
 // ---------- document viewer ----------

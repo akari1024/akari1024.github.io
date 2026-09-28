@@ -217,4 +217,58 @@ link: Blog: A Place I Thought I Knew (Japan) | https://dukegapyear.duke.edu/2026
 photo: gobi.JPG | Mongolia | the Gobi, or you on horseback
 photo: cambodia.JPG | Cambodia | the floating village or Angkor Wat
 
+
+// ============================================================
+//  RECRUITER VIEW (the "recruiter view" button). Keep this short: it reads like a résumé.
+//    tagline:      one line under your name
+//    experience:   Organization | Role | Dates          (one row each, in order)
+//    education:    School | Degree or note | Dates
+//    publication:  Title | small note | filename.pdf or https://...   (a "read" button on the right)
+//    other:        one line of everything else, separated by ·
+//  Each "# WORK · Title" section below is one box under Selected work.
+//    tags:   small caps line under the title
+//    span:   half (two boxes side by side) or full (one box across the whole width)
+//    then paragraphs, and link: / paper: lines for buttons
+// ============================================================
+
+# RECRUITER
+tagline: BME + MechE @ Duke ’30, pre-med. Technical project manager @ Stele. First-author surgical robotics research, presented at IEEE ISIE 2026.
+experience: Stele Inc. | Technical project manager | Jul 2026 – Present
+experience: Yokohama National University | Visiting researcher, surgical robotics | Jan – Jul 2026
+experience: Keio University | Research intern, haptic drill robots | Jun – Jul 2024
+experience: Effissimo Capital Management | Research intern, machine learning | Jun 2023
+education: Duke University | B.S. Biomedical Engineering + Mechanical Engineering, pre-med | 2026 – 2030
+education: Phillips Academy Andover | | 2022 – 2025
+education: Le Cordon Bleu Malaysia | Basic Cuisine certificate, honorable mention | 2025
+publication: Electromyographic Evaluation of Automated Penetration Detection in Spinal Drilling | first author · IEEE ISIE 2026 | isie-2026.pdf
+publication: Impact of Gravity Compensation on Penetration Detection of Haptic Drill Robot | first author · submitted to IEEJ · YNU repository | https://ynu.repo.nii.ac.jp/records/2001367
+publication: Electrical Impedance Tomography in Wrist Rehabilitation | 80-page book · independent project | https://docs.google.com/document/d/1_YkNgDY76VPKcRwH2CprpCdm2fl4S6g_1rPrfamrwPk/preview
+other: Conditional acceptance, Duke-NUS Medical School (MD) · Coached FIRST Lego League for three years · Volunteer English tutor, KIDSDOOR Tokyo · Singapore U16 and U18 Division 1 basketball champion · 2x All-NEPSAC high jump · English, Japanese, Chinese
+
+
+# WORK · Stele
+tags: engineering operations · wearable EEG
+span: half
+
+Stele is building a lifelong record of the human body: an app that unifies data from the wearables people already own, and in-ear EEG earbuds. I run the engineering team’s operating cadence: standups, weekly progress reports, and a live view of every project’s owner, status, and deadline.
+
+link: stele.health | https://www.stele.health/
+
+
+# WORK · Andover Robotics
+tags: FRC + FTC · head of hardware
+span: half
+
+Co-president and head of hardware for Phillips Academy Andover’s FRC and FTC teams. Oversaw hardware design and fabrication, recruited seven girls to the team, and taught 20+ beginners CAD and machining. Think, Design, and Quality Awards at regional competitions.
+
+
+# WORK · Haptic spinal drill research
+tags: surgical robotics · sEMG · Keio University + Yokohama National University
+span: full
+
+At Yokohama National University, I evaluated a haptic spinal drill with automated bone-penetration detection, using surface electromyography to measure whether the feature reduces the surgeon’s physical strain. I first-authored the paper and presented it at IEEE ISIE 2026 in Nagoya. Earlier, at Keio University, I worked on gravity compensation for the same class of drill robot, which led to a first-author manuscript submitted to the IEEJ Journal of Industry Applications.
+
+paper: ISIE 2026 paper | IEEE ISIE 2026 | isie-2026.pdf |
+link: Gravity compensation paper (YNU repository) | https://ynu.repo.nii.ac.jp/records/2001367
+
 `;
