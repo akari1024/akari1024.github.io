@@ -42,6 +42,11 @@ title: Akari Imai
 meta: Duke University, class of 2030 | BME + MechE | Durham, NC
 hint: hover to examine, click to dissect ↓
 
+// password screen: visitors must type this to see the site. Leave it empty to turn the gate off.
+// A link with ?key=THEPASSWORD on the end (e.g. https://akari1024.github.io/?key=1234) skips the prompt.
+// This is a soft gate only: anyone who reads the site's files can find the password.
+password: 1234
+
 // contact details
 email: akari.imai@duke.edu
 linkedin: https://www.linkedin.com/in/akari-i-7083242a9/
@@ -196,7 +201,7 @@ Basketball has been a constant wherever I’ve lived, from Sunday games with a n
 
 fact: Basketball | Singapore U16 + U18 D1 champion · U16 3x3 national champion · 2025 Asia Pacific Cup
 fact: High jump | 2x All-NEPSAC, 1x ALL-NEPSAC Honorable Mention
-photo: basketball.jpg | Basketball | a game photo | 50% 50%
+photo: basketball.jpg | Basketball | a game photo | 50% 6%
 photo: highjump.jpg | High jump | a mid-jump photo
 
 
