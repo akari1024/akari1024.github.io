@@ -190,6 +190,8 @@
   .card .summary span { display: block; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .14em; color: var(--ink-2); }
   .card .summary b { font-weight: 500; font-style: italic; font-size: 19px; color: var(--accent); line-height: 1.35; }
   .card p { margin: 0 0 12px; }
+  .callout { margin: 4px 0 16px; padding: 12px 16px; border: 1.5px solid var(--accent); background: var(--accent-2); border-radius: 12px; font-size: 16px; line-height: 1.5; box-shadow: 4px 4px 0 var(--accent); }
+  .callout b { font-weight: 500; color: var(--accent); }
   .photos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px 18px; margin: 22px 4px 8px; align-items: start; }
   .photos:empty { display: none; }
   .photos .pola:nth-child(2n) { --r: 2.5deg; }
@@ -479,6 +481,13 @@ const LAYOUT = {
 // ---------- read content.js ----------
 const escHtml = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const fmt = s => escHtml(s).replace(/\*([^*]+)\*/g, '<i>$1</i>');
+// a paragraph starting with "!" renders as a callout box; a short "Lead-in:" at its start is highlighted
+function para(p) {
+  const m = p.match(/^!\s*([\s\S]*)$/);
+  if (!m) return `<p>${fmt(p)}</p>`;
+  const lead = m[1].match(/^([^:]{2,28}):\s*([\s\S]*)$/);
+  return `<div class="callout">${lead ? `<b>${fmt(lead[1])}:</b> ${fmt(lead[2])}` : fmt(m[1])}</div>`;
+}
 const split = (s, n) => { const p = s.split('|').map(x => x.trim()); while (p.length < n) p.push(''); return p; };
 const KEYS = /^(label|subtitle|summary|fact|photo|link|paper|title|kicker|meta|hint|email|linkedin|resume|github|password|tagline|experience|education|publication|other|tags|span):\s*(.*)$/i;
 function parseContent(raw) {
@@ -775,7 +784,7 @@ function open(i) {
   document.getElementById('c-sub').textContent = s.sub;
   document.getElementById('c-sum').textContent = s.sum;
   document.getElementById('c-summary').classList.toggle('hide', !s.sum);
-  document.getElementById('c-body').innerHTML = s.body.map(p => `<p>${fmt(p)}</p>`).join('');
+  document.getElementById('c-body').innerHTML = s.body.map(para).join('');
   const docsEl = document.getElementById('c-docs');
   const renderDocs = () => {
     docsEl.innerHTML = s.docs.map((d, k) => {
@@ -832,7 +841,7 @@ function renderRecruiter() {
       const links = w.links.filter(l => l.href).map(l => pill(l.label, l.href)).join('');
       return `<article class="rv-card${w.span === 'full' ? ' full' : ''}"><h3>${escHtml(w.title)}</h3>` +
         (w.tags ? `<div class="rv-tags">${escHtml(w.tags)}</div>` : '') +
-        w.body.map(p => `<p>${fmt(p)}</p>`).join('') +
+        w.body.map(para).join('') +
         ((docs || links) ? `<div class="links">${docs}${links}</div>` : '') + `</article>`;
     }).join('') + `</div>`;
   }

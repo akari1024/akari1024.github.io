@@ -12,6 +12,8 @@
 //    8 the book in her hand, 9 legs, 10 feet, 11 cells). You can rename "Cerebrum" to
 //    anything; keep the number.
 //  - Wrap a word in *asterisks* to italicize it.
+//  - Start a paragraph with ! to turn it into a highlighted callout box (a short lead-in like
+//    "Shameless plug:" at the start of it gets picked out in pink).
 //  - Only rule: don't type a backtick ` anywhere in the text.
 //  - Photos, papers, and links that are missing are hidden on the live site. To see the
 //    "photo needed" placeholders while you work, add ?draft to the end of the address.
@@ -83,7 +85,7 @@ Stele is building a lifelong record of the human body: an app that brings data f
 
 As technical project manager, I run the engineering team’s operating cadence: standups, a weekly progress, plan, and problems report, and a live view of every project’s owner, status, and next deadline. I also onboard new engineers and track the team’s key technical milestones.
 
-Shameless plug: the waitlist is open. If you want to be first in line when the app launches, the button below is for you.
+! Shameless plug: the waitlist is open. If you want to be first in line when the app launches, the button below is for you.
 
 fact: Stele Inc. | Technical project manager · Jul 2026–present
 // when preorders open, change this line to something like:  link: Preorder Stele Fusion | https://...
