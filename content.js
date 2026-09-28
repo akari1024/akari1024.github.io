@@ -47,7 +47,7 @@ resume:
 github:
 
 // the photo at the bottom of the page
-photo: me.JPG | Fig. 3 | a photo of you | top
+photo: me.JPG | Fig. 3 | a photo of you | center
 
 Fig. 1. Akari Imai, anterior view. Japanese, raised in Singapore, and educated at Phillips Academy Andover. Now a first-year at Duke University studying biomedical and mechanical engineering, and technical project manager at Stele. Fig. 2. Cellular detail, ×400. Fig. 3. The specimen, photographed.
 
@@ -141,9 +141,9 @@ The kitchen taught me to stay calm and precise under pressure. Cooking is also h
 
 fact: Le Cordon Bleu Malaysia | Basic Cuisine certificate · honorable mention
 link: Blog: Under Pressure, Lessons from Culinary School | https://dukegapyear.duke.edu/2026/03/22/under-pressure-lessons-from-culinary-school/
-photo: dish-1.jpeg | Le Cordon Bleu Malaysia | your best plated dish
-photo: dish-2.jpeg | Plated | another dish, or something you baked
-photo: chef-whites.jpeg | Kuala Lumpur | you in chef whites | top
+photo: dish-1.jpeg | Le Cordon Bleu Malaysia | your best plated dish | 50% 60%
+photo: dish-2.jpeg | Plated | another dish, or something you baked | 50% 60%
+photo: chef-whites.jpeg | Kuala Lumpur | you in chef whites | center
 
 
 # 7 · Manus
@@ -154,7 +154,7 @@ summary: Head of hardware for a competitive robotics program.
 At Phillips Academy Andover, I was co-president and head of hardware for the FRC and FTC robotics teams. I oversaw hardware design and fabrication, recruited seven girls to the team, and taught more than 20 beginners CAD and machining. My team has won the Think Award, Design Award, and Quality Award at various regional competitions in the United States.
 
 fact: Andover Robotics (FRC/FTC) | Co-president, head of hardware · 2022–25
-photo: robot.jpg | Andover Robotics | the robot, or you machining
+photo: robot.jpg | Andover Robotics | the robot, or you machining | 50% 60%
 photo: cad.png | CAD | a CAD screenshot
 
 
@@ -185,7 +185,7 @@ Basketball has been a constant wherever I’ve lived, from Sunday games with a n
 
 fact: Basketball | Singapore U16 + U18 D1 champion · U16 3x3 national champion · 2025 Asia Pacific Cup
 fact: High jump | 2x All-NEPSAC
-photo: basketball.jpg | Basketball | a game photo
+photo: basketball.jpg | Basketball | a game photo | 50% 60%
 photo: highjump.jpg | High jump | a mid-jump photo
 
 
