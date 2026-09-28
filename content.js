@@ -285,7 +285,7 @@ link: Join the waitlist | https://www.stele.health/#waitlist
 tags: FRC + FTC · head of hardware
 span: half
 
-Four years of FIRST robotics across two schools. At Phillips Academy Andover, progressed from social media manager to head of hardware to co-president of the FRC and FTC teams: led mechanical design and fabrication, trained 20+ beginners in CAD and machining, recruited seven girls to the team, and prepared the team for two regional competitions (Think, Judges, and Quality Awards).
+Four years of FIRST robotics across two schools. At Phillips Academy Andover, progressed from social media manager to head of hardware to co-president of the FRC and FTC teams: led mechanical design and fabrication, trained 20+ beginners in CAD and machining, recruited seven girls to the team, and prepared the team for two regional competitions (Think, Judges', and Quality Awards).
 
 
 # WORK · Haptic spinal drill research
