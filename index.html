@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Akari Imai · Plate I</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..600,0..100,0..1;1,9..144,400..600,0..100,0..1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* strawberry milk */
+  :root {
+    --paper: #FFF1F2; --paper-2: #FFE3E7; --ink: #4B2B2F; --ink-2: #9A6970; --rule: #F1C6CD;
+    --accent: #E0537A; --accent-2: #FFD0DA; --body: #FFFBF8; --sticker: #FFFFFF; --shadow: #F6B9C5;
+    --hair: #3A2626; --brain: #FFC0CE; --heart: #F2738C; --stomach: #FFD69E; --bud: #7DB6E6;
+    --cheek: #FF9DB1; --spark: #F7A8BA; --eye: #4B2B2F;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "SOFT" 100, "WONK" 0;
+    font-size: 18px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 50;
+    opacity: .35; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .4 0 0 0 0 .35 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .mono { font-family: 'DM Mono', monospace; }
+
+  .plate {
+    max-width: 1180px; margin: 28px auto; padding: 26px 36px 34px;
+    border: 1.5px solid var(--ink); border-radius: 22px; position: relative;
+    outline: 1.5px dashed var(--rule); outline-offset: 7px;
+  }
+  header.top { display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 24px; border-bottom: 1.5px dotted var(--rule); padding-bottom: 16px; }
+  .plate-no { font-size: 13px; letter-spacing: .14em; color: var(--ink-2); }
+  .plate-no b { color: var(--accent); font-weight: 500; }
+  .title { text-align: center; }
+  .title .kicker { font-variant: small-caps; letter-spacing: .14em; font-size: 19px; color: var(--ink-2); }
+  .title h1 { margin: 0; font-weight: 500; font-style: italic; font-size: clamp(44px, 7vw, 80px); line-height: .95; letter-spacing: -.015em; font-variation-settings: "SOFT" 100, "WONK" 1; }
+  .meta { text-align: right; font-size: 13px; color: var(--ink-2); line-height: 1.7; }
+
+  .stage { position: relative; margin-top: 4px; }
+  svg#plate { width: 100%; height: auto; display: block; overflow: visible; }
+
+  /* figure */
+  .fl-out { flood-color: var(--sticker); }
+  .fl-sh { flood-color: var(--shadow); }
+  .skin { fill: var(--body); stroke: var(--ink); stroke-width: 2; stroke-linejoin: round; }
+  .hair { fill: var(--hair); stroke: var(--ink); stroke-width: 1.6; stroke-linejoin: round; transition: opacity .35s; }
+  .strand { fill: none; stroke: var(--hair); stroke-width: 2.2; stroke-linecap: round; }
+  .tie { fill: var(--accent); stroke: var(--ink); stroke-width: 1.2; }
+  .organ { stroke: var(--ink); stroke-width: 1.4; transition: fill .35s, opacity .35s; }
+  .brain { fill: var(--brain); opacity: 0; }
+  .heart { fill: var(--heart); transform-box: fill-box; transform-origin: center; animation: beat 1.3s infinite; }
+  .stomach { fill: var(--stomach); transform-box: fill-box; transform-origin: center; }
+  .oface circle { fill: var(--ink); }
+  .oface path { stroke: var(--ink); stroke-width: 1; fill: none; stroke-linecap: round; }
+  @keyframes beat { 0%, 60%, 100% { transform: scale(1); } 15% { transform: scale(1.14); } 30% { transform: scale(1); } 45% { transform: scale(1.08); } }
+  .vert { fill: var(--paper-2); stroke: var(--ink); stroke-width: 1.1; transition: fill .2s; }
+  .eye { fill: var(--eye); transform-box: fill-box; transform-origin: center; animation: blink 5s infinite; }
+  .glint { fill: #fff; }
+  @keyframes blink { 0%, 95%, 100% { transform: scaleY(1); } 97% { transform: scaleY(.1); } }
+  .cheek { fill: var(--cheek); opacity: .55; }
+  .mouth { stroke: var(--ink); stroke-width: 1.6; fill: none; stroke-linecap: round; }
+  .bud { fill: var(--bud); stroke: var(--ink); stroke-width: 1.2; }
+  .eeg { fill: none; stroke: var(--bud); stroke-width: 1.4; opacity: 0; transform-box: fill-box; transform-origin: center; }
+  .rod { stroke: #9AA1A9; stroke-width: 2.6; stroke-linecap: round; }
+  .bandaid rect { fill: #F6D2B0; stroke: var(--ink); stroke-width: 1; }
+  .bandaid circle { fill: #D9A67E; }
+  .knee { fill: none; stroke: var(--ink-2); stroke-width: 1; stroke-dasharray: 2 3; }
+  .sparkle { fill: var(--spark); animation: twinkle 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  @keyframes twinkle { 0%, 100% { transform: scale(.7) rotate(0); opacity: .6; } 50% { transform: scale(1.1) rotate(20deg); opacity: 1; } }
+
+  /* labels */
+  .lbl { cursor: pointer; opacity: 0; animation: fadein .6s forwards; }
+  .lbl .badge { fill: var(--accent-2); stroke: var(--ink); stroke-width: 1.4; transition: fill .2s; }
+  .lbl .bnum { font-family: 'DM Mono', monospace; font-size: 13px; fill: var(--ink); }
+  .lbl .latin { font-style: italic; font-size: 28px; fill: var(--ink); font-weight: 500; transition: fill .2s; }
+  .lbl .plain { font-size: 16px; fill: var(--ink-2); }
+  .leader { stroke: var(--ink-2); stroke-width: 2.2; fill: none; stroke-dasharray: .1 6; stroke-linecap: round; transition: stroke .2s; }
+  .pin { fill: var(--accent); stroke: var(--ink); stroke-width: 1; }
+  .hit { fill: transparent; }
+  .lbl:hover .latin { fill: var(--accent); }
+  .lbl:hover .badge { fill: var(--accent); }
+  .lbl:hover .leader { stroke: var(--accent); }
+  @keyframes fadein { to { opacity: 1; } }
+
+  /* hover states */
+  .spark { opacity: 0; fill: none; stroke: var(--accent); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 120; stroke-dashoffset: 120; transition: stroke-dashoffset 1s, opacity .2s; }
+  .st-cerebrum .hair-main { opacity: .18; }
+  .st-cerebrum .brain { opacity: 1; }
+  .st-cerebrum .spark { opacity: 1; stroke-dashoffset: 0; }
+  .st-auris .eeg { animation: ring 1.4s infinite; }
+  .st-auris .eeg.r2 { animation-delay: .45s; }
+  .st-auris .eeg.r3 { animation-delay: .9s; }
+  @keyframes ring { 0% { opacity: .9; transform: scale(1); } 100% { opacity: 0; transform: scale(3.4); } }
+  .bubble { opacity: 0; }
+  .bubble text { font-family: 'Fraunces', serif; font-style: italic; font-size: 15px; fill: var(--accent); }
+  .st-lingua .bubble { animation: floatup 2.4s infinite; }
+  .st-lingua .bubble.b2 { animation-delay: .8s; }
+  .st-lingua .bubble.b3 { animation-delay: 1.6s; }
+  @keyframes floatup { 0% { transform: translateY(6px); opacity: 0; } 20% { opacity: 1; } 100% { transform: translateY(-18px); opacity: 0; } }
+  .mouth-open { opacity: 0; }
+  .st-lingua .mouth-open { opacity: 1; }
+  .st-lingua .mouth-smile { opacity: 0; }
+  .st-cor .heart { animation-duration: .6s; }
+  .st-cor .loves { opacity: 1; }
+  .loves { opacity: 0; transition: opacity .3s; }
+  .loves path { fill: var(--heart); animation: rise 1.6s ease-out infinite; transform-box: fill-box; }
+  .loves path:nth-child(2) { animation-delay: .5s; }
+  .loves path:nth-child(3) { animation-delay: 1s; }
+  @keyframes rise { from { transform: translate(0, 0) scale(.6); opacity: 1; } to { transform: translate(10px, -34px) scale(1); opacity: 0; } }
+  .st-vert .vert { animation: glow 1.2s infinite; }
+  @keyframes glow { 0%, 100% { fill: var(--paper-2); } 30% { fill: var(--accent); } }
+  .st-ventriculus .stomach { animation: rumble .45s infinite; }
+  @keyframes rumble { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-5deg) scale(1.05); } 75% { transform: rotate(5deg) scale(1.05); } }
+  .handring { opacity: 0; fill: none; stroke: var(--accent); stroke-width: 1.6; stroke-dasharray: 4 4; transition: opacity .25s; }
+  .gear { opacity: 0; transition: opacity .25s; transform-box: fill-box; transform-origin: center; }
+  .st-manus .handring, .st-manus .gear { opacity: 1; }
+  .st-manus .gear { animation: spin 3s linear infinite; }
+  .st-manus .rod { stroke: var(--accent); }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .ball { opacity: 0; transition: opacity .2s; }
+  .st-crura .ball { opacity: 1; animation: bounce .7s cubic-bezier(.5,0,.5,1) infinite alternate; }
+  @keyframes bounce { from { transform: translateY(-34px); } to { transform: translateY(0); } }
+  .st-crura .bandaid { animation: wig .4s infinite alternate; transform-box: fill-box; transform-origin: center; }
+  @keyframes wig { from { transform: rotate(-24deg); } to { transform: rotate(-10deg); } }
+  .step { opacity: 0; fill: var(--ink-2); }
+  .st-pedes .step { animation: stepin 2s infinite; }
+  @keyframes stepin { 0% { opacity: 0; } 15%, 60% { opacity: .7; } 100% { opacity: 0; } }
+  .inset-ring { fill: var(--paper-2); stroke: var(--ink); stroke-width: 1.6; }
+  .cell { fill: var(--brain); stroke: var(--ink); stroke-width: 1; }
+  .nuc { fill: var(--accent); opacity: .65; }
+  .st-cellulae .cells { animation: drift 3s ease-in-out infinite alternate; }
+  @keyframes drift { from { transform: translate(-3px, 2px); } to { transform: translate(3px, -2px); } }
+  .inset-grp { cursor: pointer; }
+  .inset-grp:hover .ilatin { fill: var(--accent); }
+
+  /* explanation + footer */
+  .explain { display: grid; grid-template-columns: 1.35fr 1fr 180px; gap: 34px; border-top: 1.5px dotted var(--rule); padding-top: 18px; margin-top: 2px; align-items: start; }
+  .explain h2 { margin: 0 0 4px; font-size: 12px; font-family: 'DM Mono', monospace; font-weight: 500; letter-spacing: .16em; color: var(--ink-2); }
+  .explain p { margin: 0 0 10px; }
+  .explain em { color: var(--accent); font-style: normal; font-family: 'DM Mono', monospace; font-size: 14px; }
+  .corr ul { list-style: none; padding: 0; margin: 0; }
+  .corr li { display: flex; justify-content: space-between; gap: 10px; border-bottom: 1.5px dotted var(--rule); padding: 5px 0; }
+  .corr li span:first-child { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--ink-2); padding-top: 2px; }
+  .corr a, .card a { color: var(--ink); text-decoration: none; border-bottom: 1.5px solid var(--accent-2); }
+  .corr a:hover, .card a:hover { color: var(--accent); border-color: var(--accent); }
+  .need { color: var(--ink-2); font-style: italic; font-size: 15px; }
+  .hint { position: absolute; top: 14px; right: 6px; color: var(--accent); font-size: 17px; font-style: italic; }
+
+  /* polaroids */
+  .pola { background: #fff; padding: 8px 8px 30px; box-shadow: 0 6px 16px -8px rgba(40, 20, 30, .35); position: relative; transform: rotate(var(--r, -2deg)); }
+  .pola::before { content: ""; position: absolute; top: -10px; left: 50%; width: 58px; height: 20px; margin-left: -29px; background: var(--accent-2); opacity: .85; transform: rotate(-4deg); }
+  .pola .ph { aspect-ratio: 4 / 3; background: #F4F0EE; display: grid; place-items: center; overflow: hidden; }
+  .pola .ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .pola .ph.empty { border: 1.5px dashed #CDBDC0; padding: 10px; text-align: center; font-family: 'DM Mono', monospace; font-size: 11px; color: #9C8A8E; line-height: 1.4; }
+  .pola .cap { position: absolute; left: 0; right: 0; bottom: 6px; text-align: center; font-style: italic; font-size: 14px; color: #4B3A3E; }
+  .fig3 .pola { --r: 3deg; }
+  .fig3 .ph { aspect-ratio: 1; }
+
+  /* specimen card */
+  .veil { position: fixed; inset: 0; background: rgba(30, 20, 30, .22); opacity: 0; pointer-events: none; transition: opacity .3s; z-index: 20; }
+  .veil.open { opacity: 1; pointer-events: auto; }
+  aside.card {
+    position: fixed; top: 0; right: 0; bottom: 0; width: min(560px, 100vw);
+    background: var(--paper); border-left: 1.5px solid var(--ink);
+    padding: 32px 34px 28px; transform: translateX(102%); transition: transform .45s cubic-bezier(.2,.8,.2,1);
+    z-index: 30; overflow-y: auto;
+  }
+  aside.card.open { transform: translateX(0); }
+  .card .tag { font-size: 12px; letter-spacing: .14em; color: var(--accent); display: flex; align-items: center; gap: 8px; }
+  .card .tag i { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--accent-2); border: 1.4px solid var(--ink); color: var(--ink); font-style: normal; }
+  .card h3 { margin: 8px 0 0; font-size: 44px; font-style: italic; font-weight: 500; line-height: 1; font-variation-settings: "SOFT" 100, "WONK" 1; }
+  .card .sub { font-size: 20px; color: var(--ink-2); margin: 6px 0 16px; line-height: 1.25; }
+  .card .summary { border-left: 3px solid var(--accent); padding: 2px 0 2px 14px; margin: 0 0 18px; }
+  .card .summary:empty, .card .summary.hide { display: none; }
+  .card .summary span { display: block; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .14em; color: var(--ink-2); }
+  .card .summary b { font-weight: 500; font-style: italic; font-size: 19px; color: var(--accent); line-height: 1.35; }
+  .card p { margin: 0 0 12px; }
+  .photos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px 18px; margin: 22px 4px 8px; }
+  .photos:empty { display: none; }
+  .photos .pola:nth-child(2n) { --r: 2.5deg; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 4px; }
+  .links:empty { display: none; }
+  .pill { font-size: 15px; border: 1.5px solid var(--ink); border-radius: 99px; padding: 4px 13px; color: var(--ink); text-decoration: none; background: var(--paper); cursor: pointer; font-family: inherit; }
+  .pill:hover { background: var(--accent-2); }
+  .pill.todo { border-style: dashed; color: var(--ink-2); cursor: default; }
+  .pill.todo:hover { background: var(--paper); }
+  .docs { display: grid; gap: 10px; margin: 16px 0 6px; }
+  .docs:empty { display: none; }
+  .doc { display: flex; gap: 14px; align-items: center; text-align: left; background: var(--paper-2); border: 1.5px solid var(--ink); border-radius: 14px; padding: 10px 14px; cursor: pointer; font: inherit; color: var(--ink); }
+  .doc:hover { background: var(--accent-2); }
+  .doc svg { flex: none; width: 34px; height: 42px; }
+  .doc b { font-weight: 500; display: block; }
+  .doc span { font-size: 14px; color: var(--ink-2); }
+  .doc.todo { border-style: dashed; cursor: default; }
+  .doc.todo:hover { background: var(--paper-2); }
+  .card dl { margin: 18px 0; border-top: 1.5px dotted var(--rule); }
+  .card dl:empty { display: none; }
+  .card dl div { display: grid; grid-template-columns: 1fr 1.4fr; gap: 12px; padding: 7px 0; border-bottom: 1.5px dotted var(--rule); font-size: 15px; }
+  .card dt { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--ink-2); padding-top: 3px; }
+  .card dd { margin: 0; }
+  .card .nav { display: flex; justify-content: space-between; margin-top: 22px; }
+  .card .nav button { font: inherit; font-size: 16px; background: var(--paper); border: 1.5px solid var(--ink); border-radius: 99px; color: var(--ink); padding: 5px 16px; cursor: pointer; }
+  .card .nav button:hover { background: var(--accent-2); }
+  .card .close { position: absolute; top: 16px; right: 18px; font: inherit; font-size: 28px; background: none; border: none; color: var(--ink); cursor: pointer; }
+  .card .close:hover { color: var(--accent); }
+
+  /* document viewer */
+  .viewer { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; background: rgba(30, 20, 30, .45); opacity: 0; pointer-events: none; transition: opacity .25s; padding: 20px; }
+  .viewer.open { opacity: 1; pointer-events: auto; }
+  .viewer .box { width: min(960px, 100%); height: min(88vh, 1100px); background: var(--paper); border: 1.5px solid var(--ink); border-radius: 18px; display: flex; flex-direction: column; overflow: hidden; }
+  .viewer .bar { display: flex; align-items: center; gap: 12px; padding: 10px 16px; border-bottom: 1.5px dotted var(--rule); }
+  .viewer .bar b { font-weight: 500; flex: 1; font-style: italic; font-size: 20px; }
+  .viewer iframe { flex: 1; border: 0; width: 100%; background: #fff; }
+  .viewer .x { font: inherit; font-size: 26px; background: none; border: none; color: var(--ink); cursor: pointer; }
+
+  .mobile-list { display: none; }
+  @media (prefers-reduced-motion: reduce) { *, *::before { animation: none !important; transition: none !important; } .lbl { opacity: 1; } }
+  @media (max-width: 760px) {
+    body { font-size: 17px; }
+    .plate { margin: 12px; padding: 18px 16px 24px; border-radius: 16px; }
+    header.top { grid-template-columns: 1fr; text-align: center; gap: 6px; }
+    .meta { text-align: center; }
+    .lbl, .inset-grp, .hint { display: none; }
+    .mobile-list { display: block; list-style: none; padding: 0; margin: 4px 0 18px; }
+    .mobile-list li { border-bottom: 1.5px dotted var(--rule); padding: 9px 0; cursor: pointer; display: grid; grid-template-columns: 34px 1fr; }
+    .mobile-list .n { width: 24px; height: 24px; border-radius: 50%; background: var(--accent-2); border: 1.4px solid var(--ink); display: grid; place-items: center; font-size: 12px; margin-top: 4px; }
+    .mobile-list .latin { font-style: italic; font-size: 22px; }
+    .mobile-list .plain { display: block; color: var(--ink-2); font-size: 15px; }
+    .explain { grid-template-columns: 1fr; gap: 22px; }
+    .fig3 { max-width: 200px; margin: 0 auto; }
+    .photos { grid-template-columns: 1fr 1fr; gap: 16px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="plate">
+  <header class="top">
+    <div class="plate-no mono"><b>PLATE I.</b><br>figs. 1–3</div>
+    <div class="title">
+      <div class="kicker" id="p-kicker"></div>
+      <h1 id="p-title"></h1>
+    </div>
+    <div class="meta mono" id="p-meta"></div>
+  </header>
+
+  <div class="stage">
+    <div class="hint" id="p-hint"></div>
+    <svg id="plate" viewBox="0 0 1000 720" role="img" aria-label="An anatomical drawing of Akari, with labeled body parts that open sections of the site">
+      <defs>
+        <filter id="sticker" x="-15%" y="-10%" width="130%" height="120%">
+          <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="d"/>
+          <feFlood class="fl-out"/><feComposite in2="d" operator="in" result="outline"/>
+          <feOffset in="d" dx="5" dy="6" result="off"/>
+          <feFlood class="fl-sh"/><feComposite in2="off" operator="in" result="shadow"/>
+          <feMerge><feMergeNode in="shadow"/><feMergeNode in="outline"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <path id="spk" d="M0 -9 C1.5 -2 2 -1.5 9 0 C2 1.5 1.5 2 0 9 C-1.5 2 -2 1.5 -9 0 C-2 -1.5 -1.5 -2 0 -9 Z"/>
+      </defs>
+
+      <g id="sparkles">
+        <use href="#spk" class="sparkle" x="400" y="70" />
+        <use href="#spk" class="sparkle" x="610" y="200" style="animation-delay:-.8s" />
+        <use href="#spk" class="sparkle" x="380" y="520" style="animation-delay:-1.4s" />
+        <use href="#spk" class="sparkle" x="630" y="600" style="animation-delay:-2s" />
+        <use href="#spk" class="sparkle" x="600" y="60" style="animation-delay:-.4s" />
+      </g>
+
+      <g id="figure" transform="translate(350,60)" filter="url(#sticker)">
+        <polyline class="spark" points="200,24 210,16 218,19 228,6 238,11 250,-4" />
+        <g id="steps"></g>
+        <path id="body" class="skin" d="" />
+        <g id="spine"></g>
+        <g class="loves"><path d="M172 176 c-4 -3 -5 -7 -2 -8 c1.5 -.5 2 .5 2 1 c0 -.5 .5 -1.5 2 -1 c3 1 2 5 -2 8 z"/><path d="M180 180 c-4 -3 -5 -7 -2 -8 c1.5 -.5 2 .5 2 1 c0 -.5 .5 -1.5 2 -1 c3 1 2 5 -2 8 z"/><path d="M166 182 c-4 -3 -5 -7 -2 -8 c1.5 -.5 2 .5 2 1 c0 -.5 .5 -1.5 2 -1 c3 1 2 5 -2 8 z"/></g>
+        <g><path class="organ heart" d="M172 206 C158 197 156 184 164 181 C169 179.5 172 183 172 186 C172 183 175 179.5 180 181 C188 184 186 197 172 206 Z" /></g>
+        <g class="oface" style="pointer-events:none"><circle cx="168.5" cy="190" r="1.2"/><circle cx="175.5" cy="190" r="1.2"/><path d="M170.5 194 q1.5 1.4 3 0"/></g>
+        <path class="organ stomach" d="M162 236 C172 232 187 236 187 251 C187 267 175 275 162 271 C155 269 157 262 164 262 C172 262 176 257 174 251 C172 245 166 245 162 245 Z" />
+        <g class="oface" style="pointer-events:none"><circle cx="177" cy="244" r="1.2"/><circle cx="183" cy="246" r="1.2"/><path d="M178.5 250 q1.5 1.4 3 0"/></g>
+        <circle class="knee" cx="117" cy="470" r="8" />
+        <g class="bandaid" transform="translate(183,470) rotate(-18)"><rect x="-11" y="-4.5" width="22" height="9" rx="4.5"/><rect x="-4" y="-4.5" width="8" height="9" fill="#EFC39E"/><circle cx="-1.5" cy="-1.5" r=".8"/><circle cx="1.5" cy="1.5" r=".8"/><circle cx="1.5" cy="-1.5" r=".8"/><circle cx="-1.5" cy="1.5" r=".8"/></g>
+        <line class="rod" x1="70" y1="344" x2="68" y2="362" />
+        <circle class="handring" cx="72" cy="352" r="27" />
+        <g class="gear" transform="translate(28,314)"><path d="M0 -11 L3 -11 L4 -7 L8 -5 L11 -8 L13 -6 L10 -2 L11 2 L14 3 L13 6 L9 6 L7 9 L9 12 L6 14 L3 10 L-1 11 L-2 14 L-5 13 L-5 9 L-9 7 L-12 9 L-14 6 L-10 3 L-11 -1 L-14 -2 L-13 -5 L-9 -5 L-7 -9 L-9 -12 L-6 -14 L-3 -10 Z" fill="var(--stomach)" stroke="var(--ink)" stroke-width="1.2"/><circle r="3.5" fill="var(--body)" stroke="var(--ink)" stroke-width="1.2"/></g>
+        <g class="ball" transform="translate(238,588)"><circle r="13" fill="#E8913F" stroke="var(--ink)" stroke-width="1.3"/><path d="M-13 0 H13 M0 -13 V13 M-9 -9 Q-3 0 -9 9 M9 -9 Q3 0 9 9" fill="none" stroke="var(--ink)" stroke-width="1"/></g>
+
+        <path class="hair" d="M108 74 C104 96 110 110 118 116 C114 100 116 86 120 76 Z M192 74 C196 96 190 110 182 116 C186 100 184 86 180 76 Z" />
+        <ellipse class="skin" cx="112" cy="74" rx="7.5" ry="11" />
+        <ellipse class="skin" cx="188" cy="74" rx="7.5" ry="11" />
+        <ellipse class="skin" cx="150" cy="66" rx="38" ry="43" />
+        <g transform="translate(150,6) rotate(-16)">
+          <rect x="-38" y="-3.2" width="62" height="6.4" fill="#F6C453" stroke="var(--ink)" stroke-width="1.1"/>
+          <rect x="-42" y="-3.2" width="6" height="6.4" fill="#F4A3B4" stroke="var(--ink)" stroke-width="1.1"/>
+          <rect x="-37" y="-3.2" width="3" height="6.4" fill="#C9CED3" stroke="var(--ink)" stroke-width="1"/>
+          <path d="M24 -3.2 L34 0 L24 3.2 Z" fill="#F3D6B5" stroke="var(--ink)" stroke-width="1.1"/>
+          <path d="M31 -1 L34 0 L31 1 Z" fill="var(--ink)"/>
+        </g>
+        <g class="hair-main">
+          <path class="hair" d="M163 -3 C170 -9 180 -6 179 1 C178 7 171 8 166 6 Z" />
+          <path class="hair" d="M150 -9 C160 -12 170 -4 169 6 C172 12 166 22 156 24 C148 27 136 24 132 16 C127 8 132 -2 140 -6 C143 -8 146 -9 150 -9 Z" />
+          <path class="strand" d="M137 8 q6 -12 18 -8 q8 4 2 12 q-6 5 -12 0" style="stroke:var(--ink);stroke-width:1.1;opacity:.5"/>
+          <path class="strand" d="M141 -5 q-7 -5 -5 -12 M169 16 q9 2 12 -5 M133 13 q-8 1 -11 -5" style="stroke-width:1.7" />
+          <ellipse class="tie" cx="149" cy="25" rx="10" ry="3.6" />
+          <path class="hair" d="M110 80 C102 44 122 24 150 24 C178 24 198 44 190 80 C188 68 184 60 178 55 C172 62 162 62 158 54 C154 60 145 62 139 57 C132 62 124 60 121 53 C116 60 112 68 110 80 Z" />
+          <path class="strand" d="M114 66 q-7 16 -1 32 M186 66 q7 16 1 32 M158 54 q6 8 3 16" />
+        </g>
+        <path class="organ brain" d="M124 50 C120 32 137 24 150 28 C163 24 180 32 176 50 C178 61 165 65 150 63 C135 65 122 61 124 50 Z M137 34 q5 7 0 13 M150 30 v30 M163 34 q-5 7 0 13 M130 52 q7 -4 12 1 M158 53 q7 -5 12 -1" />
+        <circle class="eeg r1" cx="110" cy="76" r="5"/><circle class="eeg r2" cx="110" cy="76" r="5"/><circle class="eeg r3" cx="110" cy="76" r="5"/>
+        <circle class="eeg r1" cx="190" cy="76" r="5"/><circle class="eeg r2" cx="190" cy="76" r="5"/><circle class="eeg r3" cx="190" cy="76" r="5"/>
+        <circle class="bud" cx="110" cy="76" r="5" /><circle cx="108.5" cy="74.5" r="1.4" fill="#fff" />
+        <circle class="bud" cx="190" cy="76" r="5" /><circle cx="188.5" cy="74.5" r="1.4" fill="#fff" />
+        <ellipse class="eye" cx="137" cy="80" rx="3.4" ry="4" /><circle class="glint" cx="138.4" cy="78.4" r="1.2" />
+        <ellipse class="eye" cx="163" cy="80" rx="3.4" ry="4" /><circle class="glint" cx="164.4" cy="78.4" r="1.2" />
+        <ellipse class="cheek" cx="127" cy="89" rx="6" ry="4.2" />
+        <ellipse class="cheek" cx="173" cy="89" rx="6" ry="4.2" />
+        <path class="mouth mouth-smile" d="M145 91 q5 5 10 0" />
+        <g class="mouth-open"><ellipse cx="150" cy="93" rx="5" ry="4.6" fill="#7A3B45"/><ellipse cx="150" cy="95.5" rx="3.2" ry="2" fill="#FF9DB1"/></g>
+        <g class="bubble b1" transform="translate(200,98)"><text>hello</text></g>
+        <g class="bubble b2" transform="translate(204,118)"><text>こんにちは</text></g>
+        <g class="bubble b3" transform="translate(200,138)"><text>你好</text></g>
+      </g>
+
+      <g id="leaders"></g>
+
+      <g class="inset-grp" id="inset">
+        <circle class="inset-ring" cx="872" cy="636" r="60" />
+        <g class="cells">
+          <g><circle class="cell" cx="846" cy="616" r="15"/><circle class="nuc" cx="849" cy="613" r="4.5"/></g>
+          <g><circle class="cell" cx="882" cy="604" r="13"/><circle class="nuc" cx="879" cy="606" r="4"/></g>
+          <g><circle class="cell" cx="905" cy="636" r="15"/><circle class="nuc" cx="908" cy="639" r="5"/></g>
+          <g><circle class="cell" cx="870" cy="642" r="14"/><circle class="nuc" cx="866" cy="640" r="4.5"/></g>
+          <g><circle class="cell" cx="842" cy="656" r="12"/><circle class="nuc" cx="845" cy="658" r="3.8"/></g>
+          <g><circle class="cell" cx="884" cy="674" r="12"/><circle class="nuc" cx="886" cy="671" r="3.8"/></g>
+        </g>
+        <circle cx="796" cy="627" r="13" fill="var(--accent-2)" stroke="var(--ink)" stroke-width="1.4"/>
+        <text id="inset-num" x="796" y="631.5" text-anchor="middle" style="font-family:'DM Mono',monospace;font-size:13px;fill:var(--ink)"></text>
+        <text class="ilatin" id="inset-latin" x="778" y="636" text-anchor="end" style="font-style:italic;font-size:28px;font-weight:500;fill:var(--ink)"></text>
+        <text id="inset-plain" x="778" y="658" text-anchor="end" style="font-size:16px;fill:var(--ink-2)"></text>
+      </g>
+    </svg>
+  </div>
+
+  <ul class="mobile-list" id="mlist"></ul>
+
+  <section class="explain">
+    <div>
+      <h2>EXPLANATION OF THE PLATE</h2>
+      <div id="p-explain"></div>
+    </div>
+    <div class="corr">
+      <h2>CORRESPONDENCE</h2>
+      <ul id="p-corr"></ul>
+    </div>
+    <div class="fig3" id="fig3"></div>
+  </section>
+</div>
+
+<div class="veil" id="veil"></div>
+<aside class="card" id="card" aria-live="polite">
+  <button class="close" id="close" aria-label="Close">×</button>
+  <div class="tag mono" id="c-tag"></div>
+  <h3 id="c-latin"></h3>
+  <div class="sub" id="c-sub"></div>
+  <div class="summary" id="c-summary"><span>SUMMARY</span><b id="c-sum"></b></div>
+  <div id="c-body"></div>
+  <div class="docs" id="c-docs"></div>
+  <div class="links" id="c-links"></div>
+  <div class="photos" id="c-photos"></div>
+  <dl id="c-facts"></dl>
+  <div class="nav"><button id="prev">← prev</button><button id="next">next →</button></div>
+</aside>
+
+<div class="viewer" id="viewer" role="dialog" aria-modal="true">
+  <div class="box">
+    <div class="bar"><b id="v-title"></b><a class="pill" id="v-open" target="_blank" rel="noopener">open in new tab ↗</a><button class="x" id="v-close" aria-label="Close">×</button></div>
+    <div id="v-body" style="flex:1;display:flex"></div>
+  </div>
+</div>
+
+<script src="content.js"></script>
+<script>
+const ASSETS = 'assets/';
+const NS = 'http://www.w3.org/2000/svg';
+// add ?draft to the URL to see "photo needed" / "link needed" placeholders; the live site hides them
+const DRAFT = /[?&]draft\b/.test(location.search);
+
+// ---------- where each numbered section sits on the drawing ----------
+const LAYOUT = {
+  1: { id: 'cerebrum', side: 'L', y: 96, ax: 500, ay: 106 },
+  2: { id: 'auris', side: 'R', y: 126, ax: 540, ay: 134 },
+  3: { id: 'lingua', side: 'L', y: 176, ax: 496, ay: 160 },
+  4: { id: 'cor', side: 'R', y: 246, ax: 522, ay: 252 },
+  5: { id: 'vert', side: 'L', y: 296, ax: 500, ay: 290 },
+  6: { id: 'ventriculus', side: 'R', y: 336, ax: 524, ay: 312 },
+  7: { id: 'manus', side: 'L', y: 420, ax: 421, ay: 412 },
+  8: { id: 'crura', side: 'R', y: 528, ax: 533, ay: 530 },
+  9: { id: 'cellulae', inset: true },
+  10: { id: 'pedes', side: 'L', y: 640, ax: 468, ay: 662 }
+};
+
+// ---------- read content.js ----------
+const escHtml = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const fmt = s => escHtml(s).replace(/\*([^*]+)\*/g, '<i>$1</i>');
+const split = (s, n) => { const p = s.split('|').map(x => x.trim()); while (p.length < n) p.push(''); return p; };
+const KEYS = /^(label|subtitle|summary|fact|photo|link|paper|title|kicker|meta|hint|email|linkedin|resume|github):\s*(.*)$/i;
+function parseContent(raw) {
+  const sections = [];
+  let cur = null;
+  const flush = () => { if (cur && cur.buf.length) { cur.paras.push(cur.buf.join(' ')); cur.buf = []; } };
+  raw.split(/\r?\n/).forEach(line => {
+    const t = line.trim();
+    if (t.startsWith('//')) return;
+    const h = t.match(/^#\s*(.+)$/);
+    if (h) { flush(); cur = { head: h[1].trim(), keys: {}, paras: [], buf: [] }; sections.push(cur); return; }
+    if (!cur) return;
+    const kv = t.match(KEYS);
+    if (kv) { flush(); const k = kv[1].toLowerCase(); (cur.keys[k] = cur.keys[k] || []).push(kv[2].trim()); return; }
+    if (t === '') { flush(); return; }
+    cur.buf.push(t);
+  });
+  flush();
+  return sections;
+}
+const sections = parseContent(window.CONTENT || '');
+const pageSec = sections.find(s => /^page$/i.test(s.head)) || { keys: {}, paras: [] };
+const one = (sec, k, d = '') => (sec.keys[k] || [d])[0] || d;
+
+const S = [];
+sections.forEach(sec => {
+  const m = sec.head.match(/^(\d+)\s*[·.:\-–]\s*(.+)$/);
+  if (!m) return;
+  const lay = LAYOUT[+m[1]];
+  if (!lay) return;
+  S.push({
+    n: +m[1], ...lay,
+    latin: m[2].trim(),
+    plain: one(sec, 'label'),
+    sub: one(sec, 'subtitle'),
+    sum: one(sec, 'summary'),
+    body: sec.paras,
+    facts: (sec.keys.fact || []).map(f => split(f, 2)),
+    photos: (sec.keys.photo || []).map(p => { const [file, cap, need] = split(p, 3); return { file, cap, need }; }),
+    links: (sec.keys.link || []).map(l => { const [label, href] = split(l, 2); return { label, href }; }),
+    docs: (sec.keys.paper || []).map(d => { const [title, note, file, need] = split(d, 4); return { title, note, file, need, src: /^https?:/.test(file) ? file : '' }; })
+  });
+});
+S.sort((a, b) => a.n - b.n);
+
+// ---------- page text ----------
+document.getElementById('p-kicker').textContent = one(pageSec, 'kicker');
+document.getElementById('p-title').textContent = one(pageSec, 'title', 'Akari Imai');
+document.title = one(pageSec, 'title', 'Akari Imai') + ' · Plate I';
+document.getElementById('p-meta').innerHTML = split(one(pageSec, 'meta'), 1).filter(Boolean).map(escHtml).join('<br>');
+document.getElementById('p-hint').textContent = one(pageSec, 'hint');
+document.getElementById('p-explain').innerHTML = pageSec.paras.map(p => `<p>${fmt(p).replace(/\b(Fig\. \d+\.)/g, '<em>$1</em>')}</p>`).join('');
+const corr = [];
+const email = one(pageSec, 'email'), li = one(pageSec, 'linkedin'), res = one(pageSec, 'resume'), gh = one(pageSec, 'github');
+const row = (k, html, needText) => {
+  if (html) corr.push(`<li><span>${k}</span>${html}</li>`);
+  else if (DRAFT) corr.push(`<li><span>${k}</span><span class="need">${needText}</span></li>`);
+};
+row('email', email && `<a href="mailto:${escHtml(email)}">${escHtml(email)}</a>`, 'your email');
+row('linkedin', li && `<a href="${escHtml(li)}" target="_blank" rel="noopener">${escHtml(li.replace(/^https?:\/\/(www\.)?/, ''))}</a>`, 'your LinkedIn URL');
+row('résumé', res && `<a href="${/^https?:/.test(res) ? escHtml(res) : ASSETS + escHtml(res)}" target="_blank" rel="noopener">download (pdf)</a>`, 'your résumé PDF');
+row('github', gh && `<a href="${escHtml(gh)}" target="_blank" rel="noopener">${escHtml(gh.replace(/^https?:\/\/(www\.)?/, ''))}</a>`, 'optional');
+document.getElementById('p-corr').innerHTML = corr.join('');
+
+// ---------- body outline (left half, mirrored) ----------
+const L = [[136,100],[137,118],[118,126],[100,132],[90,142],[84,165],[80,200],[76,240],[72,280],[68,318],[64,340],[62,358],[68,372],[78,368],[82,350],[84,334],[88,300],[94,260],[100,215],[104,182],[108,174],[110,200],[112,240],[110,270],[106,300],[104,330],[106,360],[110,400],[114,440],[116,470],[118,510],[120,550],[120,580],[112,594],[110,604],[130,606],[138,600],[138,570],[140,520],[142,470],[144,420],[146,380],[150,364]];
+const pts = L.concat(L.slice(0, -1).reverse().map(([x, y]) => [300 - x, y]));
+function smooth(p) {
+  let d = `M${p[0][0]} ${p[0][1]}`;
+  for (let i = 0; i < p.length - 1; i++) {
+    const p0 = p[i - 1] || p[i], p1 = p[i], p2 = p[i + 1], p3 = p[i + 2] || p2;
+    d += ` C${(p1[0] + (p2[0] - p0[0]) / 6).toFixed(1)} ${(p1[1] + (p2[1] - p0[1]) / 6).toFixed(1)} ${(p2[0] - (p3[0] - p1[0]) / 6).toFixed(1)} ${(p2[1] - (p3[1] - p1[1]) / 6).toFixed(1)} ${p2[0]} ${p2[1]}`;
+  }
+  return d;
+}
+document.getElementById('body').setAttribute('d', smooth(pts));
+
+const spine = document.getElementById('spine');
+for (let y = 108, k = 0; y <= 338; y += 12, k++) {
+  const r = document.createElementNS(NS, 'rect');
+  Object.entries({ class: 'vert', x: 144, y, width: 12, height: 9, rx: 4 }).forEach(([a, v]) => r.setAttribute(a, v));
+  r.style.animationDelay = (k * .06) + 's';
+  spine.appendChild(r);
+}
+const steps = document.getElementById('steps');
+[[92, 612], [80, 590], [96, 566], [84, 544]].forEach(([x, y], k) => {
+  const e = document.createElementNS(NS, 'ellipse');
+  Object.entries({ class: 'step', cx: x, cy: y, rx: 4, ry: 7 }).forEach(([a, v]) => e.setAttribute(a, v));
+  e.style.animationDelay = (k * .35) + 's';
+  steps.appendChild(e);
+});
+
+// ---------- labels ----------
+const leaders = document.getElementById('leaders'), svg = document.getElementById('plate');
+const mlist = document.getElementById('mlist');
+S.forEach((s, i) => {
+  const li = document.createElement('li');
+  li.innerHTML = `<span class="n mono">${s.n}</span><span><span class="latin">${escHtml(s.latin)}</span><span class="plain">${escHtml(s.plain)}</span></span>`;
+  li.onclick = () => open(i);
+  mlist.appendChild(li);
+  if (s.inset) {
+    document.getElementById('inset-num').textContent = s.n;
+    document.getElementById('inset-latin').textContent = s.latin;
+    document.getElementById('inset-plain').textContent = s.plain;
+    const inset = document.getElementById('inset');
+    inset.addEventListener('mouseenter', () => state(s.id));
+    inset.addEventListener('mouseleave', () => state(null));
+    inset.addEventListener('click', () => open(i));
+    return;
+  }
+  const left = s.side === 'L';
+  const tx = left ? 290 : 710, bx = left ? 309 : 691, lx = left ? 324 : 676;
+  const g = document.createElementNS(NS, 'g');
+  g.setAttribute('class', 'lbl');
+  g.style.animationDelay = (.2 + i * .1) + 's';
+  g.innerHTML = `
+    <path class="leader" d="M${lx} ${s.y - 9} L${s.ax} ${s.ay}" />
+    <circle class="pin" cx="${s.ax}" cy="${s.ay}" r="3.4" />
+    <circle class="badge" cx="${bx}" cy="${s.y - 9}" r="13" />
+    <text class="bnum" x="${bx}" y="${s.y - 4.5}" text-anchor="middle">${s.n}</text>
+    <text class="latin" x="${tx}" y="${s.y}" text-anchor="${left ? 'end' : 'start'}">${escHtml(s.latin)}</text>
+    <text class="plain" x="${tx}" y="${s.y + 22}" text-anchor="${left ? 'end' : 'start'}">${escHtml(s.plain)}</text>
+    <rect class="hit" x="${left ? 20 : 676}" y="${s.y - 38}" width="304" height="68" />`;
+  g.addEventListener('mouseenter', () => state(s.id));
+  g.addEventListener('mouseleave', () => state(null));
+  g.addEventListener('click', () => open(i));
+  leaders.appendChild(g);
+});
+function state(id) { svg.setAttribute('class', id ? 'st-' + id : ''); }
+
+// ---------- card ----------
+const card = document.getElementById('card'), veil = document.getElementById('veil');
+let cur = 0;
+const esc = s => String(s).replace(/"/g, '&quot;');
+function polaroid(p) {
+  return `<div class="pola"><div class="ph"><img src="${ASSETS}${escHtml(p.file)}" alt="${esc(p.cap)}" data-need="${esc(escHtml(p.need || 'a photo'))}"></div><div class="cap">${escHtml(p.cap)}</div></div>`;
+}
+function photoMissing(img) {
+  if (!DRAFT) { const pola = img.closest('.pola'); if (pola) pola.remove(); return; }
+  img.parentNode.classList.add('empty');
+  img.parentNode.textContent = 'photo needed: ' + img.dataset.need;
+}
+function wirePhotos(el) {
+  el.querySelectorAll('img[data-need]').forEach(img => {
+    img.onerror = () => photoMissing(img);
+    if (img.complete && img.naturalWidth === 0) photoMissing(img);
+  });
+}
+const pageIcon = `<svg viewBox="0 0 34 42" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 2 h20 l8 8 v30 h-28 z" fill="var(--body)"/><path d="M23 2 v8 h8"/><path d="M8 17 h18 M8 22 h18 M8 27 h18 M8 32 h11" stroke-width="1.2"/></svg>`;
+const docBtn = (d, k, ready) => `<button class="doc${ready ? '' : ' todo'}" data-k="${k}">${pageIcon}<div><b>${escHtml(d.title)}</b><span>${ready ? escHtml(d.note) + ' · click to read' : escHtml(d.note) + ' · needed: ' + escHtml(d.need)}</span></div></button>`;
+function wireDocs(s) {
+  document.querySelectorAll('#c-docs .doc').forEach(b => b.onclick = () => {
+    const d = s.docs[+b.dataset.k];
+    const src = d.src || (d.file && !d.missing ? ASSETS + d.file : '');
+    if (src) view({ ...d, src });
+  });
+}
+function open(i) {
+  cur = (i + S.length) % S.length;
+  const s = S[cur];
+  document.getElementById('c-tag').innerHTML = `<i>${s.n}</i> SPECIMEN`;
+  document.getElementById('c-latin').textContent = s.latin;
+  document.getElementById('c-sub').textContent = s.sub;
+  document.getElementById('c-sum').textContent = s.sum;
+  document.getElementById('c-summary').classList.toggle('hide', !s.sum);
+  document.getElementById('c-body').innerHTML = s.body.map(p => `<p>${fmt(p)}</p>`).join('');
+  const docsEl = document.getElementById('c-docs');
+  const renderDocs = () => {
+    docsEl.innerHTML = s.docs.map((d, k) => {
+      if (d.src) return docBtn(d, k, true);
+      if (d.file && !d.missing) return docBtn({ ...d, src: ASSETS + d.file }, k, true);
+      return DRAFT ? docBtn(d, k, false) : '';
+    }).join('');
+    wireDocs(s);
+  };
+  s.docs.forEach(d => {
+    if (d.src || !d.file || d.checked) return;
+    d.checked = true;
+    fetch(ASSETS + d.file, { method: 'HEAD' }).then(r => {
+      if (r.ok) d.src = ASSETS + d.file; else d.missing = true;
+      if (S[cur] === s) renderDocs();
+    }).catch(() => {});
+  });
+  renderDocs();
+  document.getElementById('c-links').innerHTML = s.links.map(l =>
+    l.href ? `<a class="pill" href="${escHtml(l.href)}" target="_blank" rel="noopener">${escHtml(l.label)} ↗</a>` : DRAFT ? `<span class="pill todo">${escHtml(l.label)} · link needed</span>` : '').join('');
+  const photosEl = document.getElementById('c-photos');
+  photosEl.innerHTML = s.photos.map(polaroid).join('');
+  wirePhotos(photosEl);
+  document.getElementById('c-facts').innerHTML = s.facts.map(([k, v]) => `<div><dt>${escHtml(k)}</dt><dd>${fmt(v)}</dd></div>`).join('');
+  card.scrollTop = 0;
+  card.classList.add('open'); veil.classList.add('open');
+  state(s.id);
+}
+function close() { card.classList.remove('open'); veil.classList.remove('open'); state(null); }
+document.getElementById('close').onclick = close;
+veil.onclick = close;
+document.getElementById('prev').onclick = () => open(cur - 1);
+document.getElementById('next').onclick = () => open(cur + 1);
+
+const organMap = { brain: 'cerebrum', hair: 'cerebrum', bud: 'auris', heart: 'cor', vert: 'vert', stomach: 'ventriculus', rod: 'manus', bandaid: 'crura', knee: 'crura' };
+document.getElementById('figure').addEventListener('click', e => {
+  let el = e.target;
+  while (el && el.id !== 'figure') {
+    for (const k in organMap) if (el.classList && el.classList.contains(k)) { const i = S.findIndex(s => s.id === organMap[k]); if (i >= 0) return open(i); }
+    el = el.parentNode;
+  }
+});
+
+// ---------- document viewer ----------
+const viewer = document.getElementById('viewer');
+function view(d) {
+  document.getElementById('v-title').textContent = d.title;
+  document.getElementById('v-open').href = d.src;
+  document.getElementById('v-body').innerHTML = `<iframe src="${escHtml(d.src)}#view=FitH" title="${esc(d.title)}"></iframe>`;
+  viewer.classList.add('open');
+}
+function unview() { viewer.classList.remove('open'); document.getElementById('v-body').innerHTML = ''; }
+document.getElementById('v-close').onclick = unview;
+viewer.onclick = e => { if (e.target === viewer) unview(); };
+document.addEventListener('keydown', e => {
+  if (viewer.classList.contains('open')) { if (e.key === 'Escape') unview(); return; }
+  if (!card.classList.contains('open')) return;
+  if (e.key === 'Escape') close();
+  if (e.key === 'ArrowRight') open(cur + 1);
+  if (e.key === 'ArrowLeft') open(cur - 1);
+});
+
+const fig3 = one(pageSec, 'photo');
+if (fig3) { const [file, cap, need] = split(fig3, 3); const el = document.getElementById('fig3'); el.innerHTML = polaroid({ file, cap, need }); wirePhotos(el); }
+
+function fit() { svg.setAttribute('viewBox', innerWidth <= 760 ? '320 30 360 690' : '0 0 1000 720'); }
+addEventListener('resize', fit); fit();
+</script>
+</body>
+</html>
