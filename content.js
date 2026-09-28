@@ -97,7 +97,6 @@ As technical project manager, I run the engineering team’s operating cadence: 
 fact: Stele Inc. | Technical project manager · Jul 2026–present
 // when preorders open, change this line to something like:  link: Preorder Stele Fusion | https://...
 link: Join the waitlist | https://www.stele.health/#waitlist
-link: Stele website | https://www.stele.health/
 photo: stele-work.jpg | Stele | you at work or with the team
 photo: stele-earbuds.jpg | Stele Fusion | the Stele Fusion earbuds
 photo: stele-site.png | stele.health | a screenshot of the Stele website | | https://www.stele.health/
@@ -285,7 +284,6 @@ span: half
 Stele is building a lifelong record of the human body: an app that unifies data from the wearables people already own, and in-ear EEG earbuds. I run the engineering team’s operating cadence: standups, weekly progress reports, and a live view of every project’s owner, status, and deadline.
 
 link: stele.health | https://www.stele.health/
-link: Join the waitlist | https://www.stele.health/#waitlist
 
 
 # WORK · Andover Robotics
