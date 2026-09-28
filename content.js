@@ -232,12 +232,14 @@ summary: Culinary school, research, and travel across five countries.
 
 Before starting at Duke, I spent a gap year in five countries: training at Le Cordon Bleu in Kuala Lumpur, playing basketball in Singapore, conducting research in Yokohama while tutoring in Tokyo, and traveling through Mongolia and Cambodia.
 
-In Mongolia, I rode horseback across the steppe, stayed with a nomadic family, bought four pet goats, and crossed the Gobi by road. In Cambodia, I visited the floating villages and the temples of Angkor.
+In Mongolia, I rode horseback across the steppe, stayed with a nomadic family, bought four pet goats (one of them, Tapi, is pictured below), and crossed the Gobi by road. In the middle of nowhere, I ended up playing pickup basketball with a group of Mongolian kids; we didn’t share a word of language, and it didn’t matter. In Cambodia, I visited the floating villages and the temples of Angkor.
 
 fact: Gap year | Malaysia · Singapore · Japan · Mongolia · Cambodia · 2025–26
 link: Blog: Under Pressure (culinary school) | https://dukegapyear.duke.edu/2026/03/22/under-pressure-lessons-from-culinary-school/
 link: Blog: A Place I Thought I Knew (Japan) | https://dukegapyear.duke.edu/2026/08/13/a-place-i-thought-i-knew/
 photo: gobi.JPG | Mongolia | the Gobi, or you on horseback
+photo: mongolia2.jpg | Pickup basketball, Mongolia | you with the kids from the pickup game
+photo: mongolia3.jpg | Tapi the goat | you and Tapi
 photo: cambodia.JPG | Cambodia | the floating village or Angkor Wat
 
 
