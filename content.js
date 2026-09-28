@@ -83,7 +83,11 @@ Stele is building a lifelong record of the human body: an app that brings data f
 
 As technical project manager, I run the engineering team’s operating cadence: standups, a weekly progress, plan, and problems report, and a live view of every project’s owner, status, and next deadline. I also onboard new engineers and track the team’s key technical milestones.
 
+Shameless plug: the waitlist is open. If you want to be first in line when the app launches, the button below is for you.
+
 fact: Stele Inc. | Technical project manager · Jul 2026–present
+// when preorders open, change this line to something like:  link: Preorder Stele Fusion | https://...
+link: Join the waitlist | https://www.stele.health/#waitlist
 link: Stele website | https://www.stele.health/
 photo: stele-work.jpg | Stele | you at work or with the team
 photo: stele-earbuds.jpg | Arc and Halo | Arc/Halo image, only if the founders say it’s public
@@ -269,6 +273,7 @@ span: half
 Stele is building a lifelong record of the human body: an app that unifies data from the wearables people already own, and in-ear EEG earbuds. I run the engineering team’s operating cadence: standups, weekly progress reports, and a live view of every project’s owner, status, and deadline.
 
 link: stele.health | https://www.stele.health/
+link: Join the waitlist | https://www.stele.health/#waitlist
 
 
 # WORK · Andover Robotics
