@@ -9,7 +9,7 @@
 //  - Lines starting with // are notes to yourself and are ignored.
 //  - The number in each "# 1 · Cerebrum" heading decides which body part the section
 //    belongs to (1 brain, 2 ears, 3 tongue, 4 heart, 5 spine, 6 stomach, 7 hands,
-//    8 legs, 9 cells, 10 feet, 11 the book in her hand). You can rename "Cerebrum" to
+//    8 the book in her hand, 9 legs, 10 feet, 11 cells). You can rename "Cerebrum" to
 //    anything; keep the number.
 //  - Wrap a word in *asterisks* to italicize it.
 //  - Only rule: don't type a backtick ` anywhere in the text.
@@ -143,7 +143,7 @@ fact: Le Cordon Bleu Malaysia | Basic Cuisine certificate · honorable mention
 link: Blog: Under Pressure, Lessons from Culinary School | https://dukegapyear.duke.edu/2026/03/22/under-pressure-lessons-from-culinary-school/
 photo: dish-1.jpeg | Le Cordon Bleu Malaysia | your best plated dish | 50% 60%
 photo: dish-2.jpeg | Plated | another dish, or something you baked | 50% 60%
-photo: chef-whites.jpeg | Kuala Lumpur | you in chef whites | center
+photo: chef-whites.jpeg | Kuala Lumpur | you in chef whites | bottom
 
 
 # 7 · Manus
@@ -151,14 +151,14 @@ label: the hands · building
 subtitle: Building things
 summary: Head of hardware for a competitive robotics program.
 
-At Phillips Academy Andover, I was co-president and head of hardware for the FRC and FTC robotics teams. I oversaw hardware design and fabrication, recruited seven girls to the team, and taught more than 20 beginners CAD and machining. My team has won the Think Award, Design Award, and Quality Award at various regional competitions in the United States.
+At Phillips Academy Andover, I was co-president and head of hardware for the FRC and FTC robotics teams. I oversaw hardware design and fabrication, recruited seven girls to the team, and taught more than 20 beginners CAD and machining. My team has won the Think Award, Judges Award, and Quality Award at various regional competitions in the United States.
 
 fact: Andover Robotics (FRC/FTC) | Co-president, head of hardware · 2022–25
 photo: robot.jpg | Andover Robotics | the robot, or you machining | 50% 60%
 photo: cad.png | CAD | a CAD screenshot
 
 
-# 11 · Liber
+# 8 · Liber
 label: the book · wrist rehabilitation
 subtitle: An 80-page book on wrist rehabilitation
 summary: Author of an 80-page book on wrist rehabilitation and electrical impedance tomography.
@@ -174,7 +174,7 @@ paper: Electrical Impedance Tomography in Wrist Rehabilitation | 80-page book ·
 photo: xray.jpg | The finger | optional: the finger X-ray
 
 
-# 8 · Crura
+# 9 · Crura
 label: the legs · athletics
 subtitle: Basketball and high jump
 summary: Championship basketball player and two-time All-NEPSAC high jumper.
@@ -189,7 +189,7 @@ photo: basketball.jpg | Basketball | a game photo | 50% 60%
 photo: highjump.jpg | High jump | a mid-jump photo
 
 
-# 9 · Cellulae
+# 11 · Cellulae
 label: fig. 2, ×400 · cell biology
 subtitle: Cell toxicology
 summary: Independent wet-lab research on pesticide toxicity.
@@ -259,7 +259,7 @@ link: stele.health | https://www.stele.health/
 tags: FRC + FTC · head of hardware
 span: half
 
-Co-president and head of hardware for Phillips Academy Andover’s FRC and FTC teams. Oversaw hardware design and fabrication, recruited seven girls to the team, and taught 20+ beginners CAD and machining. Think, Design, and Quality Awards at regional competitions.
+Co-president and head of hardware for Phillips Academy Andover’s FRC and FTC teams. Oversaw hardware design and fabrication, recruited seven girls to the team, and taught 20+ beginners CAD and machining. Think, Judges, and Quality Awards at regional competitions.
 
 
 # WORK · Haptic spinal drill research

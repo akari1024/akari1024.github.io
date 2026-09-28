@@ -77,9 +77,6 @@
   .zone { fill: transparent; cursor: pointer; }
   .bandaid rect { fill: #F6D2B0; stroke: var(--ink); stroke-width: 1; }
   .bandaid circle { fill: #D9A67E; }
-  .knee { fill: none; stroke: var(--ink-2); stroke-width: 1; stroke-dasharray: 2 3; }
-  .sparkle { fill: var(--spark); animation: twinkle 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
-  @keyframes twinkle { 0%, 100% { transform: scale(.7) rotate(0); opacity: .6; } 50% { transform: scale(1.1) rotate(20deg); opacity: 1; } }
 
   /* labels */
   .lbl { cursor: pointer; opacity: 0; animation: fadein .6s forwards; }
@@ -133,11 +130,8 @@
   .st-liber .book-glow { opacity: 1; }
   @keyframes bookbob { from { transform: translateY(0) rotate(0); } to { transform: translateY(-7px) rotate(-8deg); } }
   @keyframes spin { to { transform: rotate(360deg); } }
-  .ball { opacity: 0; transition: opacity .2s; }
-  .st-crura .ball { opacity: 1; animation: bounce .7s cubic-bezier(.5,0,.5,1) infinite alternate; }
-  @keyframes bounce { from { transform: translateY(-34px); } to { transform: translateY(0); } }
   .st-crura .bandaid { animation: wig .4s infinite alternate; transform-box: fill-box; transform-origin: center; }
-  @keyframes wig { from { transform: rotate(-24deg); } to { transform: rotate(-10deg); } }
+  @keyframes wig { from { transform: rotate(-7deg); } to { transform: rotate(7deg); } }
   .step { opacity: 0; fill: var(--ink-2); }
   .st-pedes .step { animation: stepin 2s infinite; }
   @keyframes stepin { 0% { opacity: 0; } 15%, 60% { opacity: .7; } 100% { opacity: 0; } }
@@ -307,16 +301,7 @@
           <feFlood class="fl-sh"/><feComposite in2="off" operator="in" result="shadow"/>
           <feMerge><feMergeNode in="shadow"/><feMergeNode in="outline"/><feMergeNode in="SourceGraphic"/></feMerge>
         </filter>
-        <path id="spk" d="M0 -9 C1.5 -2 2 -1.5 9 0 C2 1.5 1.5 2 0 9 C-1.5 2 -2 1.5 -9 0 C-2 -1.5 -1.5 -2 0 -9 Z"/>
       </defs>
-
-      <g id="sparkles">
-        <use href="#spk" class="sparkle" x="400" y="70" />
-        <use href="#spk" class="sparkle" x="610" y="200" style="animation-delay:-.8s" />
-        <use href="#spk" class="sparkle" x="380" y="520" style="animation-delay:-1.4s" />
-        <use href="#spk" class="sparkle" x="630" y="600" style="animation-delay:-2s" />
-        <use href="#spk" class="sparkle" x="600" y="60" style="animation-delay:-.4s" />
-      </g>
 
       <g id="figure" transform="translate(350,60)" filter="url(#sticker)">
         <polyline class="spark" points="200,24 210,16 218,19 228,6 238,11 250,-4" />
@@ -328,10 +313,9 @@
         <g class="oface" style="pointer-events:none"><circle cx="168.5" cy="190" r="1.2"/><circle cx="175.5" cy="190" r="1.2"/><path d="M170.5 194 q1.5 1.4 3 0"/></g>
         <path class="organ stomach" d="M162 236 C172 232 187 236 187 251 C187 267 175 275 162 271 C155 269 157 262 164 262 C172 262 176 257 174 251 C172 245 166 245 162 245 Z" />
         <g class="oface" style="pointer-events:none"><circle cx="177" cy="244" r="1.2"/><circle cx="183" cy="246" r="1.2"/><path d="M178.5 250 q1.5 1.4 3 0"/></g>
-        <circle class="knee" cx="117" cy="470" r="8" />
-        <g class="bandaid" transform="translate(183,470) rotate(-18)"><rect x="-11" y="-4.5" width="22" height="9" rx="4.5"/><rect x="-4" y="-4.5" width="8" height="9" fill="#EFC39E"/><circle cx="-1.5" cy="-1.5" r=".8"/><circle cx="1.5" cy="1.5" r=".8"/><circle cx="1.5" cy="-1.5" r=".8"/><circle cx="-1.5" cy="1.5" r=".8"/></g>
+        <g transform="translate(183,470) rotate(-18)"><g class="bandaid"><rect x="-11" y="-4.5" width="22" height="9" rx="4.5"/><rect x="-4" y="-4.5" width="8" height="9" fill="#EFC39E"/><circle cx="-1.5" cy="-1.5" r=".8"/><circle cx="1.5" cy="1.5" r=".8"/><circle cx="1.5" cy="-1.5" r=".8"/><circle cx="-1.5" cy="1.5" r=".8"/></g></g>
         <circle class="handring" cx="72" cy="352" r="27" />
-        <g class="gear" transform="translate(28,314)"><path d="M0 -11 L3 -11 L4 -7 L8 -5 L11 -8 L13 -6 L10 -2 L11 2 L14 3 L13 6 L9 6 L7 9 L9 12 L6 14 L3 10 L-1 11 L-2 14 L-5 13 L-5 9 L-9 7 L-12 9 L-14 6 L-10 3 L-11 -1 L-14 -2 L-13 -5 L-9 -5 L-7 -9 L-9 -12 L-6 -14 L-3 -10 Z" fill="var(--stomach)" stroke="var(--ink)" stroke-width="1.2"/><circle r="3.5" fill="var(--body)" stroke="var(--ink)" stroke-width="1.2"/></g>
+        <g transform="translate(28,314)"><g class="gear"><path d="M0 -11 L3 -11 L4 -7 L8 -5 L11 -8 L13 -6 L10 -2 L11 2 L14 3 L13 6 L9 6 L7 9 L9 12 L6 14 L3 10 L-1 11 L-2 14 L-5 13 L-5 9 L-9 7 L-12 9 L-14 6 L-10 3 L-11 -1 L-14 -2 L-13 -5 L-9 -5 L-7 -9 L-9 -12 L-6 -14 L-3 -10 Z" fill="var(--stomach)" stroke="var(--ink)" stroke-width="1.2"/><circle r="3.5" fill="var(--body)" stroke="var(--ink)" stroke-width="1.2"/></g></g>
         <g transform="translate(233,342) rotate(-16)">
           <g class="book">
             <path class="book-glow" d="M-20 -16 l-3 -3 M17 -15 l3 -3 M0 -20 v-5" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" fill="none"/>
@@ -343,7 +327,6 @@
             <path d="M-2 5 c-2.5 -2 -3.5 -4.5 -1.2 -5.5 c1 -.4 1.8 .3 1.8 .9 c0 -.6 .8 -1.3 1.8 -.9 c2.3 1 1.3 3.5 -1.2 5.5 z" fill="#FFF1F2"/>
           </g>
         </g>
-        <g class="ball" transform="translate(238,588)"><circle r="13" fill="#E8913F" stroke="var(--ink)" stroke-width="1.3"/><path d="M-13 0 H13 M0 -13 V13 M-9 -9 Q-3 0 -9 9 M9 -9 Q3 0 9 9" fill="none" stroke="var(--ink)" stroke-width="1"/></g>
 
         <path class="hair" d="M108 74 C104 96 110 110 118 116 C114 100 116 86 120 76 Z M192 74 C196 96 190 110 182 116 C186 100 184 86 180 76 Z" />
         <ellipse class="skin" cx="112" cy="74" rx="7.5" ry="11" />
@@ -456,10 +439,10 @@ const LAYOUT = {
   5: { id: 'vert', side: 'L', y: 296, ax: 500, ay: 290 },
   6: { id: 'ventriculus', side: 'R', y: 336, ax: 524, ay: 312 },
   7: { id: 'manus', side: 'L', y: 420, ax: 421, ay: 412 },
-  8: { id: 'crura', side: 'R', y: 528, ax: 533, ay: 530 },
-  9: { id: 'cellulae', inset: true },
+  8: { id: 'liber', side: 'R', y: 430, ax: 588, ay: 398 },
+  9: { id: 'crura', side: 'R', y: 528, ax: 533, ay: 530 },
   10: { id: 'pedes', side: 'L', y: 640, ax: 468, ay: 662 },
-  11: { id: 'liber', side: 'R', y: 430, ax: 588, ay: 398 }
+  11: { id: 'cellulae', inset: true }
 };
 
 // ---------- read content.js ----------
