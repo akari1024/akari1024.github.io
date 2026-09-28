@@ -54,7 +54,7 @@ password: 0000
 email: akari.imai@duke.edu
 linkedin: https://www.linkedin.com/in/akari-i-7083242a9/
 // drop a PDF named resume.pdf into the assets folder and put "resume.pdf" here
-resume: Akari_Imai_Catalyst_Resume_for_Review.pdf
+resume: Akari_Imai_Resume.pdf
 github:
 
 // the photo at the bottom of the page
