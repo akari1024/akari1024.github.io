@@ -56,15 +56,15 @@ Fig. 1. Akari Imai, anterior view. Japanese, raised in Singapore, and educated a
 
 
 # 1 · Cerebrum
-label: the brain · machine learning
-subtitle: Machine learning, from markets to molecules
-summary: Machine learning applied to financial markets and to human health.
+label: the brain · quantitative models
+subtitle: Quantitative models, from markets to molecules
+summary: A quantitative stock model built at 16, and a machine-learning screen for pesticide toxicity.
 
-At 16, I interned at Effissimo Capital Management, an investment firm in Singapore, where I built and tested a model that used company valuation metrics to predict Japanese stock prices. The algorithm yielded 23.2% in annual gains in testing.
+At 16, I interned at Effissimo Capital Management, an investment firm in Singapore, where I built and tested a quantitative model that used company valuation metrics to predict Japanese stock prices. The strategy yielded 23.2% in annual gains in testing.
 
-I later turned the same tools toward health. In an independent project, I retrained a published random-forest model to predict how strongly 33 common pesticides bind the human androgen receptor.
+Later, in an independent project, I turned to machine learning for a health question: I retrained a published random-forest model to predict how strongly 33 common pesticides bind the human androgen receptor.
 
-fact: Effissimo Capital Mgmt. | Intern · stock-prediction model, 23.2% annual gains · Jun 2023
+fact: Effissimo Capital Mgmt. | Intern · quantitative stock model, 23.2% annual gains · Jun 2023
 fact: Independent research | Pesticide–androgen receptor binding · 2023–25
 photo: pesticide-figure.png | Predicted binding, 33 pesticides | the ranking chart from the pesticide project
 
@@ -195,8 +195,8 @@ I’ve played competitive basketball for most of my life, winning Singapore’s 
 Basketball has been a constant wherever I’ve lived, from Sunday games with a neighborhood team in Tokyo to pickup games in Mongolia.
 
 fact: Basketball | Singapore U16 + U18 D1 champion · U16 3x3 national champion · 2025 Asia Pacific Cup
-fact: High jump | 2x All-NEPSAC
-photo: basketball.jpg | Basketball | a game photo | 50% 60%
+fact: High jump | 2x All-NEPSAC, 1x ALL-NEPSAC Honorable Mention
+photo: basketball.jpg | Basketball | a game photo | 50% 50%
 photo: highjump.jpg | High jump | a mid-jump photo
 
 
@@ -247,7 +247,7 @@ tagline: BME + MechE @ Duke ’30. Technical project manager @ Stele. First-auth
 experience: Stele Inc. | Technical project manager | Jul 2026 – Present
 experience: Yokohama National University | Visiting researcher, surgical robotics | Jan – Jul 2026
 experience: Keio University | Research intern, haptic drill robots | Jun – Jul 2024
-experience: Effissimo Capital Management | Intern · stock-prediction model, 23.2% annual gains | Jun 2023
+experience: Effissimo Capital Management | Intern · quantitative stock model, 23.2% annual gains | Jun 2023
 education: Duke University | B.S. Biomedical Engineering + Mechanical Engineering | 2026 – 2030
 education: Phillips Academy Andover | | 2022 – 2025
 education: Le Cordon Bleu Malaysia | Basic Cuisine certificate, honorable mention | 2025
