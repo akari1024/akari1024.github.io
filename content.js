@@ -60,11 +60,11 @@ label: the brain · machine learning
 subtitle: Machine learning, from markets to molecules
 summary: Machine learning applied to financial markets and to human health.
 
-At 16, I joined Effissimo Capital Management in Singapore as a research intern, studying machine learning for equity investing while also building a model using various valuation metrics to forecast the Japanese stock market.
+At 16, I interned at Effissimo Capital Management, an investment firm in Singapore, where I built and tested a model that used company valuation metrics to predict Japanese stock prices. The algorithm yielded 23.2% in annual gains in testing.
 
 I later turned the same tools toward health. In an independent project, I retrained a published random-forest model to predict how strongly 33 common pesticides bind the human androgen receptor.
 
-fact: Effissimo Capital Mgmt. | Research intern, machine learning · Jun 2023
+fact: Effissimo Capital Mgmt. | Intern · stock-prediction model, 23.2% annual gains · Jun 2023
 fact: Independent research | Pesticide–androgen receptor binding · 2023–25
 photo: pesticide-figure.png | Predicted binding, 33 pesticides | the ranking chart from the pesticide project
 
@@ -87,13 +87,16 @@ photo: stele-earbuds.jpg | Arc and Halo | Arc/Halo image, only if the founders s
 # 3 · Lingua
 label: the tongue · languages
 subtitle: English, Japanese, and Chinese
-summary: Trilingual in English, Japanese, and Chinese.
+summary: Trilingual in English, Japanese, and Chinese, and co-president of the Andover Japanese Connection.
 
 I’m Japanese, grew up in Singapore, and went to high school in Massachusetts, so I’ve always moved between languages and cultures.
+
+At Andover, I co-led the Andover Japanese Connection, reviving a club that had been inactive for several years. We rebuilt it into a space for cultural events, interactive lessons, and homework help for students taking Japanese, grew it to more than 30 members, and raised over $400 for victims of natural disasters in Japan.
 
 In 2026, I spent six months as a visiting researcher at Yokohama National University, working day to day in Japanese alongside my lab.
 
 fact: Languages | English · 日本語 · 中文
+fact: Andover Japanese Connection | Co-president · Dec 2023–May 2025
 link: Blog: A Place I Thought I Knew | https://dukegapyear.duke.edu/2026/08/13/a-place-i-thought-i-knew/
 photo: takopa.jpg | Yokohama National University | the takoyaki welcome party with your lab
 
@@ -103,11 +106,14 @@ label: the heart · teaching
 subtitle: Teaching and mentoring
 summary: Years of teaching, from Lego robotics to English tutoring.
 
-For three years, I co-founded and coached FIRST Lego League teams, working with more than 30 students; one team qualified for the state championship.
+I co-founded a FIRST Lego League robotics program at Washington Square Academy and built it from the ground up: writing the curriculum, running weekly sessions, and mentoring more than ten students a week through robot design, programming, and their innovation projects. The team placed in the top ten at regionals and qualified for the state competition.
+
+At the Cormier Youth Center, I mentored elementary and middle school FLL teams and helped host and judge local scrimmages. One of my mentee teams won first place for the Innovation Project Award at the Newton regional.
 
 In Tokyo, I volunteered with KIDSDOOR, a nonprofit that supports students from low-income families. I tutored about ten different Japanese middle and high school students in English one-on-one.
 
-fact: FIRST Lego League | Coach and co-founder · 2022–24
+fact: FIRST Lego League, Washington Square Academy | Co-founder and coach · 2022–24
+fact: Cormier Youth Center | FLL mentor and scrimmage judge
 fact: KIDSDOOR, Tokyo | English tutor · Jan–Apr 2026
 link: KIDSDOOR | https://kidsdoor.net/
 photo: fll.jpg | FIRST Lego League | FLL team, robot, or trophy (no kids’ faces unless parents agreed)
@@ -154,9 +160,11 @@ label: the hands · building
 subtitle: Building things
 summary: Head of hardware for a competitive robotics program.
 
-At Phillips Academy Andover, I was co-president and head of hardware for the FRC and FTC robotics teams. I oversaw hardware design and fabrication, recruited seven girls to the team, and taught more than 20 beginners CAD and machining. My team has won the Think Award, Judges Award, and Quality Award at various regional competitions in the United States.
+I did FIRST robotics for four years across two schools, starting with FRC in ninth grade. At Phillips Academy Andover, I went from social media manager to head of hardware to co-president of the FRC and FTC teams.
 
-fact: Andover Robotics (FRC/FTC) | Co-president, head of hardware · 2022–25
+As head of hardware, I led mechanical design and fabrication and trained more than 20 beginners in CAD, machining, tool safety, and assembly. I also recruited seven girls to the team. As co-president, I ran meetings, delegated work across the board, and prepared the team for two regional competitions, where we won the Think, Judges, and Quality Awards. Along the way, I organized fundraisers that raised over $300 for educational opportunities for underprivileged students in Lawrence.
+
+fact: Andover Robotics (FRC/FTC) | Co-president · head of hardware · 2022–25
 photo: robot.jpg | Andover Robotics | the robot, or you machining | 50% 0%
 photo: cad.png | CAD | a CAD screenshot
 
@@ -239,14 +247,14 @@ tagline: BME + MechE @ Duke ’30. Technical project manager @ Stele. First-auth
 experience: Stele Inc. | Technical project manager | Jul 2026 – Present
 experience: Yokohama National University | Visiting researcher, surgical robotics | Jan – Jul 2026
 experience: Keio University | Research intern, haptic drill robots | Jun – Jul 2024
-experience: Effissimo Capital Management | Research intern, machine learning | Jun 2023
+experience: Effissimo Capital Management | Intern · stock-prediction model, 23.2% annual gains | Jun 2023
 education: Duke University | B.S. Biomedical Engineering + Mechanical Engineering | 2026 – 2030
 education: Phillips Academy Andover | | 2022 – 2025
 education: Le Cordon Bleu Malaysia | Basic Cuisine certificate, honorable mention | 2025
 publication: Electromyographic Evaluation of Automated Penetration Detection in Spinal Drilling | first author · IEEE ISIE 2026 | isie-2026.pdf
 publication: Impact of Gravity Compensation on Penetration Detection of Haptic Drill Robot | first author · submitted to IEEJ · YNU repository | https://ynu.repo.nii.ac.jp/records/2001367
 publication: Electrical Impedance Tomography in Wrist Rehabilitation | 80-page book · independent project | https://docs.google.com/document/d/1_YkNgDY76VPKcRwH2CprpCdm2fl4S6g_1rPrfamrwPk/preview
-other: Conditional acceptance, Duke-NUS Medical School (MD) · Coached FIRST Lego League for three years · Volunteer English tutor, KIDSDOOR Tokyo · Singapore U16 and U18 Division 1 basketball champion · 2x All-NEPSAC high jump · English, Japanese, Chinese
+other: Conditional acceptance, Duke-NUS Medical School (MD) · Co-founded a FIRST Lego League program (state qualifier) and mentored FLL teams at Cormier Youth Center · Co-president, Andover Japanese Connection · Volunteer English tutor, KIDSDOOR Tokyo · Singapore U16 and U18 Division 1 basketball champion · 2x All-NEPSAC high jump · English, Japanese, Chinese
 
 
 # WORK · Stele
@@ -262,7 +270,7 @@ link: stele.health | https://www.stele.health/
 tags: FRC + FTC · head of hardware
 span: half
 
-Co-president and head of hardware for Phillips Academy Andover’s FRC and FTC teams. Oversaw hardware design and fabrication, recruited seven girls to the team, and taught 20+ beginners CAD and machining. Think, Judges, and Quality Awards at regional competitions.
+Four years of FIRST robotics across two schools. At Phillips Academy Andover, progressed from social media manager to head of hardware to co-president of the FRC and FTC teams: led mechanical design and fabrication, trained 20+ beginners in CAD and machining, recruited seven girls to the team, and prepared the team for two regional competitions (Think, Judges, and Quality Awards).
 
 
 # WORK · Haptic spinal drill research
