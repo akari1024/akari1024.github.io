@@ -141,8 +141,8 @@ The kitchen taught me to stay calm and precise under pressure. Cooking is also h
 
 fact: Le Cordon Bleu Malaysia | Basic Cuisine certificate · honorable mention
 link: Blog: Under Pressure, Lessons from Culinary School | https://dukegapyear.duke.edu/2026/03/22/under-pressure-lessons-from-culinary-school/
-photo: dish-1.jpeg | Le Cordon Bleu Malaysia | your best plated dish | 50% 60%
-photo: dish-2.jpeg | Plated | another dish, or something you baked | 50% 60%
+photo: dish-1.jpeg | Le Cordon Bleu Malaysia | your best plated dish | "50% 60%"
+photo: dish-2.jpeg | Plated | another dish, or something you baked | "50% 60%"
 photo: chef-whites.jpeg | Kuala Lumpur | you in chef whites | bottom
 
 
