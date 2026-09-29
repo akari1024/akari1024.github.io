@@ -260,19 +260,17 @@
   @keyframes fadeup { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
   .intro { text-align: center; color: var(--ink-2); font-size: 17px; max-width: 620px; margin: 8px auto 12px; line-height: 1.5; }
 
-  /* projects, as a catalogue */
-  .catalog { max-width: 880px; margin: 0 auto; padding: 4px 0 8px; }
-  .proj { display: grid; grid-template-columns: 40px 1fr auto; gap: 0 14px; align-items: start; width: 100%; text-align: left; padding: 16px 8px 15px; background: none; border: 0; border-bottom: 1.5px dotted var(--rule); color: var(--ink); font: inherit; cursor: pointer; animation: fadeup .5s cubic-bezier(.2,.8,.2,1) both; transition: background .2s; }
-  .proj:hover, .proj:focus-visible { background: var(--paper-2); outline: none; }
-  .proj .n { font-family: 'DM Mono', monospace; font-size: 12px; display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--accent-2); border: 1.4px solid var(--ink); color: var(--ink); margin-top: 4px; transition: background .2s; }
-  .proj:hover .n, .proj:focus-visible .n { background: var(--accent); }
-  .proj b { display: block; font-weight: 500; font-style: italic; font-size: 27px; line-height: 1.15; font-variation-settings: "SOFT" 100, "WONK" 1; transition: color .2s; }
-  .proj:hover b, .proj:focus-visible b { color: var(--accent); }
-  .proj .rv-tags { display: block; margin: 4px 0 0; }
-  .proj .r { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; padding-top: 6px; }
-  .proj .when { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--ink-2); text-align: right; max-width: 230px; line-height: 1.5; }
-  .proj .go { font-style: italic; color: var(--accent); font-size: 15px; opacity: 0; transform: translateX(-6px); transition: opacity .2s, transform .25s; }
-  .proj:hover .go, .proj:focus-visible .go { opacity: 1; transform: none; }
+  /* projects: a key at the top, then every project in full */
+  .catalog { max-width: 940px; margin: 0 auto; padding: 4px 0 8px; }
+  .key { list-style: none; margin: 6px 0 4px; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0 28px; border-top: 1.5px dotted var(--rule); }
+  .key li { animation: fadeup .5s cubic-bezier(.2,.8,.2,1) both; }
+  .key-item { display: grid; grid-template-columns: 30px 1fr; gap: 12px; align-items: start; width: 100%; text-align: left; font: inherit; color: var(--ink); background: none; border: 0; border-bottom: 1.5px dotted var(--rule); border-radius: 8px 8px 0 0; padding: 10px 6px 9px; cursor: pointer; transition: background .2s; }
+  .key-item:hover, .key-item:focus-visible { background: var(--paper-2); outline: none; }
+  .key-item .n { font-family: 'DM Mono', monospace; font-size: 12px; display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--accent-2); border: 1.4px solid var(--ink); margin-top: 3px; transition: background .2s; }
+  .key-item:hover .n, .key-item:focus-visible .n { background: var(--accent); }
+  .key-item b { display: block; font-weight: 500; font-style: italic; font-size: 21px; line-height: 1.15; font-variation-settings: "SOFT" 100, "WONK" 1; transition: color .2s; }
+  .key-item:hover b, .key-item:focus-visible b { color: var(--accent); }
+  .key-item .rv-tags { display: block; margin: 3px 0 0; font-size: 10px; }
 
   /* skills, as a legend */
   .skills { max-width: 880px; margin: 0 auto; padding: 4px 0 8px; }
@@ -281,8 +279,22 @@
   .skill dt { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
   .skill dd { margin: 0; font-size: 24px; font-style: italic; font-weight: 500; line-height: 1.4; font-variation-settings: "SOFT" 100, "WONK" 1; }
   .skill dd i { font-style: normal; font-weight: 400; color: var(--accent); padding: 0 5px; }
-  .skill dd span { transition: color .2s; }
-  .skill dd span:hover { color: var(--accent); }
+  /* a skill that links to projects: hover / tap shows where it was used */
+  .sk { position: relative; display: inline-block; }
+  .sk-name { font: inherit; color: inherit; text-align: left; background: none; border: 0; padding: 0; cursor: default; }
+  .sk.has .sk-name { cursor: pointer; text-decoration: underline; text-decoration-color: var(--accent-2); text-decoration-thickness: 2px; text-underline-offset: 5px; transition: color .2s, text-decoration-color .2s; }
+  .sk.has:hover .sk-name, .sk.open .sk-name, .sk.has .sk-name:focus-visible { color: var(--accent); text-decoration-color: var(--accent); outline: none; }
+  .sk-tip { position: absolute; left: 0; top: calc(100% + 8px); z-index: 5; min-width: 230px; max-width: min(340px, 80vw); background: var(--paper); border: 1.5px solid var(--ink); border-radius: 12px; padding: 10px 14px 8px; box-shadow: 4px 4px 0 var(--accent-2); font-style: normal; font-weight: 400; font-size: 16px; line-height: 1.4; text-align: left; opacity: 0; transform: translateY(-4px); pointer-events: none; transition: opacity .18s, transform .22s; }
+  .sk-tip::before { content: ""; position: absolute; left: 18px; top: -7px; width: 10px; height: 10px; background: var(--paper); border-left: 1.5px solid var(--ink); border-top: 1.5px solid var(--ink); transform: rotate(45deg); }
+  .sk-tip::after { content: ""; position: absolute; left: 0; right: 0; top: -10px; height: 10px; }
+  .sk.flip .sk-tip { left: auto; right: 0; }
+  .sk.flip .sk-tip::before { left: auto; right: 18px; }
+  .sk.has:hover .sk-tip, .sk.open .sk-tip, .sk.has:focus-within .sk-tip { opacity: 1; transform: none; pointer-events: auto; }
+  .sk-lbl { display: block; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 4px; }
+  .sk-go { display: block; width: 100%; text-align: left; font: inherit; font-size: 16px; color: var(--ink); background: none; border: 0; border-bottom: 1.5px dotted var(--rule); padding: 4px 0; cursor: pointer; transition: color .15s; }
+  .sk-go:last-child { border-bottom: 0; }
+  .sk-go::after { content: " →"; color: var(--accent); }
+  .sk-go:hover, .sk-go:focus-visible { color: var(--accent); outline: none; }
 
   /* contact, as a postcard */
   .postcard { position: relative; max-width: 880px; margin: 16px auto 8px; border: 1.5px solid var(--ink); border-radius: 16px; background: var(--body); display: grid; grid-template-columns: 1.25fr 1fr; box-shadow: 8px 8px 0 var(--accent-2); animation: fadeup .5s cubic-bezier(.2,.8,.2,1) both; }
@@ -329,6 +341,40 @@
   .lbl:focus-visible .leader { stroke: var(--accent); }
   .inset-grp:focus-visible .ilatin { fill: var(--accent); }
   .mobile-list li:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+
+  /* one project, written out in full (#project/<slug> scrolls to it) */
+  .pg { margin: 30px 0 0; padding: 32px 0 6px; border-top: 1.5px solid var(--rule); scroll-margin-top: 14px; animation: fadeup .5s cubic-bezier(.2,.8,.2,1) both; }
+  .pg-crumbs { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
+  .pg-n { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--accent-2); border: 1.4px solid var(--ink); color: var(--ink); font-style: normal; margin-right: 8px; vertical-align: middle; }
+  .pg-back { font: inherit; letter-spacing: inherit; text-transform: inherit; background: none; border: 0; color: var(--accent); cursor: pointer; padding: 4px 0; }
+  .pg-back:hover { text-decoration: underline; }
+  .pg-back:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .pg-title { margin: 14px 0 0; font-size: clamp(40px, 6vw, 68px); font-style: italic; font-weight: 500; line-height: 1; letter-spacing: -.01em; font-variation-settings: "SOFT" 100, "WONK" 1; outline: none; }
+  .pg-tags { margin: 14px 0 0; font-size: 12px; }
+  .pg-when { margin: 8px 0 0; font-size: 20px; color: var(--ink-2); }
+  .pg-sum { margin: 14px 0 0; font-size: 22px; font-style: italic; color: var(--accent); max-width: 720px; line-height: 1.35; }
+  .pg-grid { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(240px, .8fr); gap: 40px; margin-top: 30px; padding-top: 26px; border-top: 1.5px dotted var(--rule); align-items: start; }
+  .pg-main p { margin: 0 0 16px; font-size: 19px; line-height: 1.65; max-width: 64ch; }
+  .pg-main .callout { max-width: 64ch; }
+  .pg-block { margin: 26px 0 0; }
+  .pg-block h3 { margin: 0 0 10px; font-family: 'DM Mono', monospace; font-weight: 500; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-2); padding-bottom: 8px; border-bottom: 1.5px solid var(--rule); }
+  .pg-block ul { margin: 0; padding: 0; list-style: none; max-width: 64ch; }
+  .pg-block li { position: relative; padding-left: 24px; margin: 0 0 8px; font-size: 18px; line-height: 1.55; }
+  .pg-block li::before { content: ""; position: absolute; left: 4px; top: .62em; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-2); border: 1.2px solid var(--ink); }
+  .pg-block.outcome { border-left: 3px solid var(--accent); padding: 4px 0 4px 18px; max-width: 64ch; }
+  .pg-block.outcome h3 { border: 0; padding: 0; margin-bottom: 6px; }
+  .pg-block.outcome p { margin: 0 0 8px; font-style: italic; font-size: 20px; line-height: 1.45; }
+  .pg-side { position: sticky; top: 20px; }
+  .pg-side dl { margin: 0 0 16px; border-top: 1.5px dotted var(--rule); }
+  .pg-side dl:empty { display: none; }
+  .pg-side dl div { display: grid; grid-template-columns: 74px 1fr; gap: 10px; padding: 9px 0; border-bottom: 1.5px dotted var(--rule); font-size: 15px; line-height: 1.45; }
+  .pg-side dt { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); padding-top: 3px; }
+  .pg-side dd { margin: 0; }
+  .pg-side .docs { margin: 0 0 12px; }
+  .pg-side .links { margin: 0; }
+  .pg-photos { grid-template-columns: repeat(3, 1fr); gap: 26px 22px; margin: 36px 4px 10px; }
+  .pg-photos:has(> .pola:nth-child(2):last-child) { grid-template-columns: repeat(2, 1fr); max-width: 720px; margin-left: auto; margin-right: auto; }
+  .pg-photos > .pola:only-child { width: min(100%, 380px); }
 
   /* recruiter view */
   .meta .pill { display: inline-block; margin-top: 8px; font-size: 12px; padding: 3px 12px; font-family: 'DM Mono', monospace; }
@@ -402,15 +448,17 @@
     .rv-row .rv-date { text-align: left; }
     nav.tabs { gap: 5px; }
     nav.tabs button { padding: 8px 10px 7px; font-size: 11px; letter-spacing: .1em; }
-    .proj { grid-template-columns: 34px 1fr; padding: 14px 4px 13px; }
-    .proj .r { grid-column: 2; flex-direction: row; justify-content: space-between; align-items: baseline; padding-top: 4px; }
-    .proj b { font-size: 23px; }
+    .key { grid-template-columns: 1fr; }
     .skill { grid-template-columns: 1fr; gap: 4px; padding: 14px 4px; }
     .skill dd { font-size: 21px; }
     .postcard { grid-template-columns: 1fr; box-shadow: 5px 5px 0 var(--accent-2); }
     .postcard .msg { padding: 26px 22px 22px; border-right: none; border-bottom: 1.5px dotted var(--rule); }
     .postcard .addr { padding: 22px 22px 20px; }
     .postmark { right: 66px; }
+    .pg-grid { grid-template-columns: 1fr; gap: 22px; margin-top: 22px; padding-top: 18px; }
+    .pg-side { position: static; }
+    .pg-main p { font-size: 18px; }
+    .pg-photos { grid-template-columns: 1fr 1fr; gap: 18px 12px; }
   }
 </style>
 </head>
@@ -651,7 +699,7 @@ function para(p) {
   return `<div class="callout">${lead ? `<b>${fmt(lead[1])}:</b> ${fmt(lead[2])}` : fmt(m[1])}</div>`;
 }
 const split = (s, n) => { const p = s.split('|').map(x => x.trim()); while (p.length < n) p.push(''); return p; };
-const KEYS = /^(label|subtitle|summary|fact|photo|link|paper|title|kicker|meta|hint|email|linkedin|resume|github|password|guard|tagline|experience|education|publication|other|tags|span|when|role|tools|work|feature|covers|decision|challenge|outcome|slug|category|headline|blurb|cta|note):\s*(.*)$/i;
+const KEYS = /^(label|subtitle|summary|fact|photo|link|paper|title|kicker|meta|hint|email|linkedin|resume|github|password|guard|tagline|experience|education|publication|other|tags|span|when|role|tools|work|feature|covers|decision|challenge|outcome|slug|category|headline|blurb|cta|note|gatetext):\s*(.*)$/i;
 function parseContent(raw) {
   const sections = [];
   let cur = null;
@@ -725,7 +773,19 @@ const P = sections.filter(s => /^project\s*[·.:\-–]/i.test(s.head)).map((sec,
     docs: (sec.keys.paper || []).map(d => { const [title, note, file, need] = split(d, 4); return { title, note, file, need, src: /^https?:/.test(file) ? file : '' }; })
   };
 });
-const SK = (skSec.keys.category || []).map(l => { const [name, list] = split(l, 2); return { name, items: list.split('·').map(x => x.trim()).filter(Boolean) }; }).filter(c => c.name && c.items.length);
+// skills: "category: Name | Python [pesticides, effissimo] · Java · C++"; the [brackets] name project slugs.
+// Without brackets, a skill is matched to any project whose tools: or tags: line contains it word for word.
+const SK = (skSec.keys.category || []).map(l => {
+  const [name, list] = split(l, 2);
+  const items = list.split('·').map(x => x.trim()).filter(Boolean).map(x => {
+    const m = x.match(/^(.*?)\s*\[([^\]]*)\]\s*$/);
+    const skill = m ? m[1].trim() : x, slugs = m ? m[2].split(',').map(s => s.trim()).filter(Boolean) : null;
+    const word = new RegExp('(^|[^a-z0-9])' + skill.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '([^a-z0-9]|$)');
+    const projects = slugs ? slugs.map(s => P.find(p => p.slug === s)).filter(Boolean) : P.filter(p => word.test((p.tools + ' ' + p.tags).toLowerCase()));
+    return { name: skill, projects };
+  });
+  return { name, items };
+}).filter(c => c.name && c.items.length);
 
 // ---------- password gate (soft: the password lives in content.js) ----------
 (function gate() {
@@ -750,6 +810,9 @@ const SK = (skSec.keys.category || []).map(l => { const [name, list] = split(l, 
     }
     document.getElementById('gate-text').textContent = `This site is guarded by ${name || 'a toy poodle'}. If you were sent here, you have the password.`;
   }
+  // "gatetext:" in the PAGE section replaces that sentence (e.g. to state the password outright)
+  const gateText = one(pageSec, 'gatetext');
+  if (gateText) document.getElementById('gate-text').textContent = gateText;
   el.hidden = false; document.body.classList.add('gated');
   setTimeout(() => input.focus(), 50);
   form.onsubmit = e => {
@@ -982,11 +1045,27 @@ function wirePhotos(el) {
 }
 const pageIcon = `<svg viewBox="0 0 34 42" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 2 h20 l8 8 v30 h-28 z" fill="var(--body)"/><path d="M23 2 v8 h8"/><path d="M8 17 h18 M8 22 h18 M8 27 h18 M8 32 h11" stroke-width="1.2"/></svg>`;
 const docBtn = (d, k, ready) => `<button class="doc${ready ? '' : ' todo'}" data-k="${k}">${pageIcon}<div><b>${escHtml(d.title)}</b><span>${ready ? escHtml(d.note) + ' · click to read' : escHtml(d.note) + ' · needed: ' + escHtml(d.need)}</span></div></button>`;
-function wireDocs(s) {
-  document.querySelectorAll('#c-docs .doc').forEach(b => b.onclick = () => {
+// documents: PDFs in assets are checked once with a HEAD request; missing ones are hidden on the live site
+const docsHtml = s => s.docs.map((d, k) => {
+  if (d.src) return docBtn(d, k, true);
+  if (d.file && !d.missing) return docBtn({ ...d, src: ASSETS + d.file }, k, true);
+  return DRAFT ? docBtn(d, k, false) : '';
+}).join('');
+function wireDocsIn(el, s) {
+  el.querySelectorAll('.doc').forEach(b => b.onclick = () => {
     const d = s.docs[+b.dataset.k];
     const src = d.src || (d.file && !d.missing ? ASSETS + d.file : '');
     if (src) view({ ...d, src });
+  });
+}
+function checkDocs(s, rerender) {
+  s.docs.forEach(d => {
+    if (d.src || !d.file || d.checked) return;
+    d.checked = true;
+    fetch(ASSETS + d.file, { method: 'HEAD' }).then(r => {
+      if (r.ok) d.src = ASSETS + d.file; else d.missing = true;
+      rerender();
+    }).catch(() => {});
   });
 }
 // the same card shows a body part (from S) or a project (from P); prev/next stay within one list
@@ -1013,22 +1092,8 @@ function openIn(list, i) {
     block('What I worked on', s.work) + block('Features', s.features) + block('What it covers', s.covers) + block('Decisions', s.decisions) + block('Challenges', s.challenges) +
     (s.outcome.length ? `<div class="outcome"><h4>Outcome</h4>${s.outcome.map(o => `<p>${fmt(o)}</p>`).join('')}</div>` : '');
   const docsEl = document.getElementById('c-docs');
-  const renderDocs = () => {
-    docsEl.innerHTML = s.docs.map((d, k) => {
-      if (d.src) return docBtn(d, k, true);
-      if (d.file && !d.missing) return docBtn({ ...d, src: ASSETS + d.file }, k, true);
-      return DRAFT ? docBtn(d, k, false) : '';
-    }).join('');
-    wireDocs(s);
-  };
-  s.docs.forEach(d => {
-    if (d.src || !d.file || d.checked) return;
-    d.checked = true;
-    fetch(ASSETS + d.file, { method: 'HEAD' }).then(r => {
-      if (r.ok) d.src = ASSETS + d.file; else d.missing = true;
-      if (listNow[cur] === s) renderDocs();
-    }).catch(() => {});
-  });
+  const renderDocs = () => { docsEl.innerHTML = docsHtml(s); wireDocsIn(docsEl, s); };
+  checkDocs(s, () => { if (listNow[cur] === s) renderDocs(); });
   renderDocs();
   document.getElementById('c-links').innerHTML = s.links.map(l =>
     l.href ? `<a class="pill" href="${escHtml(l.href)}" target="_blank" rel="noopener">${escHtml(l.label)} ↗</a>` : DRAFT ? `<span class="pill todo">${escHtml(l.label)} · link needed</span>` : '').join('');
@@ -1043,7 +1108,6 @@ function openIn(list, i) {
   [...card.children].forEach((el, k) => el.style.setProperty('--i', k));
   lockScroll();
   state(proj ? null : s.id);
-  if (proj) history.replaceState(null, '', baseUrl() + '#projects/' + s.slug);
   setTimeout(() => { if (card.classList.contains('open')) card.focus({ preventScroll: true }); }, 30);
 }
 // freeze the page behind while a card or the reader is open
@@ -1051,7 +1115,6 @@ function lockScroll() { document.body.classList.toggle('modal-open', card.classL
 function close() {
   if (!card.classList.contains('open')) return;
   card.classList.remove('open'); veil.classList.remove('open'); lockScroll(); state(null);
-  if (listNow === P && /^#projects\//.test(location.hash)) history.replaceState(null, '', baseUrl() + '#projects');
   // hand focus back to whatever opened the card
   if (opener && opener !== document.body && document.contains(opener) && opener.focus) { try { opener.focus({ preventScroll: true }); } catch (e) {} }
   else card.blur();
@@ -1161,18 +1224,76 @@ function copyText(t, done, fail) {
   };
   if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done, legacy); else legacy();
 }
+// one project written out in full; all of them are stacked on the projects tab under a key
+function projectArticle(s) {
+  const row = ([k, v]) => `<div><dt>${escHtml(k)}</dt><dd>${fmt(v)}</dd></div>`;
+  const meta = [['role', s.role], ['tools', s.tools]].filter(r => r[1]).concat(s.facts);
+  const block = (title, items) => items.length ? `<section class="pg-block"><h3>${title}</h3><ul>${items.map(x => `<li>${fmt(x)}</li>`).join('')}</ul></section>` : '';
+  const links = s.links.map(l => l.href ? `<a class="pill" href="${escHtml(l.href)}" target="_blank" rel="noopener">${escHtml(l.label)} ↗</a>` : DRAFT ? `<span class="pill todo">${escHtml(l.label)} · link needed</span>` : '').join('');
+  return `<article class="pg" id="p-${escHtml(s.slug)}">
+    <header class="pg-head">
+      <div class="pg-crumbs mono"><span><i class="pg-n">${s.n}</i>project ${s.n} of ${P.length}</span><button type="button" class="pg-back" data-top>↑ back to the key</button></div>
+      <h2 class="pg-title" tabindex="-1">${escHtml(s.title)}</h2>
+      ${s.tags ? `<div class="rv-tags pg-tags">${escHtml(s.tags)}</div>` : ''}
+      ${s.when ? `<div class="pg-when">${escHtml(s.when)}</div>` : ''}
+      ${s.sum ? `<p class="pg-sum">${fmt(s.sum)}</p>` : ''}
+    </header>
+    <div class="pg-grid">
+      <div class="pg-main">
+        ${s.body.map(para).join('')}
+        ${block('What I worked on', s.work)}${block('Features', s.features)}${block('What it covers', s.covers)}${block('Decisions', s.decisions)}${block('Challenges', s.challenges)}
+        ${s.outcome.length ? `<section class="pg-block outcome"><h3>Outcome</h3>${s.outcome.map(o => `<p>${fmt(o)}</p>`).join('')}</section>` : ''}
+      </div>
+      <aside class="pg-side">
+        <dl>${meta.map(row).join('')}</dl>
+        <div class="docs"></div>
+        <div class="links">${links}</div>
+      </aside>
+    </div>
+    <div class="photos pg-photos">${s.photos.map(polaroid).join('')}</div>
+  </article>`;
+}
 function renderProjects() {
   const el = document.getElementById('view-projects');
   if (!P.length) { el.innerHTML = DRAFT ? '<p class="intro">Add a "# PROJECT · Title" section to content.js to fill this tab.</p>' : ''; return; }
   el.innerHTML = `<div class="catalog">` + prjSec.paras.map(p => `<p class="intro">${fmt(p)}</p>`).join('') +
-    P.map((p, i) => `<button type="button" class="proj" data-i="${i}" style="animation-delay:${(.05 + i * .06).toFixed(2)}s"><span class="n">${p.n}</span><span class="t"><b>${escHtml(p.title)}</b>${p.tags ? `<span class="rv-tags">${escHtml(p.tags)}</span>` : ''}</span><span class="r">${p.when ? `<span class="when">${escHtml(p.when)}</span>` : ''}<span class="go" aria-hidden="true">open →</span></span></button>`).join('') + `</div>`;
-  el.querySelectorAll('.proj').forEach(b => b.onclick = () => openIn(P, +b.dataset.i));
+    `<ol class="key" id="key" aria-label="Key">` + P.map((p, i) => `<li style="animation-delay:${(.05 + i * .05).toFixed(2)}s"><button type="button" class="key-item" data-slug="${escHtml(p.slug)}"><span class="n">${p.n}</span><span><b>${escHtml(p.title)}</b>${p.tags ? `<span class="rv-tags">${escHtml(p.tags)}</span>` : ''}</span></button></li>`).join('') + `</ol>` +
+    P.map(projectArticle).join('') + `</div>`;
+  el.querySelectorAll('.key-item').forEach(b => b.onclick = () => jumpTo(b.dataset.slug, true));
+  el.querySelectorAll('[data-top]').forEach(b => b.onclick = () => { history.replaceState(null, '', baseUrl() + '#projects'); document.getElementById('key').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+  P.forEach(s => {
+    const art = el.querySelector('#p-' + s.slug), docsEl = art.querySelector('.docs');
+    const renderDocs = () => { docsEl.innerHTML = docsHtml(s); wireDocsIn(docsEl, s); };
+    checkDocs(s, renderDocs);
+    renderDocs();
+    wirePhotos(art.querySelector('.pg-photos'));
+  });
+}
+// scroll the projects tab to one project (its address is #project/<slug>)
+function jumpTo(slug, smooth) {
+  const art = document.getElementById('p-' + slug);
+  if (!art) return;
+  history.replaceState(null, '', baseUrl() + '#project/' + slug);
+  art.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'start' });
+  art.querySelector('.pg-title').focus({ preventScroll: true });
 }
 function renderSkills() {
   const el = document.getElementById('view-skills');
   if (!SK.length) { el.innerHTML = DRAFT ? '<p class="intro">Add "category: Name | a · b · c" lines under # SKILLS in content.js to fill this tab.</p>' : ''; return; }
+  const item = x => !x.projects.length ? `<span class="sk"><span class="sk-name">${fmt(x.name)}</span></span>` :
+    `<span class="sk has"><button type="button" class="sk-name" aria-expanded="false">${fmt(x.name)}</button><span class="sk-tip" role="tooltip"><span class="sk-lbl mono">used in</span>${x.projects.map(p => `<button type="button" class="sk-go" data-slug="${escHtml(p.slug)}">${escHtml(p.title)}</button>`).join('')}</span></span>`;
   el.innerHTML = `<div class="skills">` + skSec.paras.map(p => `<p class="intro">${fmt(p)}</p>`).join('') + `<dl>` +
-    SK.map((c, i) => `<div class="skill" style="animation-delay:${(.05 + i * .07).toFixed(2)}s"><dt>${escHtml(c.name)}</dt><dd>${c.items.map(x => `<span>${fmt(x)}</span>`).join(' <i>·</i> ')}</dd></div>`).join('') + `</dl></div>`;
+    SK.map((c, i) => `<div class="skill" style="animation-delay:${(.05 + i * .07).toFixed(2)}s"><dt>${escHtml(c.name)}</dt><dd>${c.items.map(item).join(' <i>·</i> ')}</dd></div>`).join('') + `</dl></div>`;
+  // the tip flips to the left near the right edge; a tap (or click) pins it open for touch screens
+  const place = sk => sk.classList.toggle('flip', sk.getBoundingClientRect().left + 340 > innerWidth - 16);
+  const closeAll = except => el.querySelectorAll('.sk.open').forEach(s => { if (s !== except) { s.classList.remove('open'); s.querySelector('.sk-name').setAttribute('aria-expanded', 'false'); } });
+  el.querySelectorAll('.sk.has').forEach(sk => {
+    sk.addEventListener('mouseenter', () => place(sk));
+    sk.addEventListener('focusin', () => place(sk));
+    sk.querySelector('.sk-name').onclick = e => { e.stopPropagation(); place(sk); closeAll(sk); const on = sk.classList.toggle('open'); sk.querySelector('.sk-name').setAttribute('aria-expanded', on); };
+  });
+  el.querySelectorAll('.sk-go').forEach(b => b.onclick = e => { e.stopPropagation(); closeAll(); go('project/' + b.dataset.slug); });
+  document.addEventListener('click', () => closeAll());
 }
 function renderContact() {
   const el = document.getElementById('view-contact');
@@ -1201,7 +1322,7 @@ function renderContact() {
   document.getElementById('cta').addEventListener('click', () => copyText(email, flash, () => {}));
 }
 
-// ---------- navigation: #projects, #skills, #contact, #recruiter, #projects/<slug> ----------
+// ---------- navigation: #projects, #skills, #contact, #recruiter, #project/<slug> ----------
 const VIEWS = ['plate', 'projects', 'skills', 'contact'];
 const PLATES = { plate: ['PLATE I.', 'figs. 1–3'], projects: ['PLATE II.', 'projects'], skills: ['PLATE III.', 'skills'], contact: ['PLATE IV.', 'contact'] };
 const KICK = { plate: kickerText, projects: one(prjSec, 'kicker', 'the projects of'), skills: one(skSec, 'kicker', 'the skills of'), contact: one(ctSec, 'kicker', 'how to reach') };
@@ -1221,7 +1342,7 @@ function setView(name) {
   document.getElementById('plate-no').innerHTML = `<b>${no}</b><br>${sub}`;
   document.title = one(pageSec, 'title', 'Akari Imai') + ' · ' + no.replace('.', '');
   if (!document.body.classList.contains('rvmode')) kickerEl.textContent = KICK[name];
-  if (changed && card.classList.contains('open')) close();
+  if (changed) { if (card.classList.contains('open')) close(); scrollTo(0, 0); }
 }
 function go(hash) { history.pushState(null, '', baseUrl() + (hash ? '#' + hash : '')); route(); }
 function route() {
@@ -1230,9 +1351,14 @@ function route() {
   if (h === 'recruiter') { setRV(true); return; }
   if (document.body.classList.contains('rvmode')) setRV(false);
   const [v, sub] = h.split('/');
-  setView(v);
-  if (v === 'projects' && sub) { const i = P.findIndex(p => p.slug === sub); if (i >= 0) { openIn(P, i); return; } }
-  if (card.classList.contains('open') && listNow === P) close();
+  // #project/<slug> (or an older #projects/<slug> link) = the projects tab, scrolled to that project
+  if ((v === 'project' || v === 'projects') && sub && P.some(p => p.slug === sub)) {
+    setView('projects');
+    jumpTo(sub, false);
+    setTimeout(() => jumpTo(sub, false), 500); // again once the tab's entrance animation has settled
+    return;
+  }
+  setView(v === 'project' ? 'projects' : v);
 }
 document.querySelectorAll('#tabs button').forEach(b => b.onclick = () => go(b.dataset.view === 'plate' ? '' : b.dataset.view));
 document.getElementById('rv-toggle').onclick = () => go(document.body.classList.contains('rvmode') ? (curView === 'plate' ? '' : curView) : 'recruiter');

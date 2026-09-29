@@ -57,6 +57,9 @@ password: 0000
 // the password screen shows this photo in a round frame with "This site is guarded by NAME."
 // Put the dog's name after the | (with it empty, it says "a toy poodle").
 guard: IMG_9374.jpeg |
+// the sentence under your name on the password screen. Leave it empty to go back to
+// "This site is guarded by NAME. If you were sent here, you have the password."
+gatetext: This site is guarded by a toy poodle (the password is 0000).
 
 // contact details
 email: akari.imai@duke.edu
@@ -306,9 +309,9 @@ link: Gravity compensation paper (YNU repository) | https://ynu.repo.nii.ac.jp/r
 
 
 // ============================================================
-//  PROJECTS TAB. Each "# PROJECT · Title" section is one entry in the Projects list (in this
-//  order) and opens its own popup. Paragraphs are the description. Every setting below is
-//  optional and only shows when filled in, so leave out anything you don't have:
+//  PROJECTS TAB. Every "# PROJECT · Title" section is written out in full on the Projects tab, in
+//  this order, under a numbered key that jumps to each one. Paragraphs are the description. Every
+//  setting below is optional and only shows when filled in, so leave out anything you don't have:
 //    tags:        small caps line under the title, e.g. "surgical robotics · sEMG"
 //    when:        dates (shown in the list and under the title)
 //    role:        what you were on the project
@@ -321,14 +324,15 @@ link: Gravity compensation paper (YNU repository) | https://ynu.repo.nii.ac.jp/r
 //    outcome:     the result / impact; one line, or several outcome: lines for several paragraphs
 //    summary:     optional one-line pink summary at the top, like the body-part cards
 //    link: / paper: / photo: / fact:   exactly as in the body-part sections
-//    slug:        short word for the address, e.g. slug: stele gives #projects/stele
+//    slug:        short word for the project's address, e.g. slug: stele gives
+//                 https://akari1024.github.io/#project/stele (opens the tab scrolled to it)
 //  Everything below comes from your résumé, your papers, and the sections above; nothing new.
 //  Lines starting with // are notes to yourself; some mark details only you can fill in.
 // ============================================================
 
 # PROJECTS
 kicker: the projects of
-Nine things I have built, studied, or run. Click one for the full write-up: what it was, my part in it, the tools, and what came of it.
+Nine things I have built, studied, or run, written out in full below. Use the key to jump to one.
 
 
 # PROJECT · Stele Fusion: engineering operations
@@ -494,18 +498,24 @@ outcome: The team placed in the top ten at regionals and qualified for the state
 //  SKILLS TAB. One line per category: category: Name | skill · skill · skill
 //  Only what's on your résumé (and the work above) is here; add or reorder freely.
 //  A paragraph under # SKILLS shows as a short intro line.
+//  Each skill connects to projects: put the projects' slug: names in [brackets] after it, e.g.
+//  Python [pesticides, effissimo]. Hovering (or tapping) the skill then shows those projects with a
+//  jump to each one's page. A skill without brackets is matched automatically to any project whose
+//  tools: or tags: line contains that exact word. A skill with no match is plain text.
 // ============================================================
 
 # SKILLS
 kicker: the skills of
-Grouped by what I have used them for.
+Grouped by what I have used them for. Hover or tap a skill to see where.
 
-category: Programming | Python · Java · C++
-category: CAD and fabrication | Fusion 360 · Onshape · machining · hardware assembly
-category: Lab and measurement | Cell culture · DNA laddering · Surface electromyography (sEMG)
-category: Data and modeling | Excel · quantitative modeling · random-forest screening in Python
-category: Engineering operations | Standups · weekly progress / plan / problems reporting · project tracking · engineer onboarding
-category: Spoken languages | English · Japanese · Chinese
+category: Programming | Python [pesticides] · Java · C++
+category: CAD and fabrication | Fusion 360 [robotics] · Onshape [robotics] · machining [robotics] · hardware assembly [robotics]
+category: Lab and measurement | Cell culture [cycloxaprid] · DNA laddering [cycloxaprid] · Surface electromyography (sEMG) [spinal-drill]
+category: Data and modeling | Excel · quantitative modeling [effissimo] · random-forest screening in Python [pesticides]
+category: Engineering operations | Standups [stele] · weekly progress / plan / problems reporting [stele] · project tracking [stele] · engineer onboarding [stele]
+category: Spoken languages | English · Japanese [spinal-drill] · Chinese
+// Not linked yet because only you know where you used them: Java, C++, Excel, English, Chinese.
+// Add the project after each, e.g.  Java [robotics]  or  Excel [effissimo]  and they light up.
 
 
 // ============================================================
