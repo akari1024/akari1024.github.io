@@ -246,11 +246,96 @@
   .viewer iframe { flex: 1; border: 0; width: 100%; background: #fff; }
   .viewer .x { font: inherit; font-size: 26px; background: none; border: none; color: var(--ink); cursor: pointer; }
 
+  /* hanging index tabs (site navigation) */
+  nav.tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin: -1.5px 0 10px; position: relative; }
+  nav.tabs button { font-family: 'DM Mono', monospace; font-weight: 500; font-size: 12px; line-height: 1; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); background: var(--paper); border: 1.5px dotted var(--rule); border-top: none; border-radius: 0 0 12px 12px; padding: 10px 16px 9px; cursor: pointer; transition: background .2s, color .2s, transform .3s cubic-bezier(.2,.8,.2,1), border-color .2s; }
+  nav.tabs button:hover { color: var(--accent); background: var(--paper-2); transform: translateY(2px); }
+  nav.tabs button[aria-current] { color: var(--ink); background: var(--accent-2); border: 1.5px solid var(--ink); border-top: none; transform: translateY(3px); }
+  nav.tabs button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* views (the plate, projects, skills, contact) */
+  .view { display: none; }
+  .view.on { display: block; animation: viewin .45s cubic-bezier(.2,.8,.2,1) both; }
+  @keyframes viewin { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @keyframes fadeup { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  .intro { text-align: center; color: var(--ink-2); font-size: 17px; max-width: 620px; margin: 8px auto 12px; line-height: 1.5; }
+
+  /* projects, as a catalogue */
+  .catalog { max-width: 880px; margin: 0 auto; padding: 4px 0 8px; }
+  .proj { display: grid; grid-template-columns: 40px 1fr auto; gap: 0 14px; align-items: start; width: 100%; text-align: left; padding: 16px 8px 15px; background: none; border: 0; border-bottom: 1.5px dotted var(--rule); color: var(--ink); font: inherit; cursor: pointer; animation: fadeup .5s cubic-bezier(.2,.8,.2,1) both; transition: background .2s; }
+  .proj:hover, .proj:focus-visible { background: var(--paper-2); outline: none; }
+  .proj .n { font-family: 'DM Mono', monospace; font-size: 12px; display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--accent-2); border: 1.4px solid var(--ink); color: var(--ink); margin-top: 4px; transition: background .2s; }
+  .proj:hover .n, .proj:focus-visible .n { background: var(--accent); }
+  .proj b { display: block; font-weight: 500; font-style: italic; font-size: 27px; line-height: 1.15; font-variation-settings: "SOFT" 100, "WONK" 1; transition: color .2s; }
+  .proj:hover b, .proj:focus-visible b { color: var(--accent); }
+  .proj .rv-tags { display: block; margin: 4px 0 0; }
+  .proj .r { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; padding-top: 6px; }
+  .proj .when { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--ink-2); text-align: right; max-width: 230px; line-height: 1.5; }
+  .proj .go { font-style: italic; color: var(--accent); font-size: 15px; opacity: 0; transform: translateX(-6px); transition: opacity .2s, transform .25s; }
+  .proj:hover .go, .proj:focus-visible .go { opacity: 1; transform: none; }
+
+  /* skills, as a legend */
+  .skills { max-width: 880px; margin: 0 auto; padding: 4px 0 8px; }
+  .skills dl { margin: 0; }
+  .skill { display: grid; grid-template-columns: 220px 1fr; gap: 6px 24px; padding: 18px 8px; border-bottom: 1.5px dotted var(--rule); align-items: baseline; animation: fadeup .5s cubic-bezier(.2,.8,.2,1) both; }
+  .skill dt { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
+  .skill dd { margin: 0; font-size: 24px; font-style: italic; font-weight: 500; line-height: 1.4; font-variation-settings: "SOFT" 100, "WONK" 1; }
+  .skill dd i { font-style: normal; font-weight: 400; color: var(--accent); padding: 0 5px; }
+  .skill dd span { transition: color .2s; }
+  .skill dd span:hover { color: var(--accent); }
+
+  /* contact, as a postcard */
+  .postcard { position: relative; max-width: 880px; margin: 16px auto 8px; border: 1.5px solid var(--ink); border-radius: 16px; background: var(--body); display: grid; grid-template-columns: 1.25fr 1fr; box-shadow: 8px 8px 0 var(--accent-2); animation: fadeup .5s cubic-bezier(.2,.8,.2,1) both; }
+  .postcard .msg { padding: 34px 36px 30px; border-right: 1.5px dotted var(--rule); }
+  .postcard h2 { margin: 0; font-size: clamp(40px, 5vw, 56px); font-style: italic; font-weight: 500; line-height: 1; font-variation-settings: "SOFT" 100, "WONK" 1; }
+  .postcard .blurb { margin: 14px 0 24px; color: var(--ink-2); font-size: 18px; line-height: 1.55; max-width: 440px; }
+  .cta { display: inline-flex; align-items: center; gap: 8px; font: inherit; font-size: 17px; background: var(--accent); color: #fff; border: 1.5px solid var(--ink); border-radius: 99px; padding: 10px 22px; cursor: pointer; text-decoration: none; box-shadow: 3px 3px 0 var(--ink); transition: transform .15s, box-shadow .15s; }
+  .cta:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--ink); color: #fff; }
+  .cta:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+  .cta:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .copy-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 18px; font-family: 'DM Mono', monospace; font-size: 13px; color: var(--ink-2); }
+  .copy-row code { font: inherit; color: var(--ink); background: var(--paper-2); padding: 3px 9px; border-radius: 6px; }
+  .copy-row .pill { font-family: 'DM Mono', monospace; font-size: 12px; padding: 3px 12px; transition: background .2s, color .2s, border-color .2s; }
+  .copy-row .pill.done { background: var(--accent-2); border-color: var(--accent); color: var(--accent); }
+  .postcard .addr { position: relative; padding: 30px 30px 26px; display: flex; flex-direction: column; gap: 16px; }
+  .stamp { align-self: flex-end; width: 86px; height: 102px; border: 1.5px dashed var(--ink); padding: 5px; background: #fff; transform: rotate(4deg); box-shadow: 0 4px 10px -6px rgba(40, 20, 30, .4); }
+  .stamp .in { width: 100%; height: 100%; border: 1px solid var(--rule); background: var(--paper-2); overflow: hidden; display: grid; place-items: center; }
+  .stamp img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; display: block; }
+  .stamp svg { width: 38px; height: 38px; }
+  .postmark { position: absolute; top: 24px; right: 74px; width: 150px; height: 75px; opacity: .6; transform: rotate(-8deg); pointer-events: none; }
+  .addr-lines { list-style: none; margin: 0; padding: 0; }
+  .addr-lines li { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; padding: 9px 0; border-bottom: 1.5px dotted var(--rule); font-size: 16px; }
+  .addr-lines li span:first-child { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
+  .addr-lines a { color: var(--ink); text-decoration: none; border-bottom: 1.5px solid var(--accent-2); transition: color .2s, border-color .2s; }
+  .addr-lines a:hover { color: var(--accent); border-color: var(--accent); }
+  .contact-note { text-align: center; color: var(--ink-2); font-style: italic; margin: 18px auto 0; font-size: 16px; max-width: 620px; }
+
+  /* project cards (extra fields) + keyboard focus */
+  .card .tags { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 10px 0 0; }
+  .card .tags:empty, .card #c-extra:empty { display: none; }
+  .card dl.cmeta { margin: 0 0 18px; }
+  .card .block { margin: 16px 0 6px; }
+  .card .block h4, .card .outcome h4 { margin: 0 0 6px; font-family: 'DM Mono', monospace; font-weight: 500; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-2); }
+  .card .block ul { margin: 0; padding: 0; list-style: none; }
+  .card .block li { position: relative; padding-left: 22px; margin: 0 0 6px; font-size: 17px; line-height: 1.5; }
+  .card .block li::before { content: ""; position: absolute; left: 4px; top: .6em; width: 7px; height: 7px; border-radius: 50%; background: var(--accent-2); border: 1.2px solid var(--ink); }
+  .card .outcome { border-left: 3px solid var(--accent); padding: 4px 0 4px 14px; margin: 18px 0 8px; }
+  .card .outcome p { margin: 0 0 6px; font-style: italic; font-size: 18px; line-height: 1.45; }
+  .card.anim > :not(.close) { animation: fadeup .45s cubic-bezier(.2,.8,.2,1) both; animation-delay: calc(var(--i, 0) * 35ms); }
+  .card:focus { outline: none; }
+  .card .close:focus-visible, .card .nav button:focus-visible, .pill:focus-visible, .doc:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .lbl:focus, .inset-grp:focus { outline: none; }
+  .lbl:focus-visible .latin, .lbl:focus-visible .badge { fill: var(--accent); }
+  .lbl:focus-visible .leader { stroke: var(--accent); }
+  .inset-grp:focus-visible .ilatin { fill: var(--accent); }
+  .mobile-list li:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+
   /* recruiter view */
   .meta .pill { display: inline-block; margin-top: 8px; font-size: 12px; padding: 3px 12px; font-family: 'DM Mono', monospace; }
   #rv-view { display: none; padding: 4px 0 10px; max-width: 880px; margin: 0 auto; }
   body.rvmode #rv-view { display: block; }
   body.rvmode .stage, body.rvmode .mobile-list, body.rvmode .explain { display: none; }
+  body.rvmode .view, body.rvmode nav.tabs { display: none; }
   body.rvmode .plate-no { visibility: hidden; }
   .rv-links { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; padding: 18px 0 8px; }
   .rv-pill { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; padding: 4px 12px; }
@@ -270,7 +355,7 @@
   .rv-card .links { margin-top: 6px; }
   .rv-other { font-size: 15px; margin: 10px 0 0; line-height: 1.7; }
   @media print {
-    body::before, .stage, .hint, .mobile-list, .explain, #rv-toggle, .veil, .card, .viewer { display: none !important; }
+    body::before, .stage, .hint, .mobile-list, .explain, #rv-toggle, .veil, .card, .viewer, nav.tabs, .view { display: none !important; }
     #rv-view { display: block !important; }
     .plate { border: none; outline: none; margin: 0; padding: 0; max-width: none; }
     body { background: #fff; }
@@ -315,6 +400,17 @@
     .rv-grid { grid-template-columns: 1fr; }
     .rv-row { flex-direction: column; align-items: flex-start; gap: 2px; }
     .rv-row .rv-date { text-align: left; }
+    nav.tabs { gap: 5px; }
+    nav.tabs button { padding: 8px 10px 7px; font-size: 11px; letter-spacing: .1em; }
+    .proj { grid-template-columns: 34px 1fr; padding: 14px 4px 13px; }
+    .proj .r { grid-column: 2; flex-direction: row; justify-content: space-between; align-items: baseline; padding-top: 4px; }
+    .proj b { font-size: 23px; }
+    .skill { grid-template-columns: 1fr; gap: 4px; padding: 14px 4px; }
+    .skill dd { font-size: 21px; }
+    .postcard { grid-template-columns: 1fr; box-shadow: 5px 5px 0 var(--accent-2); }
+    .postcard .msg { padding: 26px 22px 22px; border-right: none; border-bottom: 1.5px dotted var(--rule); }
+    .postcard .addr { padding: 22px 22px 20px; }
+    .postmark { right: 66px; }
   }
 </style>
 </head>
@@ -322,7 +418,7 @@
 
 <div class="plate">
   <header class="top">
-    <div class="plate-no mono"><b>PLATE I.</b><br>figs. 1–3</div>
+    <div class="plate-no mono" id="plate-no"><b>PLATE I.</b><br>figs. 1–3</div>
     <div class="title">
       <div class="kicker" id="p-kicker"></div>
       <h1 id="p-title"></h1>
@@ -330,6 +426,14 @@
     <div class="meta mono"><div id="p-meta"></div><button id="rv-toggle" class="pill">recruiter view</button></div>
   </header>
 
+  <nav class="tabs" id="tabs" aria-label="Sections of the site">
+    <button type="button" data-view="plate" aria-current="page">plate</button>
+    <button type="button" data-view="projects">projects</button>
+    <button type="button" data-view="skills">skills</button>
+    <button type="button" data-view="contact">contact</button>
+  </nav>
+
+  <div class="view on" id="view-plate">
   <div class="stage">
     <div class="hint" id="p-hint"></div>
     <svg id="plate" viewBox="0 0 1000 720" role="img" aria-label="An anatomical drawing of Akari, with labeled body parts that open sections of the site">
@@ -455,7 +559,6 @@
   </div>
 
   <ul class="mobile-list" id="mlist"></ul>
-  <section id="rv-view"></section>
 
   <section class="explain">
     <div>
@@ -468,6 +571,12 @@
     </div>
     <div class="fig3" id="fig3"></div>
   </section>
+  </div>
+
+  <div class="view" id="view-projects"></div>
+  <div class="view" id="view-skills"></div>
+  <div class="view" id="view-contact"></div>
+  <section id="rv-view"></section>
 </div>
 
 <div class="gate" id="gate" hidden>
@@ -485,13 +594,16 @@
 </div>
 
 <div class="veil" id="veil"></div>
-<aside class="card" id="card" aria-live="polite">
+<aside class="card" id="card" role="dialog" aria-modal="true" aria-labelledby="c-latin" tabindex="-1">
   <button class="close" id="close" aria-label="Close">×</button>
   <div class="tag mono" id="c-tag"></div>
   <h3 id="c-latin"></h3>
+  <div class="tags" id="c-tags"></div>
   <div class="sub" id="c-sub"></div>
   <div class="summary" id="c-summary"><span>SUMMARY</span><b id="c-sum"></b></div>
+  <dl class="cmeta" id="c-meta"></dl>
   <div id="c-body"></div>
+  <div id="c-extra"></div>
   <div class="docs" id="c-docs"></div>
   <div class="links" id="c-links"></div>
   <div class="photos" id="c-photos"></div>
@@ -539,7 +651,7 @@ function para(p) {
   return `<div class="callout">${lead ? `<b>${fmt(lead[1])}:</b> ${fmt(lead[2])}` : fmt(m[1])}</div>`;
 }
 const split = (s, n) => { const p = s.split('|').map(x => x.trim()); while (p.length < n) p.push(''); return p; };
-const KEYS = /^(label|subtitle|summary|fact|photo|link|paper|title|kicker|meta|hint|email|linkedin|resume|github|password|guard|tagline|experience|education|publication|other|tags|span):\s*(.*)$/i;
+const KEYS = /^(label|subtitle|summary|fact|photo|link|paper|title|kicker|meta|hint|email|linkedin|resume|github|password|guard|tagline|experience|education|publication|other|tags|span|when|role|tools|work|feature|covers|decision|challenge|outcome|slug|category|headline|blurb|cta|note):\s*(.*)$/i;
 function parseContent(raw) {
   const sections = [];
   let cur = null;
@@ -593,6 +705,27 @@ const WORKS = sections.filter(s => /^work\s*[·.:\-–]/i.test(s.head)).map(sec 
   links: (sec.keys.link || []).map(l => { const [label, href] = split(l, 2); return { label, href }; }),
   docs: (sec.keys.paper || []).map(d => { const [title, note, file] = split(d, 3); return { title, note, src: /^https?:/.test(file) ? file : (file ? ASSETS + file : '') }; })
 }));
+
+// projects tab: every "# PROJECT · Title" section; skills and contact tabs: "# SKILLS" and "# CONTACT"
+const prjSec = sections.find(s => /^projects$/i.test(s.head)) || { keys: {}, paras: [] };
+const skSec = sections.find(s => /^skills$/i.test(s.head)) || { keys: {}, paras: [] };
+const ctSec = sections.find(s => /^contact$/i.test(s.head)) || { keys: {}, paras: [] };
+const slugify = t => t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+const P = sections.filter(s => /^project\s*[·.:\-–]/i.test(s.head)).map((sec, k) => {
+  const title = sec.head.replace(/^project\s*[·.:\-–]\s*/i, '').trim();
+  return {
+    kind: 'project', n: k + 1, title, slug: one(sec, 'slug') || slugify(title),
+    tags: one(sec, 'tags'), when: one(sec, 'when'), role: one(sec, 'role'), tools: one(sec, 'tools'),
+    sum: one(sec, 'summary'), body: sec.paras,
+    work: sec.keys.work || [], features: sec.keys.feature || [], covers: sec.keys.covers || [], decisions: sec.keys.decision || [],
+    challenges: sec.keys.challenge || [], outcome: sec.keys.outcome || [],
+    facts: (sec.keys.fact || []).map(f => split(f, 2)),
+    photos: (sec.keys.photo || []).map(p => { const [file, cap, need, focus, href] = split(p, 5); return { file, cap, need, focus, href }; }),
+    links: (sec.keys.link || []).map(l => { const [label, href] = split(l, 2); return { label, href }; }),
+    docs: (sec.keys.paper || []).map(d => { const [title, note, file, need] = split(d, 4); return { title, note, file, need, src: /^https?:/.test(file) ? file : '' }; })
+  };
+});
+const SK = (skSec.keys.category || []).map(l => { const [name, list] = split(l, 2); return { name, items: list.split('·').map(x => x.trim()).filter(Boolean) }; }).filter(c => c.name && c.items.length);
 
 // ---------- password gate (soft: the password lives in content.js) ----------
 (function gate() {
@@ -682,8 +815,18 @@ const mlist = document.getElementById('mlist');
 S.forEach((s, i) => {
   const li = document.createElement('li');
   li.innerHTML = `<span class="n mono">${s.n}</span><span><span class="latin">${escHtml(s.latin)}</span><span class="plain">${escHtml(s.plain)}</span></span>`;
+  li.tabIndex = 0; li.setAttribute('role', 'button');
   li.onclick = () => open(i);
+  li.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(i); } };
   mlist.appendChild(li);
+  // keyboard: labels on the drawing are focusable buttons
+  const keyable = (el, id) => {
+    el.setAttribute('tabindex', '0'); el.setAttribute('role', 'button');
+    el.setAttribute('aria-label', `${s.n}. ${s.latin}, ${s.plain}`);
+    el.addEventListener('focus', () => state(id));
+    el.addEventListener('blur', () => { if (!card.classList.contains('open')) state(null); });
+    el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(i); } });
+  };
   if (s.inset) {
     document.getElementById('inset-num').textContent = s.n;
     document.getElementById('inset-latin').textContent = s.latin;
@@ -692,6 +835,7 @@ S.forEach((s, i) => {
     inset.addEventListener('mouseenter', () => state(s.id));
     inset.addEventListener('mouseleave', () => state(null));
     inset.addEventListener('click', () => open(i));
+    keyable(inset, s.id);
     return;
   }
   const left = s.side === 'L';
@@ -711,6 +855,7 @@ S.forEach((s, i) => {
   g.addEventListener('mouseenter', () => state(s.id));
   g.addEventListener('mouseleave', () => state(null));
   g.addEventListener('click', () => open(i));
+  keyable(g, s.id);
   leaders.appendChild(g);
 });
 function state(id) {
@@ -751,7 +896,7 @@ ZONES.forEach(([id, shapes]) => {
 
 // ---------- card ----------
 const card = document.getElementById('card'), veil = document.getElementById('veil');
-let cur = 0;
+let cur = 0, listNow = S, opener = null;
 const esc = s => String(s).replace(/"/g, '&quot;');
 function polaroid(p) {
   const focus = /^[a-z0-9% .-]{1,40}$/i.test(p.focus || '') ? ` style="object-position:${p.focus}"` : '';
@@ -844,15 +989,29 @@ function wireDocs(s) {
     if (src) view({ ...d, src });
   });
 }
-function open(i) {
-  cur = (i + S.length) % S.length;
-  const s = S[cur];
-  document.getElementById('c-tag').innerHTML = `<i>${s.n}</i> SPECIMEN`;
-  document.getElementById('c-latin').textContent = s.latin;
-  document.getElementById('c-sub').textContent = s.sub;
+// the same card shows a body part (from S) or a project (from P); prev/next stay within one list
+function open(i) { openIn(S, i); }
+function openIn(list, i) {
+  if (!list.length) return;
+  listNow = list;
+  cur = (i + list.length) % list.length;
+  const s = list[cur];
+  const proj = s.kind === 'project';
+  if (!card.classList.contains('open')) opener = document.activeElement;
+  document.getElementById('c-tag').innerHTML = `<i>${s.n}</i> ${proj ? 'PROJECT' : 'SPECIMEN'}`;
+  document.getElementById('c-latin').textContent = proj ? s.title : s.latin;
+  document.getElementById('c-tags').textContent = proj ? s.tags : '';
+  document.getElementById('c-sub').textContent = proj ? s.when : s.sub;
   document.getElementById('c-sum').textContent = s.sum;
   document.getElementById('c-summary').classList.toggle('hide', !s.sum);
+  const row = ([k, v]) => `<div><dt>${escHtml(k)}</dt><dd>${fmt(v)}</dd></div>`;
+  const metaRows = proj ? [['role', s.role], ['tools', s.tools]].filter(r => r[1]).concat(s.facts) : [];
+  document.getElementById('c-meta').innerHTML = metaRows.map(row).join('');
   document.getElementById('c-body').innerHTML = s.body.map(para).join('');
+  const block = (title, items) => items.length ? `<div class="block"><h4>${title}</h4><ul>${items.map(x => `<li>${fmt(x)}</li>`).join('')}</ul></div>` : '';
+  document.getElementById('c-extra').innerHTML = !proj ? '' :
+    block('What I worked on', s.work) + block('Features', s.features) + block('What it covers', s.covers) + block('Decisions', s.decisions) + block('Challenges', s.challenges) +
+    (s.outcome.length ? `<div class="outcome"><h4>Outcome</h4>${s.outcome.map(o => `<p>${fmt(o)}</p>`).join('')}</div>` : '');
   const docsEl = document.getElementById('c-docs');
   const renderDocs = () => {
     docsEl.innerHTML = s.docs.map((d, k) => {
@@ -867,7 +1026,7 @@ function open(i) {
     d.checked = true;
     fetch(ASSETS + d.file, { method: 'HEAD' }).then(r => {
       if (r.ok) d.src = ASSETS + d.file; else d.missing = true;
-      if (S[cur] === s) renderDocs();
+      if (listNow[cur] === s) renderDocs();
     }).catch(() => {});
   });
   renderDocs();
@@ -876,19 +1035,32 @@ function open(i) {
   const photosEl = document.getElementById('c-photos');
   photosEl.innerHTML = s.photos.map(polaroid).join('');
   wirePhotos(photosEl);
-  document.getElementById('c-facts').innerHTML = s.facts.map(([k, v]) => `<div><dt>${escHtml(k)}</dt><dd>${fmt(v)}</dd></div>`).join('');
+  document.getElementById('c-facts').innerHTML = proj ? '' : s.facts.map(row).join('');
   card.scrollTop = 0;
   card.classList.add('open'); veil.classList.add('open');
+  // replay the little stagger of the card's contents
+  card.classList.remove('anim'); void card.offsetWidth; card.classList.add('anim');
+  [...card.children].forEach((el, k) => el.style.setProperty('--i', k));
   lockScroll();
-  state(s.id);
+  state(proj ? null : s.id);
+  if (proj) history.replaceState(null, '', baseUrl() + '#projects/' + s.slug);
+  setTimeout(() => { if (card.classList.contains('open')) card.focus({ preventScroll: true }); }, 30);
 }
 // freeze the page behind while a card or the reader is open
 function lockScroll() { document.body.classList.toggle('modal-open', card.classList.contains('open') || document.getElementById('viewer').classList.contains('open')); }
-function close() { card.classList.remove('open'); veil.classList.remove('open'); lockScroll(); state(null); }
+function close() {
+  if (!card.classList.contains('open')) return;
+  card.classList.remove('open'); veil.classList.remove('open'); lockScroll(); state(null);
+  if (listNow === P && /^#projects\//.test(location.hash)) history.replaceState(null, '', baseUrl() + '#projects');
+  // hand focus back to whatever opened the card
+  if (opener && opener !== document.body && document.contains(opener) && opener.focus) { try { opener.focus({ preventScroll: true }); } catch (e) {} }
+  else card.blur();
+  opener = null;
+}
 document.getElementById('close').onclick = close;
 veil.onclick = close;
-document.getElementById('prev').onclick = () => open(cur - 1);
-document.getElementById('next').onclick = () => open(cur + 1);
+document.getElementById('prev').onclick = () => openIn(listNow, cur - 1);
+document.getElementById('next').onclick = () => openIn(listNow, cur + 1);
 
 // ---------- recruiter view ----------
 function renderRecruiter() {
@@ -941,15 +1113,12 @@ function renderRecruiter() {
 }
 const kickerEl = document.getElementById('p-kicker'), kickerText = kickerEl.textContent;
 function setRV(on) {
+  const was = document.body.classList.contains('rvmode');
   document.body.classList.toggle('rvmode', on);
   document.getElementById('rv-toggle').textContent = on ? 'back to the plate' : 'recruiter view';
-  kickerEl.textContent = on ? 'a summary of' : kickerText;
-  if (on) { close(); renderRecruiter(); }
-  history.replaceState(null, '', on ? '#recruiter' : location.pathname);
+  kickerEl.textContent = on ? 'a summary of' : KICK[curView];
+  if (on && !was) { close(); renderRecruiter(); }
 }
-document.getElementById('rv-toggle').onclick = () => setRV(!document.body.classList.contains('rvmode'));
-if (location.hash === '#recruiter' || /[?&]recruiter\b/.test(location.search)) setRV(true);
-addEventListener('hashchange', () => setRV(location.hash === '#recruiter'));
 
 // ---------- document viewer ----------
 const viewer = document.getElementById('viewer');
@@ -966,10 +1135,116 @@ viewer.onclick = e => { if (e.target === viewer) unview(); };
 document.addEventListener('keydown', e => {
   if (viewer.classList.contains('open')) { if (e.key === 'Escape') unview(); return; }
   if (!card.classList.contains('open')) return;
-  if (e.key === 'Escape') close();
-  if (e.key === 'ArrowRight') open(cur + 1);
-  if (e.key === 'ArrowLeft') open(cur - 1);
+  if (e.key === 'Escape') { close(); return; }
+  if (e.key === 'ArrowRight') openIn(listNow, cur + 1);
+  if (e.key === 'ArrowLeft') openIn(listNow, cur - 1);
+  if (e.key === 'Tab') {
+    // keep Tab inside the open card
+    const f = [...card.querySelectorAll('button, a[href], [tabindex="0"]')].filter(x => x.offsetParent !== null);
+    if (!f.length) return;
+    const first = f[0], last = f[f.length - 1], at = document.activeElement;
+    if (e.shiftKey && (at === first || at === card)) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && at === last) { e.preventDefault(); first.focus(); }
+  }
 });
+
+// ---------- the other tabs: projects, skills, contact ----------
+const heartSvg = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21 C4 15 2 10 5 7 c2.2 -2 5 -1 7 1.5 c2 -2.5 4.8 -3.5 7 -1.5 c3 3 1 8 -7 14 z" fill="var(--heart)" stroke="var(--ink)" stroke-width="1.2"/></svg>`;
+// copy to the clipboard, with the old textarea trick as a fallback for browsers that refuse the clipboard API
+function copyText(t, done, fail) {
+  const legacy = () => {
+    const ta = document.createElement('textarea');
+    ta.value = t; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+    document.body.appendChild(ta); ta.select();
+    let ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+    ta.remove(); ok ? done() : fail();
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done, legacy); else legacy();
+}
+function renderProjects() {
+  const el = document.getElementById('view-projects');
+  if (!P.length) { el.innerHTML = DRAFT ? '<p class="intro">Add a "# PROJECT · Title" section to content.js to fill this tab.</p>' : ''; return; }
+  el.innerHTML = `<div class="catalog">` + prjSec.paras.map(p => `<p class="intro">${fmt(p)}</p>`).join('') +
+    P.map((p, i) => `<button type="button" class="proj" data-i="${i}" style="animation-delay:${(.05 + i * .06).toFixed(2)}s"><span class="n">${p.n}</span><span class="t"><b>${escHtml(p.title)}</b>${p.tags ? `<span class="rv-tags">${escHtml(p.tags)}</span>` : ''}</span><span class="r">${p.when ? `<span class="when">${escHtml(p.when)}</span>` : ''}<span class="go" aria-hidden="true">open →</span></span></button>`).join('') + `</div>`;
+  el.querySelectorAll('.proj').forEach(b => b.onclick = () => openIn(P, +b.dataset.i));
+}
+function renderSkills() {
+  const el = document.getElementById('view-skills');
+  if (!SK.length) { el.innerHTML = DRAFT ? '<p class="intro">Add "category: Name | a · b · c" lines under # SKILLS in content.js to fill this tab.</p>' : ''; return; }
+  el.innerHTML = `<div class="skills">` + skSec.paras.map(p => `<p class="intro">${fmt(p)}</p>`).join('') + `<dl>` +
+    SK.map((c, i) => `<div class="skill" style="animation-delay:${(.05 + i * .07).toFixed(2)}s"><dt>${escHtml(c.name)}</dt><dd>${c.items.map(x => `<span>${fmt(x)}</span>`).join(' <i>·</i> ')}</dd></div>`).join('') + `</dl></div>`;
+}
+function renderContact() {
+  const el = document.getElementById('view-contact');
+  const head = one(ctSec, 'headline', 'Get in touch'), blurb = one(ctSec, 'blurb'), cta = one(ctSec, 'cta', 'Email me'), note = one(ctSec, 'note');
+  const resHref = res ? (/^https?:/.test(res) ? res : ASSETS + res) : '';
+  const lines = [];
+  if (email) lines.push(['email', `<a href="mailto:${escHtml(email)}">${escHtml(email)}</a>`]);
+  if (li) lines.push(['linkedin', `<a href="${escHtml(li)}" target="_blank" rel="noopener">linkedin.com ↗</a>`]);
+  if (resHref) lines.push(['résumé', `<a href="${escHtml(resHref)}" target="_blank" rel="noopener">download (pdf) ↗</a>`]);
+  if (gh) lines.push(['github', `<a href="${escHtml(gh)}" target="_blank" rel="noopener">github.com ↗</a>`]);
+  const postmark = `<svg class="postmark" viewBox="0 0 160 80" aria-hidden="true"><defs><path id="pm-arc" d="M40 9 a31 31 0 1 1 -0.01 0"/></defs><circle cx="40" cy="40" r="31" fill="none" stroke="var(--ink-2)" stroke-width="1.4"/><circle cx="40" cy="40" r="21" fill="none" stroke="var(--ink-2)" stroke-width="1"/><text font-family="'DM Mono', monospace" font-size="7.5" letter-spacing="1.6" fill="var(--ink-2)"><textPath href="#pm-arc">DURHAM, NC · DUKE UNIVERSITY · </textPath></text><text x="40" y="43.5" text-anchor="middle" font-size="11" fill="var(--accent)">♥</text><path d="M76 27 q10 -7 20 0 t20 0 t20 0 t20 0 M76 40 q10 -7 20 0 t20 0 t20 0 t20 0 M76 53 q10 -7 20 0 t20 0 t20 0 t20 0" fill="none" stroke="var(--ink-2)" stroke-width="1.2" stroke-linecap="round"/></svg>`;
+  el.innerHTML = `<div class="postcard"><div class="msg"><h2>${escHtml(head)}</h2>` + (blurb ? `<p class="blurb">${fmt(blurb)}</p>` : '') +
+    (email ? `<a class="cta" id="cta" href="mailto:${escHtml(email)}">${escHtml(cta)} <span aria-hidden="true">↗</span></a><div class="copy-row"><span>or copy it:</span><code>${escHtml(email)}</code><button type="button" class="pill" id="copy-email">copy</button></div>` : '') +
+    `</div><div class="addr"><div class="stamp"><div class="in" id="stamp-in">${heartSvg}</div></div>${postmark}<ul class="addr-lines">${lines.map(([k, v]) => `<li><span>${k}</span>${v}</li>`).join('')}</ul></div></div>` +
+    (note ? `<p class="contact-note">${fmt(note)}</p>` : '');
+  // the stamp shows the guard photo when there is one, otherwise a heart
+  const guard = split(one(pageSec, 'guard'), 2)[0];
+  if (guard) { const img = new Image(); img.alt = ''; img.onload = () => { const s = document.getElementById('stamp-in'); if (s) { s.innerHTML = ''; s.appendChild(img); } }; img.src = ASSETS + guard; }
+  const btn = document.getElementById('copy-email');
+  if (!btn) return;
+  const flash = () => { btn.textContent = 'copied ✓'; btn.classList.add('done'); setTimeout(() => { btn.textContent = 'copy'; btn.classList.remove('done'); }, 2200); };
+  // if copying is refused, select the address so ⌘C / Ctrl+C works
+  const selectIt = () => { const r = document.createRange(); r.selectNodeContents(el.querySelector('.copy-row code')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'press ⌘C'; setTimeout(() => { btn.textContent = 'copy'; }, 2200); };
+  btn.onclick = () => copyText(email, flash, selectIt);
+  // the big button opens a mail draft and copies the address too, in case no mail app is set up
+  document.getElementById('cta').addEventListener('click', () => copyText(email, flash, () => {}));
+}
+
+// ---------- navigation: #projects, #skills, #contact, #recruiter, #projects/<slug> ----------
+const VIEWS = ['plate', 'projects', 'skills', 'contact'];
+const PLATES = { plate: ['PLATE I.', 'figs. 1–3'], projects: ['PLATE II.', 'projects'], skills: ['PLATE III.', 'skills'], contact: ['PLATE IV.', 'contact'] };
+const KICK = { plate: kickerText, projects: one(prjSec, 'kicker', 'the projects of'), skills: one(skSec, 'kicker', 'the skills of'), contact: one(ctSec, 'kicker', 'how to reach') };
+let curView = 'plate';
+const baseUrl = () => location.pathname + location.search;
+function setView(name) {
+  if (!VIEWS.includes(name)) name = 'plate';
+  const changed = name !== curView;
+  curView = name;
+  VIEWS.forEach(v => {
+    const el = document.getElementById('view-' + v), on = v === name;
+    if (on && (changed || !el.classList.contains('on'))) { el.classList.remove('on'); void el.offsetWidth; }
+    el.classList.toggle('on', on);
+  });
+  document.querySelectorAll('#tabs button').forEach(b => { if (b.dataset.view === name) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current'); });
+  const [no, sub] = PLATES[name];
+  document.getElementById('plate-no').innerHTML = `<b>${no}</b><br>${sub}`;
+  document.title = one(pageSec, 'title', 'Akari Imai') + ' · ' + no.replace('.', '');
+  if (!document.body.classList.contains('rvmode')) kickerEl.textContent = KICK[name];
+  if (changed && card.classList.contains('open')) close();
+}
+function go(hash) { history.pushState(null, '', baseUrl() + (hash ? '#' + hash : '')); route(); }
+function route() {
+  let h = location.hash.replace(/^#\/?/, '');
+  try { h = decodeURIComponent(h); } catch (e) {}
+  if (h === 'recruiter') { setRV(true); return; }
+  if (document.body.classList.contains('rvmode')) setRV(false);
+  const [v, sub] = h.split('/');
+  setView(v);
+  if (v === 'projects' && sub) { const i = P.findIndex(p => p.slug === sub); if (i >= 0) { openIn(P, i); return; } }
+  if (card.classList.contains('open') && listNow === P) close();
+}
+document.querySelectorAll('#tabs button').forEach(b => b.onclick = () => go(b.dataset.view === 'plate' ? '' : b.dataset.view));
+document.getElementById('rv-toggle').onclick = () => go(document.body.classList.contains('rvmode') ? (curView === 'plate' ? '' : curView) : 'recruiter');
+addEventListener('popstate', route);
+// tabs with nothing behind them stay hidden
+if (!P.length) document.querySelector('#tabs [data-view="projects"]').hidden = true;
+if (!SK.length) document.querySelector('#tabs [data-view="skills"]').hidden = true;
+if (!email && !li && !res && !gh) document.querySelector('#tabs [data-view="contact"]').hidden = true;
+renderProjects(); renderSkills(); renderContact();
+// an old ?recruiter=true link still works
+if (/[?&]recruiter\b/.test(location.search)) { const q = new URLSearchParams(location.search); q.delete('recruiter'); const qs = q.toString(); history.replaceState(null, '', location.pathname + (qs ? '?' + qs : '') + '#recruiter'); }
+route();
 
 const fig3 = one(pageSec, 'photo');
 if (fig3) { const [file, cap, need, focus, href] = split(fig3, 5); const el = document.getElementById('fig3'); el.innerHTML = polaroid({ file, cap, need, focus, href }); wirePhotos(el); }
