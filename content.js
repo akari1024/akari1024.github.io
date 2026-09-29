@@ -376,7 +376,7 @@ short: sEMG drill study
 tags: surgical robotics · surface electromyography · first-author paper
 when: Jan – Jul 2026 · Yokohama National University
 role: Visiting researcher, Institute of Multidisciplinary Sciences · first author
-tools: Surface electromyography (sEMG) · orthopedic haptic drill with automated bone-penetration detection
+tools: Surface electromyography (sEMG) · orthopedic haptic drill with automated bone-penetration detection · Excel
 
 Drilling through the spine requires precise penetration detection: the drill has to stop the moment it breaks through bone to protect the spinal cord. Surgeons usually rely on tactile feedback, which adds physical and mental strain over a long operation and contributes to musculoskeletal disorders.
 
@@ -401,7 +401,7 @@ short: Gravity compensation
 tags: surgical robotics · haptics · first-author manuscript
 when: Jun – Jul 2024 · Keio University
 role: Student researcher, Frontier Research & Education Collaborative Square · first author
-tools: Haptic drill robot for spinal surgery · accelerometer-based slope estimation
+tools: C++ · Excel · haptic drill robot for spinal surgery · accelerometer-based slope estimation
 
 A haptic drill robot detects the moment its bit breaks through bone and stops. Detection depends on the force the robot senses at the bit, and at a tilt part of that force is just the drill’s own weight, so accuracy fell sharply at 45° and 90°.
 
@@ -494,7 +494,7 @@ short: Stock model
 tags: quantitative modeling · finance
 when: Jun 2023 · Effissimo Capital Management, Singapore
 role: Intern
-// tools: (add what you built it in)
+tools: Excel
 
 At Effissimo Capital Management, an investment firm in Singapore, I designed, built, and back-tested a quantitative model that used company valuation metrics to predict Japanese stock prices.
 
@@ -529,13 +529,13 @@ outcome: The team placed in the top ten at regionals and qualified for the state
 kicker: the skills of
 Grouped by what I have used them for. Hover or tap a skill to see where.
 
-category: Programming | Python [pesticides] · Java · C++
+category: Programming | Python [pesticides] · Java · C++ [gravity-compensation]
 category: CAD and fabrication | Fusion 360 [robotics] · Onshape [robotics] · machining [robotics] · hardware assembly [robotics]
 category: Lab and measurement | Cell culture [cycloxaprid] · DNA laddering [cycloxaprid] · Surface electromyography (sEMG) [spinal-drill]
-category: Data and modeling | Excel · quantitative modeling [effissimo] · random-forest screening in Python [pesticides]
+category: Data and modeling | Excel [spinal-drill, gravity-compensation, effissimo] · quantitative modeling [effissimo] · random-forest screening in Python [pesticides]
 category: Engineering operations | Standups [stele] · weekly progress / plan / problems reporting [stele] · project tracking [stele] · engineer onboarding [stele]
 category: Spoken languages | English · Japanese [spinal-drill] · Chinese
-// Not linked yet because only you know where you used them: Java, C++, Excel, English, Chinese.
+// Not linked yet because only you know where you used them: Java, English, Chinese.
 // Add the project after each, e.g.  Java [robotics]  or  Excel [effissimo]  and they light up.
 
 

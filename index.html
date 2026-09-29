@@ -235,7 +235,8 @@
   .card dd { margin: 0; }
   /* cards open short: first paragraph (plus any callout) and photos; "read more" reveals the rest or jumps to the project */
   .card.short #c-body .rest, .card.short #c-docs, .card.short #c-facts { display: none; }
-  .mores { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+  .mores { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; flex: 1; min-width: 0; }
+  .card .nav #prev, .card .nav #next { flex: none; white-space: nowrap; }
   .card .nav .more { background: var(--accent); color: #fff; }
   .card .nav .more:hover { background: var(--accent); filter: brightness(1.08); }
   .card .nav { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 22px; }
@@ -289,7 +290,9 @@
   /* skills, as a legend */
   .skills { max-width: 880px; margin: 0 auto; padding: 4px 0 8px; }
   .skills dl { margin: 0; }
-  .skill { display: grid; grid-template-columns: 220px 1fr; gap: 6px 24px; padding: 18px 8px; border-bottom: 1.5px dotted var(--rule); align-items: baseline; animation: fadeup .5s cubic-bezier(.2,.8,.2,1) both; }
+  .skill { position: relative; display: grid; grid-template-columns: 220px 1fr; gap: 6px 24px; padding: 18px 8px; border-bottom: 1.5px dotted var(--rule); align-items: baseline; animation: fadeup .5s cubic-bezier(.2,.8,.2,1) backwards; }
+  /* the row with an open tip sits above the rows below it, so the tip is never painted under their text */
+  .skill:hover, .skill:focus-within, .skill:has(.sk.open) { z-index: 6; }
   .skill dt { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
   .skill dd { margin: 0; font-size: 24px; font-style: italic; font-weight: 500; line-height: 1.4; font-variation-settings: "SOFT" 100, "WONK" 1; }
   .skill dd i { font-style: normal; font-weight: 400; color: var(--accent); padding: 0 5px; }
@@ -1110,9 +1113,12 @@ function openIn(list, i) {
   const row = ([k, v]) => `<div><dt>${escHtml(k)}</dt><dd>${fmt(v)}</dd></div>`;
   const metaRows = proj ? [['role', s.role], ['tools', s.tools]].filter(r => r[1]).concat(s.facts) : [];
   document.getElementById('c-meta').innerHTML = metaRows.map(row).join('');
-  // short by default: the first paragraph and any callout show; the other paragraphs wait in .rest
-  const first = s.body.findIndex(p => !p.startsWith('!'));
-  const shown = s.body.filter((p, k) => k === first || p.startsWith('!')), rest = s.body.filter((p, k) => k !== first && !p.startsWith('!'));
+  // short by default: one paragraph per linked project (at least one) plus any callout show; the rest waits in .rest
+  const targets = (s.more || []).map(sl => P.find(p => p.slug === sl)).filter(Boolean);
+  const keep = Math.max(1, targets.length);
+  let seen = 0;
+  const shown = [], rest = [];
+  s.body.forEach(p => { if (p.startsWith('!') || seen++ < keep) shown.push(p); else rest.push(p); });
   document.getElementById('c-body').innerHTML = shown.map(para).join('') + (rest.length ? `<div class="rest">${rest.map(para).join('')}</div>` : '');
   const block = (title, items) => items.length ? `<div class="block"><h4>${title}</h4><ul>${items.map(x => `<li>${fmt(x)}</li>`).join('')}</ul></div>` : '';
   document.getElementById('c-extra').innerHTML = !proj ? '' :
@@ -1131,7 +1137,6 @@ function openIn(list, i) {
   // "read more": jump to the project(s) named by more:, or, without one, unfold the rest of the card
   card.classList.toggle('short', !proj);
   const moreEl = document.getElementById('c-more');
-  const targets = (s.more || []).map(sl => P.find(p => p.slug === sl)).filter(Boolean);
   const hasRest = rest.length > 0 || s.docs.length > 0 || s.facts.length > 0;
   moreEl.innerHTML = targets.length ? targets.map(p => `<button type="button" class="more" data-slug="${escHtml(p.slug)}">read more · ${escHtml(p.short)} →</button>`).join('')
     : (!proj && hasRest) ? `<button type="button" class="more" data-expand>read more</button>` : '';
