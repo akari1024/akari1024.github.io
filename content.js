@@ -76,6 +76,7 @@ Fig. 1. Akari Imai, anterior view. Japanese, raised in Singapore, and educated a
 
 # 1 · Cerebrum
 label: the brain · quantitative models
+more: pesticides, effissimo
 subtitle: Quantitative models, from markets to molecules
 summary: A quantitative stock model for a Singapore investment firm, and a machine-learning screen for pesticide toxicity.
 
@@ -90,6 +91,7 @@ photo: pesticide-figure.png | Predicted binding, 33 pesticides | the ranking cha
 
 # 2 · Auris
 label: the ears · Stele
+more: stele
 subtitle: Engineering operations at Stele
 summary: I run the operating cadence for Stele’s engineering team.
 
@@ -126,6 +128,7 @@ photo: takopa.jpg | Yokohama National University | the takoyaki welcome party wi
 
 # 4 · Cor
 label: the heart · teaching
+more: fll
 subtitle: Teaching and mentoring
 summary: Years of teaching, from Lego robotics to English tutoring.
 
@@ -144,6 +147,7 @@ photo: fll.jpg | FIRST Lego League | FLL team, robot, or trophy (no kids’ face
 
 # 5 · Columna vertebralis
 label: the spine · surgical robotics
+more: spinal-drill, gravity-compensation
 subtitle: Surgical robotics research
 summary: First-author research on robotic spinal drills, presented at IEEE ISIE 2026.
 
@@ -180,6 +184,7 @@ photo: chef-whites.jpg | Favorite chef! | you in chef whites | 50% 0%
 
 # 7 · Manus
 label: the hands · building
+more: robotics
 subtitle: Building things
 summary: Head of hardware for a competitive robotics program.
 
@@ -194,6 +199,7 @@ photo: cad.png | CAD | a CAD screenshot
 
 # 8 · Liber
 label: the book · wrist rehabilitation
+more: eit-book
 subtitle: An 80-page book on wrist rehabilitation
 summary: Author of an 80-page book on wrist rehabilitation and electrical impedance tomography.
 
@@ -225,6 +231,7 @@ photo: highjump.jpg | High jump | a mid-jump photo
 
 # 11 · Cellulae
 label: fig. 2, ×400 · cell biology
+more: cycloxaprid
 subtitle: Cell toxicology
 summary: Independent wet-lab research on pesticide toxicity.
 
@@ -326,6 +333,11 @@ link: Gravity compensation paper (YNU repository) | https://ynu.repo.nii.ac.jp/r
 //    link: / paper: / photo: / fact:   exactly as in the body-part sections
 //    slug:        short word for the project's address, e.g. slug: stele gives
 //                 https://akari1024.github.io/#project/stele (opens the tab scrolled to it)
+//    short:       a two-or-three-word name for the little key that stays at the top while scrolling,
+//                 and for the "read more · NAME" buttons on the plate's popups
+//  On the plate, a body-part section can point at projects with  more: slug, slug  (see # 2 · Auris):
+//  its popup then shows only the first paragraph and a "read more · NAME" button that jumps to the
+//  project. A popup without more: gets a plain "read more" that unfolds the rest of the card.
 //  Everything below comes from your résumé, your papers, and the sections above; nothing new.
 //  Lines starting with // are notes to yourself; some mark details only you can fill in.
 // ============================================================
@@ -337,6 +349,7 @@ Nine things I have built, studied, or run, written out in full below. Use the ke
 
 # PROJECT · Stele Fusion: engineering operations
 slug: stele
+short: Stele
 tags: engineering operations · wearable EEG · startup
 when: Jul 2026 – present
 role: Technical project manager intern, Stele Inc.
@@ -359,6 +372,7 @@ photo: stele-site.png | stele.health | a screenshot of the Stele website | | htt
 
 # PROJECT · sEMG evaluation of a haptic spinal drill
 slug: spinal-drill
+short: sEMG drill study
 tags: surgical robotics · surface electromyography · first-author paper
 when: Jan – Jul 2026 · Yokohama National University
 role: Visiting researcher, Institute of Multidisciplinary Sciences · first author
@@ -383,6 +397,7 @@ photo: drill-setup.jpg | Haptic drill setup | the drill setup in the lab
 
 # PROJECT · Gravity compensation for a haptic drill robot
 slug: gravity-compensation
+short: Gravity compensation
 tags: surgical robotics · haptics · first-author manuscript
 when: Jun – Jul 2024 · Keio University
 role: Student researcher, Frontier Research & Education Collaborative Square · first author
@@ -400,6 +415,7 @@ link: Read the manuscript (YNU repository) | https://ynu.repo.nii.ac.jp/records/
 
 # PROJECT · Electrical Impedance Tomography in Wrist Rehabilitation
 slug: eit-book
+short: EIT book
 tags: writing · rehabilitation · 80+ pages
 role: Author
 // when: (add when you wrote it)
@@ -418,6 +434,7 @@ paper: Electrical Impedance Tomography in Wrist Rehabilitation | 80-page book ·
 
 # PROJECT · Andover Robotics (FRC and FTC)
 slug: robotics
+short: Andover Robotics
 tags: robotics · hardware · leadership
 when: 2022 – 2025 · Phillips Academy Andover
 role: Social media manager → head of hardware → co-president
@@ -437,6 +454,7 @@ photo: cad.png | CAD | a CAD screenshot
 
 # PROJECT · Pesticide–androgen receptor binding screen
 slug: pesticides
+short: Pesticide screen
 tags: machine learning · toxicology · sole-author paper
 when: Nov 2023 – Jun 2025 · independent research
 role: Independent researcher, supervised by Mackenzie Simper (WashU MD student) · sole author
@@ -453,6 +471,7 @@ photo: pesticide-figure.png | Predicted binding, 33 pesticides | the ranking cha
 
 # PROJECT · Cycloxaprid toxicity in 4T1 mammary cells
 slug: cycloxaprid
+short: Cycloxaprid
 tags: wet lab · toxicology · independent research
 when: Dec 2024 – May 2025 · Phillips Academy Andover
 role: Independent researcher, Biology 600 Independent Research Laboratory
@@ -471,6 +490,7 @@ photo: cells.jpg | 4T1 cells | cells under the microscope
 
 # PROJECT · Quantitative Japanese stock model
 slug: effissimo
+short: Stock model
 tags: quantitative modeling · finance
 when: Jun 2023 · Effissimo Capital Management, Singapore
 role: Intern
@@ -483,6 +503,7 @@ outcome: In back-testing, the strategy returned 23.2% annualized, 14.4 percentag
 
 # PROJECT · FIRST Lego League program
 slug: fll
+short: FIRST Lego League
 tags: teaching · robotics · program building
 when: Aug 2022 – Dec 2024 · Washington Square Academy
 role: Co-founder and coach
