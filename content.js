@@ -53,7 +53,8 @@ hint: hover to examine, click to dissect ↓
 // Leave it empty to turn the gate off.
 // A link with ?key=THEPASSWORD on the end (e.g. https://akari1024.github.io/?key=0000) skips the prompt.
 // This is a soft gate only: anyone who reads the site's files can find the password.
-password: 0000
+// turned off 2026-10-08. To bring the gate back, put the password after the colon (e.g. password: 0000).
+password:
 // the password screen shows this photo in a round frame with "This site is guarded by NAME."
 // Put the dog's name after the | (with it empty, it says "a toy poodle").
 guard: IMG_9374.jpeg |
