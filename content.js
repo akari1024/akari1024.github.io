@@ -67,7 +67,7 @@ email: akari.imai@duke.edu
 linkedin: https://www.linkedin.com/in/akari-i-7083242a9/
 // drop a PDF named resume.pdf into the assets folder and put "resume.pdf" here
 resume: Akari_Imai_Resume.pdf
-github:
+github: https://github.com/akari1024
 
 // the photo at the bottom of the page
 photo: me.jpg | Fig. 3 | a photo of you | 50% 13%
@@ -530,7 +530,8 @@ outcome: The team placed in the top ten at regionals and qualified for the state
 kicker: the skills of
 Grouped by what I have used them for. Hover or tap a skill to see where.
 
-category: Programming | Python [pesticides] · Java · C++ [gravity-compensation]
+// a web address in the brackets links out instead of jumping to a project (Java → your GitHub)
+category: Programming | Python [pesticides] · Java [https://github.com/akari1024] · C++ [gravity-compensation]
 category: CAD and fabrication | Fusion 360 [robotics] · Onshape [robotics] · machining [robotics] · hardware assembly [robotics]
 category: Lab and measurement | Cell culture [cycloxaprid] · DNA laddering [cycloxaprid] · Surface electromyography (sEMG) [spinal-drill]
 category: Data and modeling | Excel [spinal-drill, gravity-compensation, effissimo] · quantitative modeling [effissimo] · random-forest screening in Python [pesticides]

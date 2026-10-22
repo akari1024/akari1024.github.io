@@ -262,6 +262,10 @@
   .chip i { display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: var(--accent-2); border: 1.2px solid var(--ink); color: var(--ink); font-style: normal; font-size: 10px; }
   .chip:hover, .chip[aria-current] { color: var(--ink); border-color: var(--ink); background: var(--accent-2); }
   .chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .topcorr { position: absolute; right: 0; top: 11px; display: flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); }
+  .tc { font: inherit; letter-spacing: inherit; text-transform: inherit; color: var(--ink-2); background: none; border: 0; padding: 2px 0; cursor: pointer; text-decoration: none; border-bottom: 1.5px solid transparent; transition: color .2s, border-color .2s; }
+  .tc:hover, .tc:focus-visible { color: var(--accent); border-bottom-color: var(--accent); outline: none; }
+  .tc-dot { color: var(--rule); }
   nav.tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin: -1.5px 0 0; position: relative; }
   nav.tabs button { font-family: 'DM Mono', monospace; font-weight: 500; font-size: 12px; line-height: 1; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); background: var(--paper); border: 1.5px dotted var(--rule); border-top: none; border-radius: 0 0 12px 12px; padding: 10px 16px 9px; cursor: pointer; transition: background .2s, color .2s, transform .3s cubic-bezier(.2,.8,.2,1), border-color .2s; }
   nav.tabs button:hover { color: var(--accent); background: var(--paper-2); transform: translateY(2px); }
@@ -323,6 +327,8 @@
   .sk-go { display: block; width: 100%; text-align: left; font: inherit; font-size: 16px; color: var(--ink); background: none; border: 0; border-bottom: 1.5px dotted var(--rule); padding: 4px 0; cursor: pointer; transition: color .15s; }
   .sk-go:last-child { border-bottom: 0; }
   .sk-go::after { content: " →"; color: var(--accent); }
+  a.sk-go { text-decoration: none; box-sizing: border-box; }
+  a.sk-go::after { content: " ↗"; }
   .sk-go:hover, .sk-go:focus-visible { color: var(--accent); outline: none; }
 
   /* contact, as a postcard */
@@ -372,8 +378,22 @@
   .mobile-list li:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
 
   /* one project, written out in full (#project/<slug> scrolls to it) */
-  .pg { margin: 0; padding: 44px 0 40px; border-top: 1px solid var(--rule); scroll-margin-top: 14px; animation: fadeup .5s cubic-bezier(.2,.8,.2,1) both; }
-  .pg:first-of-type { border-top: 0; padding-top: 8px; }
+  /* each project is a card: number, header, short lede + outcome, facts beside it, the long write-up folded away, photos last */
+  .pg { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 220px; grid-template-areas: "head head" "lede side" "photos photos"; gap: 0 44px; margin: 0 0 22px; padding: 30px 36px 30px 96px; background: #fff; border: 1px solid var(--rule); border-radius: 18px; box-shadow: 0 16px 32px -28px rgba(60, 30, 40, .3); scroll-margin-top: 14px; animation: fadeup .5s cubic-bezier(.2,.8,.2,1) both; }
+  .pg-num { position: absolute; left: 30px; top: 30px; font-size: 40px; font-style: italic; font-weight: 500; line-height: 1; color: var(--rule); font-variation-settings: "SOFT" 100, "WONK" 1; transition: color .3s; }
+  .pg.now .pg-num { color: var(--accent); }
+  .pg-head { grid-area: head; padding-bottom: 20px; margin-bottom: 22px; border-bottom: 1px dotted var(--rule); }
+  .pg-lede { grid-area: lede; }
+  .pg-side { grid-area: side; }
+  .pg-photos { grid-area: photos; }
+  .pg-more { margin-top: 22px; }
+  .pg-more summary { list-style: none; display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); border: 1px solid var(--ink); border-radius: 99px; padding: 7px 14px; transition: background .2s; }
+  .pg-more summary::-webkit-details-marker { display: none; }
+  .pg-more summary::after { content: "▾"; font-size: 12px; }
+  .pg-more[open] summary::after { content: "▴"; }
+  .pg-more summary:hover { background: var(--paper-2); }
+  .pg-more summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .pg-more[open] summary { margin-bottom: 4px; }
   .pg-crumbs { display: flex; align-items: baseline; gap: 16px; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
   .pg-when { margin-left: auto; letter-spacing: .04em; text-transform: none; text-align: right; }
   .pg-back { font: inherit; letter-spacing: inherit; text-transform: inherit; background: none; border: 0; color: var(--ink-2); cursor: pointer; padding: 4px 0; white-space: nowrap; }
@@ -382,9 +402,8 @@
   .pg-title { margin: 12px 0 0; font-size: clamp(30px, 3.4vw, 42px); font-style: italic; font-weight: 500; line-height: 1.08; letter-spacing: -.01em; font-variation-settings: "SOFT" 100, "WONK" 1; outline: none; max-width: 24ch; }
   .pg-tags { margin: 12px 0 0; font-size: 11px; }
   .pg-sum { margin: 12px 0 0; font-size: 19px; color: var(--ink-2); max-width: 60ch; line-height: 1.45; }
-  .pg-grid { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 48px; margin-top: 24px; padding-top: 24px; border-top: 1px dotted var(--rule); align-items: start; }
-  .pg-main p { margin: 0 0 16px; font-size: 17px; line-height: 1.7; max-width: 62ch; }
-  .pg-main .callout { max-width: 62ch; }
+  .pg-lede p { margin: 0 0 16px; font-size: 17px; line-height: 1.7; max-width: 62ch; }
+  .pg-lede .callout { max-width: 62ch; }
   .pg-block { margin: 28px 0 0; }
   .pg-block h3 { margin: 0 0 10px; font-family: 'DM Mono', monospace; font-weight: 500; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-2); padding-bottom: 8px; border-bottom: 1px solid var(--rule); max-width: 62ch; }
   .pg-block ul { margin: 0; padding: 0; list-style: none; max-width: 62ch; }
@@ -393,7 +412,6 @@
   .pg-block.outcome { border-left: 2px solid var(--ink); padding: 2px 0 2px 18px; max-width: 62ch; }
   .pg-block.outcome h3 { border: 0; padding: 0; margin-bottom: 6px; }
   .pg-block.outcome p { margin: 0 0 8px; font-style: italic; font-size: 18px; line-height: 1.5; }
-  .pg-side { position: sticky; top: 84px; }
   .pg-side dl { margin: 0 0 16px; }
   .pg-side dl:empty { display: none; }
   .pg-side dl div { display: grid; grid-template-columns: 1fr; gap: 2px; padding: 0 0 12px; font-size: 14.5px; line-height: 1.5; }
@@ -406,7 +424,7 @@
   .pg-side .doc svg { width: 26px; height: 32px; }
   .pg-side .links { margin: 0; }
   .pg-side .pill { font-size: 14px; }
-  .pg-photos { grid-template-columns: repeat(3, 1fr); gap: 26px 22px; margin: 34px 4px 6px; }
+  .pg-photos { grid-template-columns: repeat(3, 1fr); gap: 26px 22px; margin: 30px 4px 6px; }
   @media (min-width: 1000px) {
     .catalog { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 0 64px; align-items: start; }
     .catalog .intro { grid-column: 1 / -1; text-align: left; margin: 4px 0 20px; max-width: 62ch; }
@@ -490,6 +508,7 @@
     nav.tabs button { padding: 8px 10px 7px; font-size: 11px; letter-spacing: .1em; }
     body:not([data-view="plate"]) .plate { padding: 14px 16px 28px; }
     .topbar { padding-bottom: 8px; }
+    .topcorr { position: static; justify-content: center; padding-top: 8px; font-size: 10px; }
     .keybar { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; scrollbar-width: none; padding: 8px 0 2px; margin: 0 -16px; padding-left: 16px; padding-right: 16px; }
     .keybar::-webkit-scrollbar { display: none; }
     .key { grid-template-columns: 1fr; }
@@ -501,8 +520,9 @@
     .postcard .msg { padding: 26px 22px 22px; border-right: none; border-bottom: 1.5px dotted var(--rule); }
     .postcard .addr { padding: 22px 22px 20px; }
     .postmark { right: 66px; }
-    .pg-grid { grid-template-columns: 1fr; gap: 22px; margin-top: 22px; padding-top: 18px; }
-    .pg-side { position: static; }
+    .pg { grid-template-columns: 1fr; grid-template-areas: "head" "lede" "side" "photos"; gap: 0; padding: 22px 18px 22px; margin-bottom: 14px; border-radius: 14px; }
+    .pg-num { display: none; }
+    .pg-side { margin-top: 18px; padding-top: 16px; border-top: 1px dotted var(--rule); }
     .pg-crumbs { flex-wrap: wrap; }
     .key { display: none; }
     .pg-photos { grid-template-columns: 1fr 1fr; gap: 18px 12px; }
@@ -528,6 +548,7 @@
       <button type="button" data-view="skills">skills</button>
       <button type="button" data-view="contact">contact</button>
     </nav>
+    <div class="topcorr mono" id="topcorr" aria-label="Contact"></div>
     <div class="keybar" id="keybar" aria-label="Jump to a project"></div>
   </div>
 
@@ -832,7 +853,8 @@ const SK = (skSec.keys.category || []).map(l => {
     const m = x.match(/^(.*?)\s*\[([^\]]*)\]\s*$/);
     const skill = m ? m[1].trim() : x, slugs = m ? m[2].split(',').map(s => s.trim()).filter(Boolean) : null;
     const word = new RegExp('(^|[^a-z0-9])' + skill.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '([^a-z0-9]|$)');
-    const projects = slugs ? slugs.map(s => P.find(p => p.slug === s)).filter(Boolean) : P.filter(p => word.test((p.tools + ' ' + p.tags).toLowerCase()));
+    // a bracket entry can be a project slug or a web address (shown as its domain, opens in a new tab)
+    const projects = slugs ? slugs.map(s => /^https?:\/\//.test(s) ? { url: s, title: s.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '') } : P.find(p => p.slug === s)).filter(Boolean) : P.filter(p => word.test((p.tools + ' ' + p.tags).toLowerCase()));
     return { name: skill, projects };
   });
   return { name, items };
@@ -1295,25 +1317,25 @@ function projectArticle(s) {
   const meta = [['role', s.role], ['tools', s.tools]].filter(r => r[1]).concat(s.facts);
   const block = (title, items) => items.length ? `<section class="pg-block"><h3>${title}</h3><ul>${items.map(x => `<li>${fmt(x)}</li>`).join('')}</ul></section>` : '';
   const links = s.links.map(l => l.href ? `<a class="pill" href="${escHtml(l.href)}" target="_blank" rel="noopener">${escHtml(l.label)} ↗</a>` : DRAFT ? `<span class="pill todo">${escHtml(l.label)} · link needed</span>` : '').join('');
+  // the detailed lists fold away behind "full write-up" so the page scans as a stack of short cards
+  const more = block('What I worked on', s.work) + block('Features', s.features) + block('What it covers', s.covers) + block('Decisions', s.decisions) + block('Challenges', s.challenges);
   return `<article class="pg" id="p-${escHtml(s.slug)}">
+    <div class="pg-num" aria-hidden="true">${String(s.n).padStart(2, '0')}</div>
     <header class="pg-head">
-      <div class="pg-crumbs mono"><span>project ${String(s.n).padStart(2, '0')} / ${String(P.length).padStart(2, '0')}</span>${s.when ? `<span class="pg-when">${escHtml(s.when)}</span>` : ''}<button type="button" class="pg-back" data-top>↑ top</button></div>
+      <div class="pg-crumbs mono"><span>${s.tags ? escHtml(s.tags) : 'project ' + String(s.n).padStart(2, '0')}</span>${s.when ? `<span class="pg-when">${escHtml(s.when)}</span>` : ''}<button type="button" class="pg-back" data-top>↑ top</button></div>
       <h2 class="pg-title" tabindex="-1">${escHtml(s.title)}</h2>
-      ${s.tags ? `<div class="rv-tags pg-tags">${escHtml(s.tags)}</div>` : ''}
       ${s.sum ? `<p class="pg-sum">${fmt(s.sum)}</p>` : ''}
     </header>
-    <div class="pg-grid">
-      <div class="pg-main">
-        ${s.body.map(para).join('')}
-        ${block('What I worked on', s.work)}${block('Features', s.features)}${block('What it covers', s.covers)}${block('Decisions', s.decisions)}${block('Challenges', s.challenges)}
-        ${s.outcome.length ? `<section class="pg-block outcome"><h3>Outcome</h3>${s.outcome.map(o => `<p>${fmt(o)}</p>`).join('')}</section>` : ''}
-      </div>
-      <aside class="pg-side">
-        <dl>${meta.map(row).join('')}</dl>
-        <div class="docs"></div>
-        <div class="links">${links}</div>
-      </aside>
+    <div class="pg-lede">
+      ${s.body.map(para).join('')}
+      ${s.outcome.length ? `<section class="pg-block outcome"><h3>Outcome</h3>${s.outcome.map(o => `<p>${fmt(o)}</p>`).join('')}</section>` : ''}
+      ${more ? `<details class="pg-more"><summary>Full write-up</summary>${more}</details>` : ''}
     </div>
+    <aside class="pg-side">
+      <dl>${meta.map(row).join('')}</dl>
+      <div class="docs"></div>
+      <div class="links">${links}</div>
+    </aside>
     <div class="photos pg-photos">${s.photos.map(polaroid).join('')}</div>
   </article>`;
 }
@@ -1338,6 +1360,7 @@ function renderProjects() {
     const line = topOffset() + 60;
     let now = null;
     P.forEach(p => { const a = document.getElementById('p-' + p.slug); if (a && a.getBoundingClientRect().top <= line) now = p.slug; });
+    P.forEach(p => { const a = document.getElementById('p-' + p.slug); if (a) a.classList.toggle('now', p.slug === now); });
     chips.concat(keyItems).forEach(c => {
       const on = c.dataset.slug === now;
       if (on && !c.hasAttribute('aria-current')) { c.setAttribute('aria-current', 'true'); if (c.classList.contains('chip')) c.scrollIntoView({ block: 'nearest', inline: 'nearest' }); }
@@ -1366,7 +1389,7 @@ function renderSkills() {
   const el = document.getElementById('view-skills');
   if (!SK.length) { el.innerHTML = DRAFT ? '<p class="intro">Add "category: Name | a · b · c" lines under # SKILLS in content.js to fill this tab.</p>' : ''; return; }
   const item = x => !x.projects.length ? `<span class="sk"><span class="sk-name">${fmt(x.name)}</span></span>` :
-    `<span class="sk has"><button type="button" class="sk-name" aria-expanded="false">${fmt(x.name)}</button><span class="sk-tip" role="tooltip"><span class="sk-lbl mono">used in</span>${x.projects.map(p => `<button type="button" class="sk-go" data-slug="${escHtml(p.slug)}">${escHtml(p.title)}</button>`).join('')}</span></span>`;
+    `<span class="sk has"><button type="button" class="sk-name" aria-expanded="false">${fmt(x.name)}</button><span class="sk-tip" role="tooltip"><span class="sk-lbl mono">${x.projects.every(p => p.url) ? 'see it on' : 'used in'}</span>${x.projects.map(p => p.url ? `<a class="sk-go ext" href="${escHtml(p.url)}" target="_blank" rel="noopener">${escHtml(p.title)}</a>` : `<button type="button" class="sk-go" data-slug="${escHtml(p.slug)}">${escHtml(p.title)}</button>`).join('')}</span></span>`;
   el.innerHTML = `<div class="skills">` + skSec.paras.map(p => `<p class="intro">${fmt(p)}</p>`).join('') + `<dl>` +
     SK.map((c, i) => `<div class="skill" style="animation-delay:${(.05 + i * .07).toFixed(2)}s"><dt>${escHtml(c.name)}</dt><dd>${c.items.map(item).join(' <i>·</i> ')}</dd></div>`).join('') + `</dl></div>`;
   // the tip flips to the left near the right edge; a tap (or click) pins it open for touch screens
@@ -1377,7 +1400,7 @@ function renderSkills() {
     sk.addEventListener('focusin', () => place(sk));
     sk.querySelector('.sk-name').onclick = e => { e.stopPropagation(); place(sk); closeAll(sk); const on = sk.classList.toggle('open'); sk.querySelector('.sk-name').setAttribute('aria-expanded', on); };
   });
-  el.querySelectorAll('.sk-go').forEach(b => b.onclick = e => { e.stopPropagation(); closeAll(); go('project/' + b.dataset.slug); });
+  el.querySelectorAll('.sk-go:not(.ext)').forEach(b => b.onclick = e => { e.stopPropagation(); closeAll(); go('project/' + b.dataset.slug); });
   document.addEventListener('click', () => closeAll());
 }
 function renderContact() {
@@ -1406,6 +1429,24 @@ function renderContact() {
   // the big button opens a mail draft and copies the address too, in case no mail app is set up
   document.getElementById('cta').addEventListener('click', () => copyText(email, flash, () => {}));
 }
+
+// ---------- contact links that stay in the sticky bar on every tab ----------
+(function () {
+  const resHref = res ? (/^https?:/.test(res) ? res : ASSETS + res) : '';
+  const items = [];
+  if (email) items.push(`<button type="button" class="tc" data-email="${escHtml(email)}" title="${escHtml(email)}">email</button>`);
+  if (li) items.push(`<a class="tc" href="${escHtml(li)}" target="_blank" rel="noopener">linkedin</a>`);
+  if (gh) items.push(`<a class="tc" href="${escHtml(gh)}" target="_blank" rel="noopener">github</a>`);
+  if (resHref) items.push(`<a class="tc" href="${escHtml(resHref)}" target="_blank" rel="noopener">résumé</a>`);
+  const bar = document.getElementById('topcorr');
+  bar.innerHTML = items.join('<span class="tc-dot">·</span>');
+  // the email item copies the address and opens a mail draft, like the contact tab's button
+  bar.querySelectorAll('[data-email]').forEach(b => b.onclick = () => {
+    const addr = b.dataset.email, was = b.textContent;
+    copyText(addr, () => { b.textContent = 'copied'; setTimeout(() => { b.textContent = was; }, 1800); }, () => { b.textContent = addr; });
+    location.href = 'mailto:' + addr;
+  });
+})();
 
 // ---------- navigation: #projects, #skills, #contact, #recruiter, #project/<slug> ----------
 const VIEWS = ['plate', 'projects', 'skills', 'contact'];
