@@ -262,7 +262,8 @@
   .chip i { display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: var(--accent-2); border: 1.2px solid var(--ink); color: var(--ink); font-style: normal; font-size: 10px; }
   .chip:hover, .chip[aria-current] { color: var(--ink); border-color: var(--ink); background: var(--accent-2); }
   .chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-  .topcorr { position: absolute; right: 0; top: 11px; display: flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); }
+  .topcorr { display: flex; justify-content: center; align-items: center; gap: 8px; padding-top: 8px; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); }
+  @media (min-width: 1000px) { .topcorr { position: absolute; right: 0; top: 11px; padding-top: 0; } }
   .tc { font: inherit; letter-spacing: inherit; text-transform: inherit; color: var(--ink-2); background: none; border: 0; padding: 2px 0; cursor: pointer; text-decoration: none; border-bottom: 1.5px solid transparent; transition: color .2s, border-color .2s; }
   .tc:hover, .tc:focus-visible { color: var(--accent); border-bottom-color: var(--accent); outline: none; }
   .tc-dot { color: var(--rule); }
@@ -385,7 +386,7 @@
   .pg-head { grid-area: head; padding-bottom: 20px; margin-bottom: 22px; border-bottom: 1px dotted var(--rule); }
   .pg-lede { grid-area: lede; }
   .pg-side { grid-area: side; }
-  .pg-photos { grid-area: photos; }
+  .pg-photos { grid-area: photos; width: 100%; justify-self: center; }
   .pg-more { margin-top: 22px; }
   .pg-more summary { list-style: none; display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); border: 1px solid var(--ink); border-radius: 99px; padding: 7px 14px; transition: background .2s; }
   .pg-more summary::-webkit-details-marker { display: none; }
@@ -508,7 +509,7 @@
     nav.tabs button { padding: 8px 10px 7px; font-size: 11px; letter-spacing: .1em; }
     body:not([data-view="plate"]) .plate { padding: 14px 16px 28px; }
     .topbar { padding-bottom: 8px; }
-    .topcorr { position: static; justify-content: center; padding-top: 8px; font-size: 10px; }
+    .topcorr { font-size: 10px; }
     .keybar { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; scrollbar-width: none; padding: 8px 0 2px; margin: 0 -16px; padding-left: 16px; padding-right: 16px; }
     .keybar::-webkit-scrollbar { display: none; }
     .key { grid-template-columns: 1fr; }
